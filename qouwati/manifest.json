@@ -1,0 +1,16 @@
+{
+  "name": "Qouwati – قُوَّتي",
+  "short_name": "Qouwati",
+  "description": "Your Mind, Your Strength, Your Qouwati. A mental wellness space by Aya Abdo.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#faf8f5",
+  "theme_color": "#c4a882",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "assets/aba.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/aba.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "categories": ["health", "lifestyle"],
+  "lang": "en"
+}

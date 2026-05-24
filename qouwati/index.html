@@ -1,0 +1,2379 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Qouwati – Your Mind, Your Strength. A safe space for mental wellness, self-love, and inner growth by Aya Abdo, Beirut."/>
+<meta name="keywords" content="mental health, self-love, wellness, قوتي, qouwati, aya abdo, beirut, mental wellness, anxiety, mindfulness"/>
+<meta name="author" content="Aya Abdo"/>
+<meta name="robots" content="index, follow"/>
+<meta property="og:title" content="Qouwati – قُوَّتي | Your Mind, Your Strength"/>
+<meta property="og:description" content="A safe space for mental wellness, self-love, and inner growth by Aya Abdo."/>
+<meta property="og:image" content="assets/img/bg.GIF"/>
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Qouwati – قُوَّتي"/>
+<meta name="twitter:description" content="Your Mind, Your Strength, Your Qouwati."/>
+<meta name="twitter:image" content="assets/img/bg.GIF"/>
+<meta name="theme-color" content="#c4a882"/>
+<link rel="manifest" href="manifest.json"/>
+<link rel="apple-touch-icon" href="assets/aba.png"/>
+<link rel="canonical" href="https://qouwati.com/"/>
+<title>Qouwati – قُوَّتي | Mental Wellness by Aya Abdo</title>
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Qouwati",
+  "alternateName": "قُوَّتي",
+  "url": "https://qouwati.com",
+  "description": "A safe space for mental wellness, self-love, and inner growth by Aya Abdo.",
+  "author": {
+    "@type": "Person",
+    "name": "Aya Abdo",
+    "jobTitle": "Mental Wellness Counselor",
+    "address": { "@type": "PostalAddress", "addressLocality": "Beirut", "addressCountry": "LB" }
+  },
+  "inLanguage": ["en", "ar"]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* =========================================================
+   RESET & ROOT
+   ========================================================= */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+ul{list-style:none}a{text-decoration:none}img{width:100%;height:auto;display:block}
+button{border:none;background:none;cursor:pointer;font-family:inherit}
+input,textarea,select{font-family:inherit;border:none;outline:none}
+
+:root{
+  --cream:#f5f0ea;--warm:#faf8f5;--sand:#e8d5c0;--taupe:#c4a882;--mocha:#8b6f47;
+  --deep:#4a3728;--char:#2c2416;--mid:#7a6a58;--light:#a89880;
+  --gold:#c9a96e;--goldl:#e8d5a3;--blush:#e8c4b8;--sage:#a8b89a;
+  --bg:#faf8f5;--surface:#f5f0ea;--border:rgba(196,168,130,.22);
+  --hh:78px;--shadow:0 8px 40px rgba(74,55,40,.1);--r:6px;--tr:.3s ease;
+}
+[data-theme=dark]{
+  --bg:#17120e;--warm:#17120e;--cream:#1f1812;--surface:#1f1812;
+  --sand:#322619;--taupe:#c4a882;--mocha:#d4a870;--deep:#e8d5c0;
+  --char:#f0e8df;--mid:#b89870;--light:#7a6048;--border:rgba(196,168,130,.13);
+  --shadow:0 8px 40px rgba(0,0,0,.5);
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--bg);color:var(--deep);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  transition:background .4s,color .4s;}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:400;line-height:1.15}
+p{line-height:1.85;font-size:.95rem;color:var(--mid)}
+.container{max-width:1160px;margin:0 auto;padding:0 2rem}
+.section{padding:7rem 0}
+.divider{height:1px;background:linear-gradient(to right,transparent,var(--sand),transparent)}
+
+
+
+/* =========================================================
+   NOISE OVERLAY
+   ========================================================= */
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.3;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E")}
+
+/* =========================================================
+   TOAST NOTIFICATIONS
+   ========================================================= */
+#toast-container{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);
+  z-index:9999;display:flex;flex-direction:column;gap:.6rem;align-items:center;pointer-events:none}
+.toast{background:var(--char);color:#fff;padding:.75rem 1.5rem;border-radius:100px;
+  font-size:.8rem;font-weight:500;letter-spacing:.04em;box-shadow:0 4px 20px rgba(0,0,0,.25);
+  opacity:0;transform:translateY(12px);transition:all .3s ease;pointer-events:none;
+  display:flex;align-items:center;gap:.6rem;max-width:360px;text-align:center;white-space:nowrap}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.success{background:#4a6040}
+.toast.error{background:#8b3a3a}
+.toast.info{background:var(--mocha)}
+[data-theme=dark] .toast{background:#e8d5c0;color:#2c2416}
+
+/* =========================================================
+   SKELETON LOADERS
+   ========================================================= */
+.skeleton{background:linear-gradient(90deg,var(--surface) 25%,var(--sand) 50%,var(--surface) 75%);
+  background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:4px}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.skel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.skel-img{aspect-ratio:16/10}.skel-body{padding:1.5rem}
+.skel-line{height:12px;margin-bottom:.75rem;border-radius:4px}
+.skel-line.w100{width:100%}.skel-line.w75{width:75%}.skel-line.w50{width:50%}
+
+/* =========================================================
+   BACK BUTTON (in modal)
+   ========================================================= */
+.modal-back{position:sticky;top:0;background:var(--bg);padding:.75rem 0;
+  display:flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--mid);cursor:pointer;
+  transition:color .3s;z-index:2;border-bottom:1px solid var(--border);margin-bottom:1.5rem}
+.modal-back:hover{color:var(--mocha)}
+
+/* =========================================================
+   COMMENT MODERATION BADGE
+   ========================================================= */
+.cm-status{display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;padding:.18rem .5rem;border-radius:2px;margin-left:.4rem}
+.cm-pending{background:rgba(201,169,110,.2);color:var(--gold)}
+.cm-approved{background:rgba(168,184,154,.2);color:#4a6040}
+.cm-spam{background:rgba(139,58,58,.15);color:#8b3a3a}
+
+/* =========================================================
+   ANALYTICS CHARTS (admin)
+   ========================================================= */
+.bar-chart{display:flex;gap:.5rem;align-items:flex-end;height:100px;margin:1rem 0}
+.bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:.35rem;min-width:0}
+.bar-fill{width:100%;border-radius:2px 2px 0 0;background:linear-gradient(to top,var(--taupe),var(--gold));transition:height .6s ease;min-height:3px}
+.bar-label{font-size:.55rem;color:var(--light);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.bar-val{font-size:.62rem;font-weight:600;color:var(--mocha)}
+#rp{position:fixed;top:0;left:0;width:0;height:3px;
+  background:linear-gradient(to right,var(--taupe),var(--gold));z-index:10000;transition:width .1s linear}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+#hdr{position:fixed;top:0;left:0;width:100%;z-index:1000;
+  background:rgba(250,248,245,.9);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+  border-bottom:1px solid var(--border);transition:all .4s}
+[data-theme=dark] #hdr{background:rgba(23,18,14,.92)}
+#hdr.sc{box-shadow:var(--shadow)}
+nav{height:var(--hh);display:flex;align-items:center;justify-content:space-between;gap:1.5rem}
+.logo{display:flex;flex-direction:column;line-height:1;gap:3px}
+.logo-main{font-family:'Cormorant Garamond',serif;font-size:1.85rem;font-weight:400;
+  color:var(--char);letter-spacing:.05em}
+.logo-main span{color:var(--taupe)}
+.logo-sub{font-size:.58rem;color:var(--light);letter-spacing:.14em;display:flex;gap:.5rem;align-items:center}
+.logo-ar{font-family:'Noto Naskh Arabic',serif;font-size:.85rem;color:var(--taupe)}
+.nav-links{display:flex;align-items:center;gap:1.8rem}
+.nav-links a{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--mid);transition:color .3s;position:relative;white-space:nowrap}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;
+  background:var(--taupe);transition:width .3s}
+.nav-links a:hover{color:var(--mocha)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--deep)!important;color:#fff!important;padding:.6rem 1.4rem;border-radius:2px}
+.nav-cta:hover{background:var(--mocha)!important}
+.nav-cta::after{display:none!important}
+.nav-acts{display:flex;align-items:center;gap:.6rem}
+.ic-btn{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;color:var(--mid);font-size:.8rem;
+  transition:all .3s;background:transparent}
+.ic-btn:hover{border-color:var(--taupe);color:var(--mocha);background:rgba(196,168,130,.1)}
+.lang-btn{font-size:.68rem;font-weight:600;letter-spacing:.1em;padding:.3rem .65rem;
+  border-radius:100px;border:1px solid var(--border);color:var(--mid);transition:all .3s;background:transparent}
+.lang-btn:hover{border-color:var(--taupe);color:var(--mocha)}
+.hbg{display:none;flex-direction:column;gap:5px;padding:4px;cursor:pointer}
+.hbg span{display:block;width:21px;height:1.5px;background:var(--deep);transition:all .3s}
+[data-theme=dark] .hbg span{background:var(--char)}
+/* search bar */
+.search-wrap{position:relative;display:flex;align-items:center}
+.search-input{width:0;opacity:0;border:1px solid transparent;border-radius:100px;
+  padding:0;font-size:.8rem;color:var(--deep);background:var(--surface);
+  transition:width .3s,opacity .3s,padding .3s,border-color .3s}
+.search-input.open{width:180px;opacity:1;padding:.4rem 1rem;border-color:var(--border)}
+.search-input:focus{border-color:var(--taupe)}
+[data-theme=dark] .search-input{background:var(--surface);color:var(--char)}
+#search-results{position:absolute;top:calc(100% + .5rem);right:0;width:280px;
+  background:var(--bg);border:1px solid var(--border);border-radius:var(--r);
+  box-shadow:var(--shadow);z-index:200;display:none;max-height:320px;overflow-y:auto}
+.sr-item{padding:.85rem 1.1rem;border-bottom:1px solid var(--border);cursor:pointer;transition:background .2s}
+.sr-item:hover{background:var(--surface)}
+.sr-item:last-child{border:none}
+.sr-title{font-size:.85rem;font-weight:500;color:var(--char);margin-bottom:.2rem}
+.sr-tag{font-size:.65rem;color:var(--taupe);letter-spacing:.1em;text-transform:uppercase}
+.sr-empty{padding:1.2rem;text-align:center;font-size:.82rem;color:var(--light)}
+
+/* mobile nav */
+.mob-nav{display:none;position:fixed;top:var(--hh);left:0;right:0;
+  background:rgba(250,248,245,.98);backdrop-filter:blur(20px);padding:1.5rem 2rem;
+  border-bottom:1px solid var(--border);flex-direction:column;gap:1.2rem;z-index:999}
+[data-theme=dark] .mob-nav{background:rgba(23,18,14,.98)}
+.mob-nav.open{display:flex}
+.mob-nav a{font-size:.85rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--mid);transition:color .3s;padding:.4rem 0;border-bottom:1px solid var(--border)}
+.mob-nav a:last-child{border:none}
+.mob-nav a:hover{color:var(--mocha)}
+
+/* =========================================================
+   TICKER
+   ========================================================= */
+#ticker{background:var(--deep);padding:1rem 0;overflow:hidden}
+[data-theme=dark] #ticker{background:#0e0b07}
+.ticker-inner{display:flex;gap:0;white-space:nowrap;animation:tick 35s linear infinite}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-inner:hover{animation-play-state:paused}
+.tick-item{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-style:italic;
+  color:rgba(255,255,255,.65);flex-shrink:0;padding:0 2rem}
+.tick-sep{color:var(--taupe);flex-shrink:0;font-size:.7rem;padding:0 .5rem}
+
+/* =========================================================
+   REVEAL
+   ========================================================= */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .72s ease,transform .72s ease}
+.rv.vis{opacity:1;transform:translateY(0)}
+.rl{opacity:0;transform:translateX(-28px);transition:opacity .72s ease,transform .72s ease}
+.rl.vis{opacity:1;transform:translateX(0)}
+.rr{opacity:0;transform:translateX(28px);transition:opacity .72s ease,transform .72s ease}
+.rr.vis{opacity:1;transform:translateX(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+/* =========================================================
+   TYPOGRAPHY HELPERS
+   ========================================================= */
+.eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.68rem;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--taupe);margin-bottom:1rem}
+.eyebrow::before{content:'';width:26px;height:1px;background:var(--taupe)}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3.3rem);
+  font-weight:300;color:var(--char);line-height:1.1;margin-bottom:1.5rem}
+.sec-title em{font-style:italic;color:var(--taupe)}
+.centered{text-align:center}
+.centered .eyebrow{justify-content:center}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 2.1rem;font-size:.73rem;
+  font-weight:600;letter-spacing:.15em;text-transform:uppercase;border-radius:2px;
+  transition:all .3s;cursor:pointer;border:none;font-family:'Jost',sans-serif}
+.btn-dark{background:var(--deep);color:#fff}
+.btn-dark:hover{background:var(--mocha);transform:translateY(-2px);box-shadow:0 8px 25px rgba(74,55,40,.2)}
+.btn-outline{background:transparent;color:var(--deep);border:1px solid var(--sand)}
+.btn-outline:hover{border-color:var(--taupe);background:rgba(196,168,130,.08)}
+.btn-taupe{background:var(--taupe);color:#fff}
+.btn-taupe:hover{background:var(--mocha);transform:translateY(-2px)}
+.btn-sm{padding:.55rem 1.2rem;font-size:.68rem}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+#hero{min-height:100vh;display:flex;flex-direction:column;padding-top:var(--hh);
+  background:linear-gradient(150deg,var(--warm) 0%,#f0e8df 55%,var(--cream) 100%);
+  position:relative;overflow:hidden}
+[data-theme=dark] #hero{background:linear-gradient(150deg,#17120e 0%,#1f1812 55%,#1c1510 100%)}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+.orb1{width:620px;height:620px;background:radial-gradient(circle,rgba(201,169,110,.14) 0%,transparent 70%);top:-120px;right:-80px}
+.orb2{width:420px;height:420px;background:radial-gradient(circle,rgba(232,196,184,.18) 0%,transparent 70%);bottom:-60px;left:-80px}
+.orb3{width:300px;height:300px;background:radial-gradient(circle,rgba(168,184,154,.12) 0%,transparent 70%);top:40%;left:40%}
+.hero-body{flex:1;display:flex;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;z-index:1;padding:3rem 0}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.75rem;font-size:.68rem;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--taupe);margin-bottom:1.5rem}
+.hero-eyebrow::before{content:'';width:30px;height:1px;background:var(--taupe)}
+.hero-title{font-size:clamp(2.8rem,4.8vw,5.4rem);font-weight:300;line-height:1.04;
+  color:var(--char);margin-bottom:1.8rem}
+.hero-title em{font-style:italic;color:var(--taupe)}
+.hero-desc{font-size:.98rem;line-height:1.9;color:var(--mid);margin-bottom:2.5rem;max-width:480px}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+.hero-stats{display:flex;gap:2.5rem;flex-wrap:wrap}
+.stat-item{display:flex;flex-direction:column;gap:.2rem}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:300;color:var(--char);line-height:1}
+.stat-lbl{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--light)}
+.hero-img-wrap{position:relative}
+.hero-img-frame{border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;background:var(--sand)}
+.hero-img-frame img{width:100%;height:100%;object-fit:cover;transition:transform 6s ease}
+.hero-img-frame:hover img{transform:scale(1.04)}
+.hero-accent{position:absolute;bottom:-20px;right:-20px;width:60%;height:60%;
+  border:1px solid rgba(196,168,130,.35);border-radius:var(--r);z-index:-1}
+.hero-badge{position:absolute;top:2rem;left:-2.5rem;background:rgba(250,248,245,.95);
+  backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:var(--r);
+  padding:1rem 1.2rem;box-shadow:0 8px 30px rgba(74,55,40,.1);text-align:center}
+[data-theme=dark] .hero-badge{background:rgba(31,24,18,.95)}
+.badge-ar{font-family:'Noto Naskh Arabic',serif;font-size:1.6rem;color:var(--mocha);display:block}
+.badge-en{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--light);margin-top:2px}
+/* parallax handled by JS */
+.parallax-img{will-change:transform}
+.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  color:var(--light);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;z-index:1}
+.scroll-line{width:1px;height:38px;background:linear-gradient(to bottom,transparent,var(--taupe));
+  animation:sp 2s ease-in-out infinite}
+@keyframes sp{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* =========================================================
+   AFFIRMATION BANNER
+   ========================================================= */
+#affirmation{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2rem 0}
+.aff-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.aff-text{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-style:italic;
+  color:var(--char);flex:1;min-width:200px;transition:opacity .5s,transform .5s}
+.aff-text.changing{opacity:0;transform:translateY(8px)}
+.aff-label{font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--taupe);flex-shrink:0}
+.aff-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;color:var(--taupe);
+  font-size:.9rem;transition:all .3s;flex-shrink:0}
+.aff-btn:hover{background:var(--taupe);color:#fff;border-color:var(--taupe)}
+
+/* =========================================================
+   MOOD
+   ========================================================= */
+#mood{background:var(--bg);padding:2.5rem 0}
+.mood-inner{display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap}
+.mood-q{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--char);flex-shrink:0}
+.mood-opts{display:flex;gap:.65rem;flex-wrap:wrap}
+.mood-btn{width:50px;height:50px;border-radius:50%;border:1.5px solid var(--border);
+  font-size:1.35rem;display:flex;align-items:center;justify-content:center;
+  transition:all .3s;background:var(--bg)}
+.mood-btn:hover,.mood-btn.sel{border-color:var(--taupe);background:rgba(196,168,130,.15);transform:scale(1.18)}
+.mood-resp{flex:1;min-width:200px;background:rgba(196,168,130,.1);border:1px solid var(--border);
+  border-radius:var(--r);padding:.9rem 1.3rem;font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;font-style:italic;color:var(--mocha);display:none;
+  transition:opacity .4s,transform .4s;transform:translateY(5px)}
+.mood-resp.show{display:block;opacity:1;transform:translateY(0)}
+.mood-track-btn{font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--taupe);cursor:pointer;background:none;border:1px solid var(--border);
+  border-radius:100px;padding:.35rem .8rem;transition:all .3s;flex-shrink:0}
+.mood-track-btn:hover{border-color:var(--taupe);background:rgba(196,168,130,.1)}
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+#about{background:var(--cream)}
+[data-theme=dark] #about{background:var(--surface)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-img-main{border-radius:var(--r);overflow:hidden;aspect-ratio:3/4;background:var(--sand)}
+.about-img-main img{width:100%;height:100%;object-fit:cover}
+.about-badge{position:absolute;bottom:-15px;right:-15px;background:var(--deep);padding:1.5rem;border-radius:var(--r);text-align:center}
+[data-theme=dark] .about-badge{background:var(--taupe)}
+.badge-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;line-height:1;color:var(--goldl)}
+.badge-lbl{font-size:.56rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:.25rem}
+.about-text p{margin-bottom:1.2rem}
+.pills{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:2rem}
+.pill{background:rgba(196,168,130,.13);border:1px solid rgba(196,168,130,.28);
+  color:var(--mocha);padding:.42rem .95rem;border-radius:100px;font-size:.73rem;font-weight:500;letter-spacing:.07em}
+
+/* =========================================================
+   TIPS
+   ========================================================= */
+#tips{background:var(--bg)}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.4rem}
+.tip-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
+  padding:2.1rem 1.9rem;position:relative;overflow:hidden;transition:all .35s}
+.tip-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--taupe);transition:height .4s}
+.tip-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.tip-card:hover::before{height:100%}
+.tip-num{font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:300;
+  color:rgba(196,168,130,.22);line-height:1;margin-bottom:.9rem}
+.tip-card h3{font-size:1.08rem;color:var(--char);margin-bottom:.7rem;line-height:1.4;font-weight:400}
+.tip-card p{font-size:.83rem}
+.tip-save{position:absolute;top:1rem;right:1rem;font-size:.85rem;background:none;border:none;
+  cursor:pointer;color:var(--light);transition:color .3s,transform .3s}
+.tip-save:hover,.tip-save.saved{color:var(--taupe);transform:scale(1.2)}
+
+/* =========================================================
+   DIARY / BLOG
+   ========================================================= */
+#diary{background:var(--surface)}
+.diary-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem}
+.filter-bar{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
+.f-btn{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  padding:.42rem 1rem;border-radius:100px;border:1px solid var(--border);
+  color:var(--mid);background:transparent;cursor:pointer;transition:all .3s}
+.f-btn:hover{border-color:var(--taupe);color:var(--mocha)}
+.f-btn.active{background:var(--deep);color:#fff;border-color:var(--deep)}
+[data-theme=dark] .f-btn.active{background:var(--taupe);border-color:var(--taupe)}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:2rem}
+.blog-card{background:var(--bg);border-radius:var(--r);overflow:hidden;border:1px solid var(--border);
+  transition:all .35s;display:flex;flex-direction:column}
+.blog-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(74,55,40,.12)}
+.blog-card.saved-post .bc-save{color:var(--taupe)!important}
+.blog-img{aspect-ratio:16/10;overflow:hidden;background:var(--sand);position:relative;cursor:pointer}
+.blog-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.blog-card:hover .blog-img img{transform:scale(1.05)}
+.blog-ph{aspect-ratio:16/10;background:linear-gradient(135deg,var(--sand),var(--blush));
+  display:flex;align-items:center;justify-content:center;font-size:2.5rem;cursor:pointer}
+.blog-tag{position:absolute;top:.85rem;left:.85rem;background:rgba(250,248,245,.92);
+  backdrop-filter:blur(8px);color:var(--mocha);font-size:.6rem;font-weight:600;
+  letter-spacing:.15em;text-transform:uppercase;padding:.28rem .65rem;border-radius:2px}
+.blog-views{position:absolute;top:.85rem;right:.85rem;background:rgba(250,248,245,.88);
+  backdrop-filter:blur(8px);color:var(--mid);font-size:.62rem;padding:.28rem .6rem;
+  border-radius:2px;display:flex;align-items:center;gap:.25rem}
+.reading-time{position:absolute;bottom:.85rem;right:.85rem;background:rgba(250,248,245,.88);
+  backdrop-filter:blur(8px);color:var(--mid);font-size:.6rem;padding:.25rem .55rem;border-radius:2px}
+.blog-body{padding:1.65rem;flex:1;display:flex;flex-direction:column}
+.blog-meta{display:flex;align-items:center;gap:.75rem;font-size:.68rem;color:var(--light);
+  letter-spacing:.05em;margin-bottom:.85rem;flex-wrap:wrap}
+.dot{width:3px;height:3px;border-radius:50%;background:var(--sand)}
+.blog-card h3{font-size:1.12rem;color:var(--char);margin-bottom:.65rem;line-height:1.35;font-weight:400;cursor:pointer}
+.blog-card h3:hover{color:var(--mocha)}
+.blog-exc{font-size:.84rem;color:var(--mid);flex:1;margin-bottom:1.3rem;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.blog-foot{display:flex;align-items:center;justify-content:space-between}
+.read-more{display:inline-flex;align-items:center;gap:.45rem;font-size:.7rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--mocha);transition:gap .3s}
+.read-more:hover{gap:.7rem}
+.bc-actions{display:flex;gap:.5rem;align-items:center}
+.bc-save,.bc-share{font-size:.85rem;color:var(--light);background:none;border:none;cursor:pointer;
+  transition:color .3s,transform .3s;padding:.2rem}
+.bc-save:hover,.bc-share:hover{color:var(--taupe);transform:scale(1.15)}
+.reactions{display:flex;gap:.35rem;margin-top:1rem;padding-top:.9rem;border-top:1px solid var(--border)}
+.react-btn{font-size:.8rem;padding:.25rem .55rem;border-radius:100px;border:1px solid var(--border);
+  background:transparent;cursor:pointer;transition:all .25s;display:flex;align-items:center;gap:.3rem;
+  font-size:.7rem;color:var(--mid)}
+.react-btn:hover{border-color:var(--taupe);background:rgba(196,168,130,.1)}
+.react-btn.reacted{border-color:var(--taupe);background:rgba(196,168,130,.15);color:var(--mocha)}
+.load-more{text-align:center;margin-top:2.5rem}
+
+/* =========================================================
+   BREATHING WIDGET
+   ========================================================= */
+#breathing{background:var(--deep);padding:5rem 0;position:relative;overflow:hidden}
+[data-theme=dark] #breathing{background:#0e0b07}
+.breath-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.breath-text .eyebrow::before{background:var(--taupe)}
+.breath-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,3rem);
+  font-weight:300;color:#fff;line-height:1.1;margin-bottom:1rem}
+.breath-title em{color:var(--goldl)}
+.breath-desc{color:rgba(255,255,255,.5);line-height:1.85;font-size:.9rem;margin-bottom:2rem}
+.breath-controls{display:flex;gap:.75rem;flex-wrap:wrap}
+.breath-select{background:rgba(255,255,255,.07);border:1px solid rgba(196,168,130,.25);
+  border-radius:3px;padding:.6rem 1rem;color:#fff;font-size:.78rem;font-family:'Jost',sans-serif;cursor:pointer}
+.breath-select option{background:#2c2416;color:#fff}
+.breath-viz{display:flex;align-items:center;justify-content:center}
+.breath-circle-wrap{position:relative;width:240px;height:240px;display:flex;align-items:center;justify-content:center}
+.breath-ring{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(196,168,130,.2)}
+.breath-ring-2{position:absolute;inset:20px;border-radius:50%;border:1px solid rgba(196,168,130,.15)}
+.breath-core{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,.4) 0%,rgba(196,168,130,.15) 60%,transparent 100%);
+  border:2px solid var(--taupe);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:box-shadow .3s;position:relative;z-index:1}
+.breath-core:hover{box-shadow:0 0 30px rgba(196,168,130,.3)}
+.breath-core.inhale{animation:inhale var(--bd,4s) ease-in-out forwards}
+.breath-core.hold{animation:hold var(--bh,7s) ease forwards}
+.breath-core.exhale{animation:exhale var(--be,8s) ease-in-out forwards}
+@keyframes inhale{from{transform:scale(1)}to{transform:scale(1.6)}}
+@keyframes hold{from{transform:scale(1.6)}to{transform:scale(1.6)}}
+@keyframes exhale{from{transform:scale(1.6)}to{transform:scale(1)}}
+.breath-label{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:rgba(255,255,255,.8);font-style:italic;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--taupe)}
+.breath-instruction{position:absolute;bottom:-2.5rem;left:50%;transform:translateX(-50%);
+  font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4);
+  white-space:nowrap}
+.breath-counter{position:absolute;font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:rgba(255,255,255,.8)}
+
+/* =========================================================
+   GRATITUDE JOURNAL
+   ========================================================= */
+#gratitude{background:var(--cream);padding:5rem 0}
+[data-theme=dark] #gratitude{background:var(--surface)}
+.grat-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.grat-form{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:2rem}
+[data-theme=dark] .grat-form{background:rgba(255,255,255,.03)}
+.grat-date{font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--taupe);margin-bottom:1.5rem}
+.grat-input-row{display:flex;align-items:center;gap:.85rem;margin-bottom:1rem}
+.grat-num{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:rgba(196,168,130,.4);width:1.5rem;flex-shrink:0}
+.grat-input{flex:1;border-bottom:1px solid var(--border);padding:.55rem 0;font-size:.95rem;
+  color:var(--deep);background:transparent;transition:border-color .3s;font-family:'Jost',sans-serif}
+[data-theme=dark] .grat-input{color:var(--char)}
+.grat-input:focus{border-color:var(--taupe)}
+.grat-input::placeholder{color:var(--light);font-size:.88rem}
+.grat-save{margin-top:1.5rem}
+.grat-success{display:none;font-family:'Cormorant Garamond',serif;font-size:1.1rem;
+  font-style:italic;color:var(--mocha);margin-top:1rem}
+.grat-history{display:flex;flex-direction:column;gap:1rem}
+.grat-entry{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:1.4rem}
+[data-theme=dark] .grat-entry{background:rgba(255,255,255,.03)}
+.grat-entry-date{font-size:.65rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--taupe);margin-bottom:.75rem}
+.grat-entry-items{display:flex;flex-direction:column;gap:.4rem}
+.grat-entry-item{font-size:.88rem;color:var(--mid);display:flex;gap:.6rem;align-items:flex-start}
+.grat-entry-item::before{content:'✦';color:var(--taupe);font-size:.6rem;margin-top:.2rem;flex-shrink:0}
+.grat-empty{font-size:.88rem;color:var(--light);font-style:italic;padding:1rem 0}
+
+/* =========================================================
+   MOOD TRACKER
+   ========================================================= */
+#mood-tracker{background:var(--bg);padding:5rem 0}
+.tracker-inner{max-width:780px;margin:0 auto}
+.mood-chart{display:flex;gap:.5rem;align-items:flex-end;height:120px;margin:2rem 0;flex-wrap:wrap}
+.mood-bar-wrap{display:flex;flex-direction:column;align-items:center;gap:.4rem;flex:1;min-width:32px}
+.mood-bar{width:100%;border-radius:2px 2px 0 0;background:linear-gradient(to top,var(--taupe),var(--gold));
+  transition:height .6s ease;min-height:4px}
+.mood-bar-label{font-size:.55rem;color:var(--light);text-align:center}
+.mood-bar-emoji{font-size:.75rem}
+.mood-summary{display:flex;gap:2rem;flex-wrap:wrap;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.mood-stat{display:flex;flex-direction:column;gap:.25rem}
+.mood-stat-val{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--char);line-height:1}
+.mood-stat-lbl{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--light)}
+
+/* =========================================================
+   TESTIMONIALS
+   ========================================================= */
+#testimonials{background:var(--surface)}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.4rem}
+.testi-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:1.9rem;transition:all .3s}
+.testi-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.testi-q{font-family:'Cormorant Garamond',serif;font-size:3rem;line-height:.8;color:var(--taupe);margin-bottom:.8rem}
+.testi-stars{display:flex;gap:2px;margin-bottom:.75rem}
+.star{color:var(--gold);font-size:.72rem}
+.testi-text{font-family:'Cormorant Garamond',serif;font-size:1.08rem;line-height:1.6;color:var(--char);font-style:italic;margin-bottom:1.4rem}
+.testi-author{display:flex;align-items:center;gap:.85rem}
+.testi-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--taupe),var(--mocha));
+  display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#fff;flex-shrink:0}
+.testi-name{font-size:.83rem;font-weight:500;color:var(--deep)}
+.testi-loc{font-size:.7rem;color:var(--light)}
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+#faq{background:var(--bg)}
+.faq-wrap{max-width:780px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--border);overflow:hidden}
+.faq-btn{display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:1.4rem 0;cursor:pointer;width:100%;text-align:left;background:none;font-family:'Jost',sans-serif}
+.faq-q-inner{display:flex;align-items:flex-start;gap:.9rem}
+.faq-n{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--taupe);flex-shrink:0;margin-top:2px}
+.faq-title{font-size:.95rem;font-weight:500;color:var(--deep);line-height:1.4;transition:color .3s}
+.faq-btn:hover .faq-title{color:var(--mocha)}
+.faq-ico{width:26px;height:26px;border-radius:50%;border:1px solid var(--sand);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .35s;
+  color:var(--taupe);font-size:1rem;line-height:1}
+.faq-item.open .faq-ico{background:var(--deep);border-color:var(--deep);color:#fff;transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease;padding-left:2.3rem}
+.faq-ans-inner{padding-bottom:1.4rem;font-size:.9rem;color:var(--mid);line-height:1.85}
+
+/* =========================================================
+   RESOURCES
+   ========================================================= */
+#resources{background:var(--surface)}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.4rem}
+.res-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);
+  padding:1.7rem;transition:all .3s;display:flex;flex-direction:column;gap:.9rem}
+.res-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.res-icon{width:46px;height:46px;border-radius:var(--r);background:rgba(196,168,130,.13);
+  display:flex;align-items:center;justify-content:center;font-size:1.35rem}
+.res-type{font-size:.6rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--taupe)}
+.res-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--char)}
+.res-desc{font-size:.8rem;color:var(--light);line-height:1.7;flex:1}
+.res-link{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--mocha);display:inline-flex;align-items:center;gap:.4rem;transition:gap .3s}
+.res-link:hover{gap:.7rem}
+
+/* =========================================================
+   NEWSLETTER
+   ========================================================= */
+#newsletter{background:var(--deep);padding:5rem 0}
+[data-theme=dark] #newsletter{background:#0e0b07}
+.nl-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.nl-eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.68rem;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--taupe);margin-bottom:1rem}
+.nl-eyebrow::before{content:'';width:26px;height:1px;background:var(--taupe)}
+.nl-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);
+  font-weight:300;color:#fff;line-height:1.1;margin-bottom:.9rem}
+.nl-title em{font-style:italic;color:var(--goldl)}
+.nl-desc{color:rgba(255,255,255,.45);font-size:.88rem;line-height:1.8}
+.nl-form{display:flex;gap:.7rem;flex-wrap:wrap}
+.nl-input{flex:1;min-width:180px;background:rgba(255,255,255,.07);border:1px solid rgba(196,168,130,.22);
+  border-radius:3px;padding:.9rem 1.1rem;color:#fff;font-size:.88rem;outline:none;transition:border-color .3s}
+.nl-input::placeholder{color:rgba(255,255,255,.28)}
+.nl-input:focus{border-color:var(--taupe)}
+.nl-sub{background:var(--taupe);color:#fff;padding:.9rem 1.8rem;border-radius:3px;font-size:.72rem;
+  font-weight:600;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:all .3s;
+  white-space:nowrap;border:none;font-family:'Jost',sans-serif}
+.nl-sub:hover{background:var(--mocha)}
+#nl-ok{color:var(--goldl);font-size:.88rem;margin-top:.65rem;display:none;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:1rem}
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+#contact{background:var(--char);color:#fff}
+[data-theme=dark] #contact{background:#0a0806}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.c-eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.68rem;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--taupe);margin-bottom:1.2rem}
+.c-eyebrow::before{content:'';width:25px;height:1px;background:var(--taupe)}
+.c-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3.3rem);font-weight:300;color:#fff;line-height:1.1;margin-bottom:1.4rem}
+.c-title em{font-style:italic;color:var(--goldl)}
+.c-desc{color:rgba(255,255,255,.5);line-height:1.85;margin-bottom:2.5rem;font-size:.9rem}
+.c-items{display:flex;flex-direction:column;gap:.9rem;margin-bottom:2rem}
+.c-item{display:flex;align-items:center;gap:.9rem;color:rgba(255,255,255,.65);font-size:.88rem}
+.c-ico{width:38px;height:38px;border:1px solid rgba(196,168,130,.22);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+.c-social{display:flex;gap:.65rem;margin-bottom:2rem}
+.c-social a{width:38px;height:38px;border:1px solid rgba(196,168,130,.22);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;color:var(--taupe);font-size:.9rem;transition:all .3s}
+.c-social a:hover{background:var(--taupe);color:#fff;border-color:var(--taupe)}
+.c-cta{display:inline-flex;align-items:center;gap:.6rem;background:var(--taupe);color:#fff;
+  padding:.85rem 1.9rem;border-radius:2px;font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;transition:all .3s}
+.c-cta:hover{background:var(--mocha);transform:translateY(-2px)}
+.c-form{background:rgba(255,255,255,.04);border:1px solid rgba(196,168,130,.13);border-radius:8px;padding:2.3rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg{margin-bottom:1.2rem}
+.fl{display:block;font-size:.65rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:.5rem}
+.fi,.fta{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(196,168,130,.18);
+  border-radius:3px;padding:.82rem .95rem;color:#fff;font-size:.88rem;outline:none;transition:border-color .3s;resize:none}
+.fi::placeholder,.fta::placeholder{color:rgba(255,255,255,.2)}
+.fi:focus,.fta:focus{border-color:var(--taupe)}
+.fta{height:115px}
+.f-submit{width:100%;background:var(--taupe);color:#fff;padding:.95rem;font-size:.72rem;
+  font-weight:600;letter-spacing:.15em;text-transform:uppercase;border-radius:3px;
+  cursor:pointer;transition:all .3s;border:none;font-family:'Jost',sans-serif}
+.f-submit:hover{background:var(--mocha)}
+#cf-ok{margin-top:.7rem;font-size:.82rem;color:var(--goldl);display:none;text-align:center;font-style:italic}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+footer{background:#130f0b;padding:4rem 0 2rem}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.foot-logo{font-family:'Cormorant Garamond',serif;font-size:1.65rem;color:rgba(255,255,255,.75);margin-bottom:.4rem}
+.foot-logo span{color:var(--taupe)}
+.foot-ar{font-family:'Noto Naskh Arabic',serif;font-size:.95rem;color:var(--taupe);margin-bottom:.7rem}
+.foot-desc{font-size:.78rem;color:rgba(255,255,255,.28);line-height:1.8}
+.foot-col h4{font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1.1rem}
+.foot-col a,.foot-col p{display:block;font-size:.78rem;color:rgba(255,255,255,.38);margin-bottom:.6rem;transition:color .3s}
+.foot-col a:hover{color:var(--taupe)}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.foot-copy{font-size:.7rem;color:rgba(255,255,255,.22)}
+.foot-social{display:flex;gap:.65rem}
+.foot-social a{width:32px;height:32px;border:1px solid rgba(255,255,255,.08);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);font-size:.8rem;transition:all .3s}
+.foot-social a:hover{border-color:var(--taupe);color:var(--taupe)}
+
+/* =========================================================
+   BACK TO TOP
+   ========================================================= */
+.btt{position:fixed;bottom:6.5rem;right:2rem;width:40px;height:40px;background:var(--deep);
+  color:#fff;border-radius:3px;display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;z-index:500;opacity:0;pointer-events:none;transform:translateY(10px);
+  transition:all .3s;border:none;cursor:pointer}
+.btt.show{opacity:1;pointer-events:all;transform:translateY(0)}
+.btt:hover{background:var(--mocha)}
+
+
+/* =========================================================
+   INSTALL PWA BANNER
+   ========================================================= */
+#pwa-banner{position:fixed;bottom:0;left:0;right:0;background:var(--deep);color:#fff;
+  padding:1rem 2rem;display:none;align-items:center;justify-content:space-between;
+  gap:1rem;z-index:2000;border-top:1px solid rgba(196,168,130,.2);flex-wrap:wrap}
+#pwa-banner p{font-size:.85rem;color:rgba(255,255,255,.8)}
+#pwa-banner p strong{color:var(--goldl)}
+.pwa-actions{display:flex;gap:.75rem;align-items:center;flex-shrink:0}
+.pwa-install{background:var(--taupe);color:#fff;padding:.55rem 1.3rem;border-radius:3px;
+  font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border:none;cursor:pointer;font-family:'Jost',sans-serif;transition:all .3s}
+.pwa-install:hover{background:var(--mocha)}
+.pwa-dismiss{font-size:.7rem;color:rgba(255,255,255,.35);cursor:pointer;transition:color .3s;background:none;border:none}
+.pwa-dismiss:hover{color:rgba(255,255,255,.7)}
+
+/* =========================================================
+   BLOG MODAL
+   ========================================================= */
+.modal-ov{display:none;position:fixed;inset:0;z-index:3000;background:rgba(15,10,6,.88);
+  backdrop-filter:blur(10px);align-items:flex-start;justify-content:center;padding:2rem;overflow-y:auto}
+.modal-ov.open{display:flex}
+.blog-modal{background:var(--bg);border-radius:8px;max-width:780px;width:100%;margin:auto;position:relative}
+.modal-close{position:absolute;top:.9rem;right:.9rem;width:34px;height:34px;border-radius:50%;
+  background:rgba(250,248,245,.92);backdrop-filter:blur(8px);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.95rem;
+  color:var(--mid);transition:all .3s;z-index:5}
+[data-theme=dark] .modal-close{background:rgba(31,24,18,.92)}
+.modal-close:hover{background:var(--deep);color:#fff;border-color:var(--deep)}
+.modal-prog-wrap{height:3px;background:var(--sand);border-radius:3px;overflow:hidden;margin-bottom:2rem}
+.modal-prog-fill{height:100%;background:linear-gradient(to right,var(--taupe),var(--gold));border-radius:3px;transition:width .1s}
+.modal-img-wrap{aspect-ratio:16/7;overflow:hidden;background:var(--sand);border-radius:8px 8px 0 0}
+.modal-img-wrap img{width:100%;height:100%;object-fit:cover}
+.modal-body{padding:2.3rem}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.3rem);font-weight:400;color:var(--char);line-height:1.2;margin-bottom:1.4rem}
+.modal-content{font-size:.94rem;color:var(--mid);line-height:1.9}
+.modal-content p{margin-bottom:1rem}
+.modal-content strong{color:var(--deep);font-weight:600}
+[data-theme=dark] .modal-content strong{color:var(--char)}
+.modal-share{display:flex;align-items:center;gap:.75rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);flex-wrap:wrap}
+.share-label{font-size:.65rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--light)}
+.share-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem 1rem;border-radius:100px;
+  border:1px solid var(--border);font-size:.7rem;font-weight:500;color:var(--mid);cursor:pointer;
+  transition:all .3s;background:none}
+.share-btn:hover{border-color:var(--taupe);color:var(--mocha);background:rgba(196,168,130,.08)}
+/* Comments */
+.comments-section{margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--border)}
+.comments-section h4{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--char);margin-bottom:1.5rem}
+.comment-form{background:var(--surface);border-radius:var(--r);padding:1.3rem;margin-bottom:1.5rem}
+[data-theme=dark] .comment-form{background:rgba(255,255,255,.03)}
+.comment-inputs{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.75rem}
+.c-inp{background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:.65rem .85rem;font-size:.85rem;color:var(--deep);transition:border-color .3s;font-family:'Jost',sans-serif;width:100%}
+[data-theme=dark] .c-inp{background:rgba(255,255,255,.05);color:var(--char)}
+.c-inp:focus{border-color:var(--taupe)}
+.c-ta{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:.65rem .85rem;font-size:.85rem;color:var(--deep);resize:none;height:85px;margin-bottom:.75rem;transition:border-color .3s;font-family:'Jost',sans-serif}
+[data-theme=dark] .c-ta{background:rgba(255,255,255,.05);color:var(--char)}
+.c-ta:focus{border-color:var(--taupe)}
+.comment-list{display:flex;flex-direction:column;gap:1.1rem}
+.comment-item{display:flex;gap:.9rem;align-items:flex-start}
+.comment-av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--taupe),var(--mocha));
+  display:flex;align-items:center;justify-content:center;font-size:.9rem;color:#fff;flex-shrink:0;font-family:'Cormorant Garamond',serif}
+.comment-body{flex:1}
+.comment-name{font-size:.82rem;font-weight:600;color:var(--deep);margin-bottom:.2rem}
+[data-theme=dark] .comment-name{color:var(--char)}
+.comment-date{font-size:.65rem;color:var(--light);display:inline;margin-left:.5rem;font-weight:400}
+.comment-text{font-size:.85rem;color:var(--mid);line-height:1.7}
+/* Related + modal reactions */
+.modal-related{margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--border)}
+.modal-related h4{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--char);margin-bottom:1.1rem}
+.related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem}
+.rel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:.95rem;cursor:pointer;transition:all .3s}
+.rel-card:hover{border-color:var(--taupe);transform:translateY(-2px)}
+.rel-card h5{font-family:'Cormorant Garamond',serif;font-size:.92rem;color:var(--char);font-weight:400;line-height:1.35;margin-bottom:.2rem}
+.rel-card p{font-size:.7rem;color:var(--light)}
+
+/* =========================================================
+   OFFLINE BANNER
+   ========================================================= */
+#offline-banner{position:fixed;top:var(--hh);left:0;right:0;background:#8b6f47;color:#fff;
+  padding:.75rem 2rem;text-align:center;font-size:.82rem;z-index:1500;display:none;
+  letter-spacing:.05em}
+
+/* =========================================================
+   ADMIN PANEL
+   ========================================================= */
+.admin-ov{display:none;position:fixed;inset:0;background:rgba(15,10,6,.72);z-index:2000;backdrop-filter:blur(6px)}
+.admin-ov.open{display:block}
+.admin-panel{position:fixed;top:0;right:0;width:100%;max-width:580px;height:100%;
+  background:var(--bg);z-index:2001;overflow-y:auto;transform:translateX(100%);
+  transition:transform .4s cubic-bezier(.4,0,.2,1)}
+.admin-panel.open{transform:translateX(0)}
+.adm-hdr{background:var(--char);padding:1.5rem 1.8rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+[data-theme=dark] .adm-hdr{background:#0a0806}
+.adm-hdr h2{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;color:#fff}
+.adm-hdr-close{color:rgba(255,255,255,.38);font-size:1.1rem;cursor:pointer;transition:color .3s;background:none;border:none;line-height:1}
+.adm-hdr-close:hover{color:#fff}
+.adm-tabs{display:flex;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:62px;z-index:9;overflow-x:auto}
+.at{flex-shrink:0;padding:.85rem .95rem;font-size:.64rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--light);border-bottom:2px solid transparent;cursor:pointer;background:none;border:none;
+  font-family:'Jost',sans-serif;border-bottom:2px solid transparent;transition:all .3s;white-space:nowrap}
+.at.active{color:var(--mocha);border-bottom-color:var(--mocha)}
+.adm-body{padding:1.7rem}
+.as{display:none}
+.as.active{display:block}
+/* login */
+.adm-login{max-width:320px;margin:2.5rem auto;text-align:center}
+.adm-login h3{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;color:var(--char);margin-bottom:.4rem}
+.adm-login p{font-size:.8rem;color:var(--light);margin-bottom:1.8rem}
+.a-err{color:#c0392b;font-size:.75rem;margin-bottom:.7rem;display:none;padding:.45rem .75rem;background:rgba(192,57,43,.07);border-radius:3px}
+.a-ok{background:rgba(168,184,154,.18);border:1px solid var(--sage);color:#4a6040;padding:.6rem .85rem;border-radius:3px;font-size:.78rem;margin-bottom:.9rem;display:none}
+.ai{width:100%;border:1px solid var(--sand);border-radius:3px;padding:.78rem .95rem;font-size:.88rem;
+  color:var(--deep);background:var(--bg);outline:none;transition:border-color .3s;margin-bottom:.85rem;font-family:'Jost',sans-serif}
+[data-theme=dark] .ai{background:var(--surface);color:var(--char);border-color:var(--border)}
+.ai:focus{border-color:var(--taupe)}
+.ata{width:100%;border:1px solid var(--sand);border-radius:3px;padding:.78rem .95rem;font-size:.88rem;
+  color:var(--deep);background:var(--bg);outline:none;resize:vertical;min-height:85px;
+  transition:border-color .3s;font-family:'Jost',sans-serif}
+[data-theme=dark] .ata{background:var(--surface);color:var(--char);border-color:var(--border)}
+.ata:focus{border-color:var(--taupe)}
+.asel{width:100%;border:1px solid var(--sand);border-radius:3px;padding:.78rem .95rem;font-size:.88rem;
+  color:var(--deep);background:var(--bg);outline:none;appearance:none;cursor:pointer;font-family:'Jost',sans-serif}
+[data-theme=dark] .asel{background:var(--surface);color:var(--char);border-color:var(--border)}
+.al{display:block;font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-bottom:.45rem}
+.afg{margin-bottom:1.05rem}
+.abtn{background:var(--deep);color:#fff;padding:.72rem 1.5rem;border-radius:3px;font-size:.68rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .3s;border:none;font-family:'Jost',sans-serif;display:inline-flex;align-items:center;gap:.45rem}
+.abtn:hover{background:var(--mocha)}
+.abtn-sm{padding:.5rem 1rem;font-size:.64rem}
+.abtn-danger{background:transparent;color:#c0392b;border:1px solid #c0392b}
+.abtn-danger:hover{background:#c0392b;color:#fff}
+.abtn-sec{background:var(--surface);color:var(--mocha);border:1px solid var(--sand)}
+.abtn-sec:hover{background:var(--sand)}
+.abtn-row{display:flex;gap:.55rem;flex-wrap:wrap}
+.adiv{border:none;border-top:1px solid var(--border);margin:1.7rem 0}
+.alist{display:flex;flex-direction:column;gap:.6rem;margin-top:1.1rem}
+.ali{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:.85rem 1rem;display:flex;align-items:flex-start;gap:.85rem}
+.ali-body{flex:1;min-width:0}
+.ali-body h4{font-size:.82rem;font-weight:500;color:var(--deep);margin-bottom:.18rem;font-family:'Jost',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+[data-theme=dark] .ali-body h4{color:var(--char)}
+.ali-body p{font-size:.72rem;color:var(--light);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ali-acts{display:flex;gap:.35rem;flex-shrink:0}
+.aempty{font-size:.8rem;color:var(--light);font-style:italic;padding:.8rem 0}
+.ast{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;color:var(--char);margin-bottom:.2rem}
+.asub{font-size:.75rem;color:var(--light);margin-bottom:1.4rem}
+.stats-g{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-bottom:1.4rem}
+.sc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem;text-align:center}
+.sc .n{font-family:'Cormorant Garamond',serif;font-size:2.3rem;font-weight:300;color:var(--mocha);line-height:1}
+.sc .l{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--light);margin-top:.2rem}
+.dbadge{display:inline-block;background:rgba(201,169,110,.18);color:var(--gold);font-size:.58rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.18rem .45rem;border-radius:2px;margin-left:.45rem}
+.lbadge{display:inline-block;background:rgba(168,184,154,.18);color:#4a6040;font-size:.58rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.18rem .45rem;border-radius:2px;margin-left:.45rem}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media(max-width:900px){
+  .nav-links{display:none}.hbg{display:flex}
+  .hero-grid,.about-grid,.contact-grid,.nl-grid,.grat-grid,.breath-grid{grid-template-columns:1fr;gap:3rem}
+  .hero-img-wrap{order:-1}.hero-badge{top:1rem;left:1rem}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .form-row{grid-template-columns:1fr}
+  .comment-inputs{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .container{padding:0 1.2rem}.section{padding:5rem 0}
+  .hero-title{font-size:2.5rem}.blog-grid{grid-template-columns:1fr}
+  .tips-grid{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr}
+  .admin-panel{max-width:100%}.related-grid{grid-template-columns:1fr}
+  .hero-stats{gap:1.5rem}
+}
+[dir=rtl]{text-align:right}
+[dir=rtl] .eyebrow::before,[dir=rtl] .nl-eyebrow::before,[dir=rtl] .c-eyebrow::before{order:1}
+[dir=rtl] .hero-badge{left:auto;right:-2.5rem}
+@media(max-width:900px){[dir=rtl] .hero-badge{right:1rem}}
+</style>
+</head>
+<body>
+
+<!-- Toast container -->
+<div id="toast-container"></div>
+
+<!-- Reading progress -->
+<div id="rp"></div>
+
+<!-- Offline banner -->
+<div id="offline-banner">📡 You're offline — viewing cached content</div>
+
+<!-- PWA install banner -->
+<div id="pwa-banner">
+  <p>Add <strong>Qouwati</strong> to your home screen for the full experience</p>
+  <div class="pwa-actions">
+    <button class="pwa-install" id="pwa-install-btn">Install App</button>
+    <button class="pwa-dismiss" onclick="dismissPWA()">Not now</button>
+  </div>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header id="hdr">
+  <nav class="container">
+    <a href="#hero" class="logo">
+      <span class="logo-main">Qou<span>wati</span></span>
+      <span class="logo-sub"><span class="logo-ar">قُوَّتي</span> · by Aya Abdo</span>
+    </a>
+    <div class="nav-links">
+      <a href="#hero" data-i18n="nav.home">Home</a>
+      <a href="#about" data-i18n="nav.about">My DNA</a>
+      <a href="#tips" data-i18n="nav.tips">Tips</a>
+      <a href="#diary" data-i18n="nav.diary">My Diary</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="#resources" data-i18n="nav.res">Resources</a>
+      <a href="#contact" class="nav-cta" data-i18n="nav.connect">Connect</a>
+    </div>
+    <div class="nav-acts">
+      <div class="search-wrap">
+        <input class="search-input" id="search-inp" type="text" placeholder="Search posts…" oninput="liveSearch(this.value)" onkeydown="if(event.key==='Escape')closeSearch()"/>
+        <div id="search-results"></div>
+      </div>
+      <button class="ic-btn" onclick="toggleSearch()" title="Search">🔍</button>
+      <!-- Arabic toggle hidden until Arabic version launches -->
+      <!-- <button class="lang-btn" onclick="toggleLang()" id="lang-btn">AR</button> -->
+      <button class="ic-btn" onclick="toggleDark()" id="dark-btn" title="Toggle dark mode">🌙</button>
+      <div class="hbg" id="hbg" onclick="toggleMob()"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+</header>
+
+<div class="mob-nav" id="mob-nav">
+  <a href="#hero" onclick="closeMob()" data-i18n="nav.home">Home</a>
+  <a href="#about" onclick="closeMob()" data-i18n="nav.about">My DNA</a>
+  <a href="#tips" onclick="closeMob()" data-i18n="nav.tips">Tips</a>
+  <a href="#diary" onclick="closeMob()" data-i18n="nav.diary">My Diary</a>
+  <a href="#faq" onclick="closeMob()" data-i18n="nav.faq">FAQ</a>
+  <a href="#resources" onclick="closeMob()" data-i18n="nav.res">Resources</a>
+  <a href="#contact" onclick="closeMob()" data-i18n="nav.connect">Connect</a>
+</div>
+
+<!-- TICKER -->
+<div id="ticker"><div class="container"><div class="ticker-inner" id="ticker-inner"></div></div></div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
+  <div class="hero-body">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-eyebrow rv" data-i18n="hero.eyebrow">Mental Wellness · Self-Love · Inner Strength</div>
+          <h1 class="hero-title rv d1">
+            <span data-i18n="hero.t1">Your Mind,</span><br>
+            <span data-i18n="hero.t2">Your <em>Strength</em>,</span><br>
+            <span data-i18n="hero.t3">Your Qouwati.</span>
+          </h1>
+          <p class="hero-desc rv d2" data-i18n="hero.desc">Welcome to Qouwati — a space where strength and self-love come alive. Created with care by someone deeply passionate about mental health, here to remind you that your thoughts hold your power.</p>
+          <div class="hero-actions rv d3">
+            <a href="#diary" class="btn btn-dark" data-i18n="hero.cta1">Explore My Diary →</a>
+            <a href="#about" class="btn btn-outline" data-i18n="hero.cta2">My Story</a>
+          </div>
+          <div class="hero-stats rv d4">
+            <div class="stat-item"><span class="stat-num" id="stat-posts">0</span><span class="stat-lbl" data-i18n="hero.s1">Diary Entries</span></div>
+            <div class="stat-item"><span class="stat-num" id="stat-tips">0</span><span class="stat-lbl" data-i18n="hero.s2">Tips & Reminders</span></div>
+            <div class="stat-item"><span class="stat-num">❤</span><span class="stat-lbl" data-i18n="hero.s3">With Love</span></div>
+          </div>
+        </div>
+        <div class="hero-img-wrap rr d2">
+          <div class="hero-img-frame">
+            <img class="parallax-img" id="hero-img" src="assets/img/bg.GIF" alt="Qouwati" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#e8d5c0,#f0e8df)'"/>
+          </div>
+          <div class="hero-accent"></div>
+          <div class="hero-badge"><span class="badge-ar">قُوَّة</span><span class="badge-en">strength</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div><span>Scroll</span></div>
+</section>
+
+<!-- AFFIRMATION BANNER -->
+<div id="affirmation">
+  <div class="container">
+    <div class="aff-inner">
+      <span class="aff-label rv" data-i18n="aff.label">Today's Affirmation</span>
+      <div class="aff-text rv d1" id="aff-text"></div>
+      <button class="aff-btn rv d2" onclick="nextAffirmation()" title="Next affirmation">↻</button>
+    </div>
+  </div>
+</div>
+
+<!-- MOOD CHECK-IN -->
+<div id="mood">
+  <div class="container">
+    <div class="mood-inner">
+      <div class="mood-q rv" data-i18n="mood.q">How are you feeling today?</div>
+      <div class="mood-opts rv d1">
+        <button class="mood-btn" onclick="selectMood(this,'amazing')" title="Amazing">🌟</button>
+        <button class="mood-btn" onclick="selectMood(this,'good')" title="Good">😊</button>
+        <button class="mood-btn" onclick="selectMood(this,'okay')" title="Okay">🙂</button>
+        <button class="mood-btn" onclick="selectMood(this,'tired')" title="Tired">😔</button>
+        <button class="mood-btn" onclick="selectMood(this,'anxious')" title="Anxious">😰</button>
+        <button class="mood-btn" onclick="selectMood(this,'sad')" title="Sad">💙</button>
+      </div>
+      <div class="mood-resp rv d2" id="mood-resp"></div>
+      <button class="mood-track-btn rv d3" onclick="scrollTo({top:document.getElementById('mood-tracker').offsetTop-100,behavior:'smooth'})" data-i18n="mood.track">Track My Mood →</button>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div style="position:relative">
+        <div class="about-img-main rl"><img src="assets/img/about-me.jpg" alt="Aya Abdo" onerror="this.parentElement.style.background='linear-gradient(135deg,#e8d5c0,#c4a882)';this.style.display='none'"/></div>
+        <div class="about-badge rv d2"><div class="badge-num">∞</div><div class="badge-lbl">Moments of Growth</div></div>
+      </div>
+      <div>
+        <div class="eyebrow rv" data-i18n="about.ey">My DNA</div>
+        <h2 class="sec-title rv d1"><span data-i18n="about.t">Strength begins</span><br><em data-i18n="about.t2">within.</em></h2>
+        <div class="rv d2">
+          <p><strong style="color:var(--mocha)">Qouwati</strong> is a heartfelt initiative inspired by the belief that true strength — <span style="font-family:'Noto Naskh Arabic',serif;font-size:1.1em">قُوَّة</span> — starts within. Founded by a counselor with a passion for helping others embrace self-worth.</p>
+          <p style="margin-top:1rem" data-i18n="about.p2">Together, let's embrace self-confidence over perfection and nurture a mindset that grows stronger every single day.</p>
+        </div>
+        <div class="pills rv d3">
+          <span class="pill" data-i18n="p.sl">Self-Love</span>
+          <span class="pill" data-i18n="p.mw">Mental Wellness</span>
+          <span class="pill" data-i18n="p.is">Inner Strength</span>
+          <span class="pill" data-i18n="p.re">Resilience</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TIPS -->
+<section id="tips" class="section">
+  <div class="container">
+    <div class="centered" style="margin-bottom:3.5rem">
+      <div class="eyebrow rv" data-i18n="tips.ey">Words of Wisdom</div>
+      <h2 class="sec-title rv d1" data-i18n="tips.t">Gentle <em>Reminders</em></h2>
+    </div>
+    <div class="tips-grid" id="tips-grid"></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- DIARY -->
+<section id="diary" class="section">
+  <div class="container">
+    <div class="diary-top">
+      <div>
+        <div class="eyebrow rv" data-i18n="diary.ey">Stories & Reflections</div>
+        <h2 class="sec-title rv d1" style="margin-bottom:0" data-i18n="diary.t">My <em>Diary</em></h2>
+      </div>
+      <div class="filter-bar rv d2" id="filter-bar"></div>
+    </div>
+    <div class="blog-grid" id="blog-grid"></div>
+    <div class="load-more rv" id="load-more-wrap" style="display:none">
+      <button class="btn btn-outline" onclick="loadMore()" data-i18n="diary.more">Load More</button>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BREATHING -->
+<section id="breathing">
+  <div class="container">
+    <div class="breath-grid">
+      <div class="breath-text">
+        <div class="eyebrow rv" style="color:var(--taupe)" data-i18n="breath.ey">Pause & Breathe</div>
+        <h2 class="breath-title rv d1" data-i18n="breath.t">A moment of<br><em>calm.</em></h2>
+        <p class="breath-desc rv d2" data-i18n="breath.desc">Guided breathing reduces anxiety and activates your parasympathetic nervous system — your body's natural calm response. Choose a technique and tap the circle.</p>
+        <div class="breath-controls rv d3">
+          <select class="breath-select" id="breath-type" onchange="resetBreath()">
+            <option value="478">4-7-8 Technique</option>
+            <option value="box">Box Breathing</option>
+            <option value="simple">Simple 4-4</option>
+          </select>
+          <button class="btn btn-taupe btn-sm" onclick="startBreath()" id="breath-btn">Start</button>
+          <button class="btn btn-outline btn-sm" onclick="resetBreath()" style="color:rgba(255,255,255,.6);border-color:rgba(196,168,130,.3)">Reset</button>
+        </div>
+      </div>
+      <div class="breath-viz rv d2">
+        <div class="breath-circle-wrap">
+          <div class="breath-ring"></div>
+          <div class="breath-ring-2"></div>
+          <div class="breath-core" id="breath-core" onclick="startBreath()">
+            <span class="breath-counter" id="breath-counter">4</span>
+          </div>
+          <div class="breath-instruction" id="breath-instr">Tap to begin</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- GRATITUDE JOURNAL -->
+<section id="gratitude">
+  <div class="container">
+    <div class="centered" style="margin-bottom:3.5rem">
+      <div class="eyebrow rv" data-i18n="grat.ey">Daily Practice</div>
+      <h2 class="sec-title rv d1" data-i18n="grat.t">Gratitude <em>Journal</em></h2>
+      <p class="rv d2" style="max-width:480px;margin:0 auto;text-align:center" data-i18n="grat.sub">Write three things you're grateful for today. Stored privately on your device.</p>
+    </div>
+    <div class="grat-grid">
+      <div class="grat-form rv">
+        <div class="grat-date" id="grat-date"></div>
+        <div class="grat-input-row"><span class="grat-num">1</span><input class="grat-input" id="g1" type="text" placeholder="I'm grateful for…"/></div>
+        <div class="grat-input-row"><span class="grat-num">2</span><input class="grat-input" id="g2" type="text" placeholder="I'm grateful for…"/></div>
+        <div class="grat-input-row"><span class="grat-num">3</span><input class="grat-input" id="g3" type="text" placeholder="I'm grateful for…"/></div>
+        <button class="btn btn-dark grat-save" onclick="saveGratitude()" data-i18n="grat.save">Save Today's Entry ✦</button>
+        <div class="grat-success" id="grat-ok" data-i18n="grat.ok">Beautiful. Your gratitude is saved. 🌿</div>
+      </div>
+      <div class="rv d2">
+        <p style="font-size:.68rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--taupe);margin-bottom:1.2rem" data-i18n="grat.history">Past Entries</p>
+        <div class="grat-history" id="grat-history"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- MOOD TRACKER -->
+<section id="mood-tracker" class="section">
+  <div class="container">
+    <div class="centered" style="margin-bottom:3rem">
+      <div class="eyebrow rv" data-i18n="mt.ey">Your Journey</div>
+      <h2 class="sec-title rv d1" data-i18n="mt.t">Mood <em>Over Time</em></h2>
+    </div>
+    <div class="tracker-inner">
+      <div class="mood-chart" id="mood-chart"></div>
+      <div class="mood-summary" id="mood-summary"></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="section">
+  <div class="container">
+    <div class="centered" style="margin-bottom:3.5rem">
+      <div class="eyebrow rv" data-i18n="testi.ey">Voices</div>
+      <h2 class="sec-title rv d1" data-i18n="testi.t">What People <em>Say</em></h2>
+    </div>
+    <div class="testi-grid" id="testi-grid"></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section id="faq" class="section">
+  <div class="container">
+    <div class="centered" style="margin-bottom:3.5rem">
+      <div class="eyebrow rv" data-i18n="faq.ey">Got Questions?</div>
+      <h2 class="sec-title rv d1" data-i18n="faq.t">Frequent <em>Questions</em></h2>
+    </div>
+    <div class="faq-wrap" id="faq-grid"></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- RESOURCES -->
+<section id="resources" class="section">
+  <div class="container">
+    <div class="centered" style="margin-bottom:3.5rem">
+      <div class="eyebrow rv" data-i18n="res.ey">Curated for You</div>
+      <h2 class="sec-title rv d1" data-i18n="res.t">Helpful <em>Resources</em></h2>
+    </div>
+    <div class="res-grid" id="res-grid"></div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div id="newsletter">
+  <div class="container">
+    <div class="nl-grid">
+      <div class="rv">
+        <div class="nl-eyebrow" data-i18n="nl.ey">Stay Connected</div>
+        <h2 class="nl-title" data-i18n="nl.t">Weekly <em>reminders</em><br>delivered with love.</h2>
+        <p class="nl-desc" data-i18n="nl.desc">A curated dose of mental wellness tips, new diary entries, and gentle affirmations — every week.</p>
+      </div>
+      <div class="rv d2">
+        <div class="nl-form">
+          <input class="nl-input" type="email" placeholder="your@email.com" id="nl-email"/>
+          <button class="nl-sub" onclick="subscribe()" data-i18n="nl.btn">Subscribe →</button>
+        </div>
+        <p id="nl-ok" data-i18n="nl.ok">Thank you! You'll hear from us soon. 🌿</p>
+        <p style="margin-top:.65rem;font-size:.68rem;color:rgba(255,255,255,.28)" data-i18n="nl.priv">No spam. Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="rv">
+        <div class="c-eyebrow" data-i18n="c.ey">Let's Talk</div>
+        <h2 class="c-title" data-i18n="c.t">Reach out,<br><em>I'm here.</em></h2>
+        <p class="c-desc" data-i18n="c.desc">Whether you're looking for inspiration, want to collaborate, or simply need a listening ear — Qouwati is here for you.</p>
+        <div class="c-items">
+          <div class="c-item"><div class="c-ico">📍</div><span>Beirut, Lebanon</span></div>
+          <div class="c-item"><div class="c-ico">📞</div><span>+961 70 861 490</span></div>
+          <div class="c-item"><div class="c-ico">✉️</div><span>qouwati@outlook.com</span></div>
+        </div>
+        <div class="c-social">
+          <a href="https://www.instagram.com/qouwati" target="_blank" title="Instagram">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+        </div>
+        <a href="mailto:qouwati@outlook.com" class="c-cta" data-i18n="c.cta">Send a message →</a>
+      </div>
+      <div class="c-form rv d2">
+        <div class="form-row">
+          <div class="fg"><label class="fl" data-i18n="f.name">Name</label><input class="fi" type="text" placeholder="Your name" id="cf-name"/></div>
+          <div class="fg"><label class="fl" data-i18n="f.email">Email</label><input class="fi" type="email" placeholder="your@email.com" id="cf-email"/></div>
+        </div>
+        <div class="fg"><label class="fl" data-i18n="f.sub">Subject</label><input class="fi" type="text" placeholder="What's on your mind?" id="cf-sub"/></div>
+        <div class="fg"><label class="fl" data-i18n="f.msg">Message</label><textarea class="fta" placeholder="Share your thoughts…" id="cf-msg"></textarea></div>
+        <button class="f-submit" onclick="sendContact()" data-i18n="f.send">Send Message →</button>
+        <p id="cf-ok"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">Qou<span>wati</span></div>
+        <div class="foot-ar">قُوَّتي</div>
+        <p class="foot-desc">A safe space for mental wellness, self-love, and inner growth. Created with care by Aya Abdo, Beirut.</p>
+      </div>
+      <div class="foot-col"><h4>Navigate</h4><a href="#hero">Home</a><a href="#about">My DNA</a><a href="#tips">Tips</a><a href="#diary">My Diary</a></div>
+      <div class="foot-col"><h4>Explore</h4><a href="#breathing">Breathing</a><a href="#gratitude">Journal</a><a href="#faq">FAQ</a><a href="#resources">Resources</a></div>
+      <div class="foot-col"><h4>Connect</h4><a href="https://www.instagram.com/qouwati" target="_blank">Instagram</a><a href="mailto:qouwati@outlook.com">Email</a><p>+961 70 861 490</p><p>Beirut, Lebanon</p></div>
+    </div>
+    <div class="foot-bottom">
+      <span class="foot-copy">© 2025 Qouwati · by Aya Abdo · All rights reserved</span>
+      <div class="foot-social">
+        <a href="https://www.instagram.com/qouwati" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+
+<!-- Blog Modal -->
+<div class="modal-ov" id="blog-modal" onclick="handleModalBg(event)">
+  <div class="blog-modal" id="bm-inner">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-img-wrap" id="m-img-wrap"><img id="m-img" src="" alt=""/></div>
+    <div class="modal-body">
+      <div class="modal-back" onclick="closeModal()">← Back to diary</div>
+      <div class="blog-meta" id="m-meta"></div>
+      <div class="modal-prog-wrap"><div class="modal-prog-fill" id="m-prog"></div></div>
+      <div class="modal-title" id="m-title"></div>
+      <div class="modal-content" id="m-content"></div>
+      <div class="modal-share" id="m-share"></div>
+      <div id="m-reactions" style="margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--border)"></div>
+      <div class="modal-related" id="m-related" style="display:none">
+        <h4>Related Entries</h4>
+        <div class="related-grid" id="m-related-grid"></div>
+      </div>
+      <div class="comments-section" id="m-comments">
+        <h4>Thoughts & Reflections</h4>
+        <div class="comment-form">
+          <div class="comment-inputs">
+            <input class="c-inp" type="text" placeholder="Your name" id="cm-name"/>
+            <input class="c-inp" type="email" placeholder="Email (optional)" id="cm-email"/>
+          </div>
+          <textarea class="c-ta" placeholder="Share your thoughts on this…" id="cm-text"></textarea>
+          <button class="btn btn-dark btn-sm" onclick="postComment()">Post Comment</button>
+        </div>
+        <div class="comment-list" id="cm-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Admin -->
+<div class="admin-ov" id="adm-ov" onclick="closeAdmin()"></div>
+<div class="admin-panel" id="adm-panel">
+  <div class="adm-hdr"><h2>Admin Panel</h2><button class="adm-hdr-close" onclick="closeAdmin()">✕</button></div>
+  <div id="adm-login">
+    <div class="adm-body">
+      <div class="adm-login">
+        <h3>Welcome back</h3><p>Sign in to manage your content</p>
+        <div class="a-err" id="adm-err">Incorrect password.</div>
+        <input class="ai" type="password" placeholder="Password" id="adm-pw" onkeydown="if(event.key==='Enter')doLogin()"/>
+        <button class="abtn" style="width:100%;justify-content:center" onclick="doLogin()">Sign In →</button>
+        <p style="font-size:.65rem;color:var(--light);margin-top:.9rem">Default: <strong>qouwati2025</strong></p>
+      </div>
+    </div>
+  </div>
+  <div id="adm-content" style="display:none">
+    <div class="adm-tabs">
+      <button class="at active" onclick="aTab('overview',this)">Overview</button>
+      <button class="at" onclick="aTab('blogs',this)">Blogs</button>
+      <button class="at" onclick="aTab('tips',this)">Tips</button>
+      <button class="at" onclick="aTab('faqs',this)">FAQs</button>
+      <button class="at" onclick="aTab('reviews',this)">Reviews</button>
+      <button class="at" onclick="aTab('comments',this)">Comments</button>
+      <button class="at" onclick="aTab('analytics',this)">Analytics</button>
+      <button class="at" onclick="aTab('settings',this)">Settings</button>
+    </div>
+    <div class="adm-body">
+      <!-- Overview -->
+      <div id="as-overview" class="as active">
+        <div class="ast">Dashboard</div><div class="asub">Your content at a glance</div>
+        <div class="stats-g" id="adm-stats"></div>
+        <hr class="adiv"/>
+        <p style="font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--light);margin-bottom:.7rem">Recent Posts</p>
+        <div class="alist" id="ov-recent"></div>
+      </div>
+      <!-- Blogs -->
+      <div id="as-blogs" class="as">
+        <div class="ast">Blog Posts</div><div class="asub">Create and manage diary entries</div>
+        <div class="a-ok" id="b-ok">✓ Post saved!</div>
+        <div class="afg"><label class="al">Title *</label><input class="ai" id="b-title" type="text" placeholder="Post title…"/></div>
+        <div class="afg"><label class="al">Excerpt *</label><textarea class="ata" id="b-exc" placeholder="Short preview shown on cards…" style="min-height:65px"></textarea></div>
+        <div class="afg"><label class="al">Full Content * (use **bold**)</label><textarea class="ata" id="b-body" placeholder="Full article content…" style="min-height:160px"></textarea></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.9rem">
+          <div class="afg"><label class="al">Category</label><select class="asel" id="b-tag"><option>Mental Health</option><option>Self-Love</option><option>Mindfulness</option><option>Wellness</option><option>Growth</option><option>Reflection</option></select></div>
+          <div class="afg"><label class="al">Status</label><select class="asel" id="b-status"><option value="published">Published</option><option value="draft">Draft</option></select></div>
+        </div>
+        <div class="afg"><label class="al">Image URL (optional)</label><input class="ai" id="b-img" type="url" placeholder="https://…"/></div>
+        <div class="afg"><label class="al">Cover Emoji</label><input class="ai" id="b-emoji" type="text" placeholder="🌿" maxlength="4" value="🌿"/></div>
+        <div class="abtn-row"><button class="abtn abtn-sm" onclick="savePost()">Publish</button><button class="abtn abtn-sm abtn-sec" onclick="clearPost()">Clear</button></div>
+        <hr class="adiv"/>
+        <p style="font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--light);margin-bottom:.7rem">All Posts</p>
+        <div class="alist" id="adm-blogs"></div>
+      </div>
+      <!-- Tips -->
+      <div id="as-tips" class="as">
+        <div class="ast">Tips & Reminders</div><div class="asub">Wisdom cards shown on the site</div>
+        <div class="a-ok" id="t-ok">✓ Tip saved!</div>
+        <div class="afg"><label class="al">Tip Headline *</label><input class="ai" id="t-title" type="text" placeholder="e.g. You deserve rest…"/></div>
+        <div class="afg"><label class="al">Description (optional)</label><textarea class="ata" id="t-desc" placeholder="Expand on this thought…" style="min-height:75px"></textarea></div>
+        <button class="abtn abtn-sm" onclick="saveTip()">Add Tip</button>
+        <hr class="adiv"/><div class="alist" id="adm-tips"></div>
+      </div>
+      <!-- FAQs -->
+      <div id="as-faqs" class="as">
+        <div class="ast">FAQs</div><div class="asub">Manage your FAQ accordion</div>
+        <div class="a-ok" id="f-ok">✓ FAQ saved!</div>
+        <div class="afg"><label class="al">Question *</label><input class="ai" id="f-q" type="text" placeholder="e.g. How can I manage anxiety?"/></div>
+        <div class="afg"><label class="al">Answer *</label><textarea class="ata" id="f-a" placeholder="Your answer…" style="min-height:100px"></textarea></div>
+        <button class="abtn abtn-sm" onclick="saveFAQ()">Add FAQ</button>
+        <hr class="adiv"/><div class="alist" id="adm-faqs"></div>
+      </div>
+      <!-- Reviews -->
+      <div id="as-reviews" class="as">
+        <div class="ast">Testimonials</div><div class="asub">Voices from your community</div>
+        <div class="a-ok" id="r-ok">✓ Review saved!</div>
+        <div class="afg"><label class="al">Quote *</label><textarea class="ata" id="r-q" placeholder="What they said…" style="min-height:80px"></textarea></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.9rem">
+          <div class="afg"><label class="al">Name *</label><input class="ai" id="r-name" type="text" placeholder="e.g. Sarah K."/></div>
+          <div class="afg"><label class="al">Location</label><input class="ai" id="r-loc" type="text" placeholder="e.g. Beirut"/></div>
+        </div>
+        <div class="afg"><label class="al">Stars</label><select class="asel" id="r-stars"><option value="5">★★★★★</option><option value="4">★★★★</option><option value="3">★★★</option></select></div>
+        <button class="abtn abtn-sm" onclick="saveTesti()">Add Review</button>
+        <hr class="adiv"/><div class="alist" id="adm-testis"></div>
+      </div>
+      <!-- Comments Moderation -->
+      <div id="as-comments" class="as">
+        <div class="ast">Comment Moderation</div>
+        <div class="asub">Review and approve visitor comments before they go public</div>
+        <div style="display:flex;gap:.6rem;margin-bottom:1.2rem;flex-wrap:wrap">
+          <button class="abtn abtn-sm abtn-sec" onclick="loadAdmComments('pending')">⏳ Pending</button>
+          <button class="abtn abtn-sm abtn-sec" onclick="loadAdmComments('approved')">✓ Approved</button>
+          <button class="abtn abtn-sm abtn-sec" onclick="loadAdmComments('spam')">🚫 Spam</button>
+        </div>
+        <div class="alist" id="adm-comments-list"><p class="aempty">Select a filter above to load comments.</p></div>
+      </div>
+
+      <!-- Analytics -->
+      <div id="as-analytics" class="as">
+        <div class="ast">Analytics</div>
+        <div class="asub">Your content performance at a glance</div>
+        <div id="analytics-body"><p class="aempty" style="font-style:italic">Loading analytics…</p></div>
+      </div>
+
+      <!-- Settings -->
+      <div id="as-settings" class="as">
+        <div class="ast">Settings</div><div class="asub">Account & data management</div>
+        <div class="afg"><label class="al">Change Password</label>
+          <input class="ai" type="password" id="pw1" placeholder="New password (min 6)"/>
+          <input class="ai" type="password" id="pw2" placeholder="Confirm" style="margin-top:.5rem"/>
+          <button class="abtn abtn-sm" style="margin-top:.7rem" onclick="changePW()">Update</button>
+          <p id="pw-ok" style="font-size:.75rem;color:var(--sage);margin-top:.4rem;display:none">✓ Updated!</p>
+        </div>
+        <hr class="adiv"/>
+        <div class="afg"><label class="al" style="margin-bottom:.7rem">Export Data</label>
+          <button class="abtn abtn-sm abtn-sec" onclick="exportData()">⬇ Export JSON</button>
+        </div>
+        <hr class="adiv"/>
+        <div class="afg"><label class="al" style="margin-bottom:.7rem">Danger Zone</label>
+          <button class="abtn abtn-sm abtn-danger" onclick="if(confirm('Reset ALL content to defaults?'))doReset()">↺ Reset All</button>
+        </div>
+        <hr class="adiv"/>
+        <button class="abtn abtn-sm abtn-sec" onclick="doLogout()">Sign Out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+// ============================================================
+// DATA
+// ============================================================
+const DP=[
+  {id:1,title:"When War Enters Our Minds 🧠",exc:"During war, emotions feel overwhelming. But your mind has extraordinary power to adapt and heal.",body:"During war, emotions can feel overwhelming: fear, anxiety, helplessness. But your mind has extraordinary power to adapt, protect, and heal.\n\n**Acknowledge your feelings.** Fear and sadness are normal responses. Don't suppress them — feel them, name them, and let them move through you.\n\n**Limit news consumption.** Stay informed but set boundaries — constant news exposure increases cortisol significantly. One check-in per day is enough.\n\n**Create safety rituals.** Small routines (morning tea, a walk, journaling) signal safety to your nervous system even when the outside world feels chaotic.\n\n**Connect with loved ones.** Human connection is one of the most powerful buffers against trauma. A simple call can change everything.\n\n**Seek professional support.** Therapists and counselors can offer tools tailored to your needs. There is no shame in asking for help.\n\nYou are not alone. Your strength is greater than you know. 🌿",tag:"Mental Health",img:"assets/img/blog13.png",emoji:"🧠",date:"2025-04-10",status:"published",views:124},
+  {id:2,title:"🌙✨ In Ramadan, You Don't Just Fast... You Feel",exc:"Ramadan is not only about fasting from food. It is about feeling — gratitude, empathy, and presence.",body:"Ramadan is not only about fasting from food. It is about feeling the fast — feeling gratitude, empathy, and presence.\n\nWhen we abstain from food and drink, we create space. Space to listen to our body, to slow down our racing thoughts, to reconnect with what truly matters.\n\n**Mental wellness during Ramadan:**\n\nPractice mindful breaking of the fast — eat slowly, with gratitude, noticing each sensation. Use the quiet of Suhoor for reflection and intention-setting. Let iftar be a moment of genuine community. Be gentle with yourself if you feel emotional or fatigued.\n\nThis month, your strength is not just physical. It is spiritual, emotional, and deeply human. 🌙",tag:"Mindfulness",img:"assets/img/blog12.JPG",emoji:"🌙",date:"2025-03-20",status:"published",views:89},
+  {id:3,title:"🎭 The Illusion of Happiness",exc:"Psychologically, posting fake happiness is a defense mechanism. But authentic expression leads to greater wellbeing.",body:"We live in a world where everyone's highlight reel is on display. But behind the filtered photos and cheerful captions, many people are struggling in silence.\n\nPosting fake happiness is psychologically a defense mechanism — a way to control our narrative, to seek validation, or to avoid vulnerability.\n\n**But here's what the research tells us:**\n\nAuthentic expression — even of difficult emotions — leads to greater wellbeing than performed happiness. When we perform happiness, we cut ourselves off from the very support we need.\n\n**Breaking the cycle:**\n\nNotice when you post for external validation. Practice letting one trusted person see your real state. Follow accounts that model authentic living. Remember: your struggles don't make you weak. They make you human. 🤍",tag:"Self-Love",img:"assets/img/blog10.JPG",emoji:"🎭",date:"2025-02-28",status:"published",views:203},
+  {id:4,title:"The Psychology of a Hug 🤍",exc:"Science confirms what our hearts know: hugs release oxytocin, lower cortisol, and create genuine safety.",body:"When was the last time you gave or received a real, full, present hug?\n\nScience confirms what our hearts already know: hugs are medicine.\n\n**What happens in your body:**\n\nOxytocin (the bonding hormone) is released. Cortisol — the stress hormone — drops measurably. Blood pressure lowers. The parasympathetic nervous system activates, calming the fight-or-flight response.\n\nBut the psychology goes deeper. When we hold someone, we communicate: *I see you. You are not alone. You are safe.*\n\nIn a world that often pushes us toward advice when someone is hurting, sometimes the most profound gift is simply presence. A hand on a shoulder. An arm around a friend.\n\n**A gentle challenge:** Today, offer someone — or yourself — a moment of warmth. 🫂",tag:"Wellness",img:"assets/img/blog8.jpg",emoji:"🤍",date:"2025-01-15",status:"published",views:156},
+  {id:5,title:"Breaking the Stigma: Why Mental Health Matters",exc:"For too long, mental health has been taboo. It is time we treat it as importantly as physical health.",body:"For too long, mental health has been a taboo topic, surrounded by stigma and misconceptions. But the truth is, mental health is just as important as physical health — and it's time we start treating it that way.\n\n**What does breaking the stigma look like?**\n\nTalking openly about therapy without shame. Checking in on friends who seem 'fine' on the surface. Understanding that mental illness is not a character flaw. Creating homes and workplaces where vulnerability is welcomed.\n\n**Why it matters here:**\n\nCultural narratives around strength can make it especially hard to ask for help. But true strength — قُوَّة — includes the courage to say: I need support.\n\nOne conversation can change a life. 💚",tag:"Mental Health",img:"assets/img/blog1.jpeg",emoji:"💚",date:"2024-12-01",status:"published",views:178},
+  {id:6,title:"You're Not Lazy, You're Tired 💛",exc:"Mental fatigue, emotional overload, burnout — these are not laziness. They are your nervous system protecting you.",body:"We say 'I'm lazy,' but deep down, it's usually something else entirely.\n\n**Mental fatigue. Emotional overload. Burnout from caring too much for too long.**\n\nWhen your body doesn't want to move, when tasks feel impossibly heavy, when motivation has vanished — this is often your nervous system protecting itself from further depletion.\n\n**Signs you're exhausted, not lazy:**\n\nYou used to enjoy things that now feel meaningless. You feel guilty for resting. Small tasks feel overwhelming. You're shorter with people you love.\n\n**What actually helps:**\n\nRest without guilt — rest is recovery, and recovery is productive. Identify the source of depletion. Nourish your body: sleep, water, food, sunlight. Seek support.\n\nYou are not failing. You are a human being with limits, and honoring those limits is wisdom. 💛",tag:"Self-Love",img:"assets/img/blog6.jpg",emoji:"💛",date:"2024-11-10",status:"published",views:231}
+];
+const DT=[
+  {id:1,title:"Kind thoughts about yourself change the way you experience life.",desc:"The language you use internally shapes your reality. Speak to yourself with the gentleness you'd offer a dear friend."},
+  {id:2,title:"You can't pour from an empty cup — protect yourself first.",desc:"Self-care is not selfishness. Filling your own well is what allows you to be genuinely present for others."},
+  {id:3,title:"Be kind; everyone is fighting battles you cannot see.",desc:"Compassion begins with yourself and radiates naturally outward to every person you encounter."},
+  {id:4,title:"Growth is not linear. Give yourself grace on the hard days.",desc:"Some days feel like steps backward. They are still part of the journey, shaping who you are becoming."},
+  {id:5,title:"Rest is not a reward. It is a right.",desc:"You do not need to earn rest. Your worth is not measured by your productivity."},
+  {id:6,title:"Healing is not forgetting. It is learning to carry things differently.",desc:"You don't have to let go of your story. You just learn to hold it with different hands."}
+];
+const DF=[
+  {id:1,q:'What does "قُوَّة" mean, and why is it central to Qouwati?',a:'"قُوَّة" means "strength" in Arabic — the word at the heart of this platform. At Qouwati, we believe strength comes from within: from your thoughts, your self-acceptance, and your resilience.'},
+  {id:2,q:'How do I start building self-confidence?',a:'It starts with kindness. Speak to yourself with love, focus on your unique strengths, and remind yourself that growth is a process. Your imperfections make you human — and that is genuinely beautiful.'},
+  {id:3,q:'What kind of mental health support does Qouwati offer?',a:'Qouwati provides motivational content, practical tips, diary reflections, a breathing widget, gratitude journal, and a safe community space. For professional support, we curate resources in the Resources section.'},
+  {id:4,q:'How can I share my voice with the Qouwati community?',a:'Follow us on Instagram @qouwati, comment on our posts, and share your story. Every voice matters.'},
+  {id:5,q:'Is Qouwati available in Arabic?',a:'Yes! Toggle the "AR" button in the navigation bar. We believe mental wellness content should be accessible in both English and Arabic.'}
+];
+const DTESTI=[
+  {id:1,quote:"Qouwati has been a quiet companion through some of my hardest months. Aya's words feel like they were written just for me.",name:"Lara M.",loc:"Beirut, Lebanon",stars:5},
+  {id:2,quote:"I found this page during a really difficult time. The daily reminders and blog posts genuinely helped me feel less alone.",name:"Nour H.",loc:"Dubai, UAE",stars:5},
+  {id:3,quote:"The bilingual content is so important. Having these reflections in Arabic makes them hit so much deeper.",name:"Farah K.",loc:"Amman, Jordan",stars:5}
+];
+const AFFIRMATIONS=[
+  "I am enough, exactly as I am, right now.",
+  "My feelings are valid, and they will pass.",
+  "I choose to treat myself with kindness today.",
+  "I am worthy of love, rest, and peace.",
+  "Every small step forward is progress.",
+  "I release what I cannot control.",
+  "My strength comes from within.",
+  "I am becoming who I need to be.",
+  "Today, I give myself permission to rest.",
+  "I am not my worst day.",
+  "Healing is not linear, and that is okay.",
+  "I trust the journey, even when I cannot see the path."
+];
+const MOOD_RESP={
+  amazing:"You're shining today. 🌟 Cherish this energy — and remember it on harder days.",
+  good:"That's wonderful. 😊 A good day is a gift. Notice what contributed to it.",
+  okay:"Just okay is perfectly okay. 🙂 Some days are quiet and gentle, and that is enough.",
+  tired:"Rest without guilt today. 😔 Your energy will return. Be gentle with yourself.",
+  anxious:"Take one slow breath. 😰 You are safe right now, in this moment. Anxiety lies.",
+  sad:"Your feelings are valid. 💙 You are allowed to be sad. Let it move through you."
+};
+const MOOD_SCORES={amazing:5,good:4,okay:3,tired:2,anxious:2,sad:1};
+const MOOD_EMOJIS={amazing:"🌟",good:"😊",okay:"🙂",tired:"😔",anxious:"😰",sad:"💙"};
+const RESOURCES=[
+  {icon:"📚",type:"Book",title:"The Body Keeps the Score",desc:"Bessel van der Kolk's landmark work on how trauma lives in the body.",link:"#"},
+  {icon:"📱",type:"App",title:"Headspace",desc:"Guided meditation and mindfulness, with an Arabic interface available.",link:"https://www.headspace.com"},
+  {icon:"📱",type:"App",title:"Youper",desc:"AI mental health companion — helps you understand and manage emotions daily.",link:"https://www.youper.ai"},
+  {icon:"📞",type:"Crisis Line",title:"Embrace Lebanon",desc:"Free, confidential mental health support. Call: 1564",link:"https://embracelebanon.org"},
+  {icon:"📞",type:"Crisis Line",title:"Estijaba – Saudi Arabia",desc:"Emotional support, available 24/7. Call: 920033360",link:"#"},
+  {icon:"📚",type:"Book",title:"The Gifts of Imperfection",desc:"Brené Brown on letting go of who you think you should be.",link:"#"}
+];
+const I18={
+  en:{"nav.home":"Home","nav.about":"My DNA","nav.tips":"Tips","nav.diary":"My Diary","nav.faq":"FAQ","nav.res":"Resources","nav.connect":"Connect","hero.eyebrow":"Mental Wellness · Self-Love · Inner Strength","hero.t1":"Your Mind,","hero.t2":"Your Strength,","hero.t3":"Your Qouwati.","hero.desc":"Welcome to Qouwati — a space where strength and self-love come alive.","hero.cta1":"Explore My Diary →","hero.cta2":"My Story","hero.s1":"Diary Entries","hero.s2":"Tips & Reminders","hero.s3":"With Love","aff.label":"Today's Affirmation","mood.q":"How are you feeling today?","mood.track":"Track My Mood →","about.ey":"My DNA","about.t":"Strength begins","about.t2":"within.","about.p2":"Together, let's embrace self-confidence over perfection.","p.sl":"Self-Love","p.mw":"Mental Wellness","p.is":"Inner Strength","p.re":"Resilience","tips.ey":"Words of Wisdom","tips.t":"Gentle Reminders","diary.ey":"Stories & Reflections","diary.t":"My Diary","diary.more":"Load More","breath.ey":"Pause & Breathe","breath.t":"A moment of calm.","breath.desc":"Guided breathing reduces anxiety and activates your body's natural calm response.","grat.ey":"Daily Practice","grat.t":"Gratitude Journal","grat.sub":"Write three things you're grateful for today. Stored privately on your device.","grat.save":"Save Today's Entry ✦","grat.ok":"Beautiful. Your gratitude is saved. 🌿","grat.history":"Past Entries","mt.ey":"Your Journey","mt.t":"Mood Over Time","testi.ey":"Voices","testi.t":"What People Say","faq.ey":"Got Questions?","faq.t":"Frequent Questions","res.ey":"Curated for You","res.t":"Helpful Resources","nl.ey":"Stay Connected","nl.t":"Weekly reminders delivered with love.","nl.desc":"A curated dose of mental wellness, new diary entries, and gentle affirmations.","nl.btn":"Subscribe →","nl.ok":"Thank you! You'll hear from us soon. 🌿","nl.priv":"No spam. Unsubscribe anytime.","c.ey":"Let's Talk","c.t":"Reach out, I'm here.","c.desc":"Whether you're looking for inspiration, want to collaborate, or need a listening ear.","c.cta":"Send a message →","f.name":"Name","f.email":"Email","f.sub":"Subject","f.msg":"Message","f.send":"Send Message →"},
+  ar:{"nav.home":"الرئيسية","nav.about":"هويّتي","nav.tips":"نصائح","nav.diary":"مذكّراتي","nav.faq":"أسئلة","nav.res":"مصادر","nav.connect":"تواصل","hero.eyebrow":"صحة نفسية · محبة الذات · القوة الداخلية","hero.t1":"عقلك،","hero.t2":"قوّتك،","hero.t3":"قُوَّتي.","hero.desc":"مرحباً بك في قُوَّتي — مساحة تنبض فيها القوة والمحبة.","hero.cta1":"استكشف مذكّراتي ←","hero.cta2":"قصّتي","hero.s1":"تدوينات","hero.s2":"نصائح وتذكيرات","hero.s3":"بكل محبة","aff.label":"تأكيد اليوم","mood.q":"كيف تشعر اليوم؟","mood.track":"تتبّع مزاجي ←","about.ey":"هويّتي","about.t":"القوة تبدأ","about.t2":"من الداخل.","about.p2":"معاً، لنتقبّل أنفسنا بدلاً من السعي للكمال.","p.sl":"محبة الذات","p.mw":"الصحة النفسية","p.is":"القوة الداخلية","p.re":"المرونة","tips.ey":"كلمات حكمة","tips.t":"تذكيرات لطيفة","diary.ey":"قصص وتأمّلات","diary.t":"مذكّراتي","diary.more":"تحميل المزيد","breath.ey":"توقف وتنفس","breath.t":"لحظة من الهدوء.","breath.desc":"التنفس الموجّه يقلل القلق ويفعّل استجابة الجسم الطبيعية للهدوء.","grat.ey":"ممارسة يومية","grat.t":"مجلة الامتنان","grat.sub":"اكتب ثلاثة أشياء تشعر بالامتنان لها اليوم.","grat.save":"احفظ إدخال اليوم ✦","grat.ok":"جميل. امتنانك محفوظ. 🌿","grat.history":"الإدخالات السابقة","mt.ey":"رحلتك","mt.t":"تتبّع المزاج","testi.ey":"أصوات","testi.t":"ما يقوله الناس","faq.ey":"لديك سؤال؟","faq.t":"أسئلة متكررة","res.ey":"مختارة لك","res.t":"مصادر مفيدة","nl.ey":"ابقَ على تواصل","nl.t":"تذكيرات أسبوعية بكل محبة.","nl.desc":"جرعة منتقاة من نصائح الصحة النفسية وتدوينات جديدة.","nl.btn":"اشترك ←","nl.ok":"شكراً لك! سنتواصل معك قريباً. 🌿","nl.priv":"لا رسائل مزعجة.","c.ey":"لنتحدث","c.t":"تواصل معي، أنا هنا.","c.desc":"سواء كنت تبحث عن إلهام أو تريد التعاون أو تحتاج أذناً مستمعة.","c.cta":"أرسل رسالة ←","f.name":"الاسم","f.email":"البريد الإلكتروني","f.sub":"الموضوع","f.msg":"الرسالة","f.send":"إرسال الرسالة ←"}
+};
+
+// ============================================================
+// STATE
+// ============================================================
+let posts=[],tips=[],faqs=[],testis=[],authed=false;
+let lang='en',theme='light',filter='All',page=1,perPage=6;
+let favorites=new Set(),moodLog=[];
+let affIdx=0,breathRunning=false,breathTimer=null;
+let currentPostId=null,pwaPrompt=null;
+
+// ── Preferences stored locally (not in DB) ──────────────────
+function loadPrefs(){
+  theme=localStorage.getItem('q_theme')||'light';
+  lang=localStorage.getItem('q_lang')||'en';
+  favorites=new Set(JSON.parse(localStorage.getItem('q_fav')||'[]'));
+  moodLog=JSON.parse(localStorage.getItem('q_mood')||'[]');
+  document.documentElement.setAttribute('data-theme',theme);
+  document.documentElement.setAttribute('dir',lang==='ar'?'rtl':'ltr');
+  document.getElementById('dark-btn').textContent=theme==='dark'?'☀️':'🌙';
+  const lb=document.getElementById('lang-btn');if(lb)lb.textContent=lang==='en'?'AR':'EN';
+}
+function savePrefs(){
+  localStorage.setItem('q_fav',JSON.stringify([...favorites]));
+  localStorage.setItem('q_mood',JSON.stringify(moodLog));
+}
+
+// ── API helper ──────────────────────────────────────────────
+async function api(path,method='GET',body=null){
+  const opts={method,headers:{'Content-Type':'application/json'}};
+  if(body)opts.body=JSON.stringify(body);
+  const res=await fetch('/api'+path,opts);
+  if(!res.ok){const e=await res.json().catch(()=>({}));throw new Error(e.error||res.statusText);}
+  return res.json();
+}
+
+// ── Loading state helper ─────────────────────────────────────
+function setLoading(gridId, type='blog'){
+  const el=document.getElementById(gridId);
+  if(el) el.innerHTML = type==='tip' ? tipSkeletons(6) : blogSkeletons(6);
+}
+
+// ============================================================
+// i18n
+// ============================================================
+function applyI18(l){
+  const d=I18[l]||I18.en;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(d[k])el.textContent=d[k];
+  });
+}
+function toggleLang(){
+  lang=lang==='en'?'ar':'en';
+  localStorage.setItem('q_lang',lang);
+  document.documentElement.setAttribute('dir',lang==='ar'?'rtl':'ltr');
+  const lb=document.getElementById('lang-btn');if(lb)lb.textContent=lang==='en'?'AR':'EN';
+  applyI18(lang);
+}
+
+// ============================================================
+// DARK MODE
+// ============================================================
+function toggleDark(){
+  theme=theme==='light'?'dark':'light';
+  document.documentElement.setAttribute('data-theme',theme);
+  localStorage.setItem('q_theme',theme);
+  document.getElementById('dark-btn').textContent=theme==='dark'?'☀️':'🌙';
+}
+
+// ============================================================
+// TOAST NOTIFICATIONS (replaces all alert() calls)
+// ============================================================
+function toast(msg, type='info', duration=3500){
+  const wrap=document.getElementById('toast-container');
+  const el=document.createElement('div');
+  const icons={success:'✓',error:'✕',info:'✦'};
+  el.className=`toast ${type}`;
+  el.innerHTML=`<span>${icons[type]||'✦'}</span><span>${msg}</span>`;
+  wrap.appendChild(el);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>el.classList.add('show')));
+  setTimeout(()=>{el.classList.remove('show');setTimeout(()=>el.remove(),400);},duration);
+}
+
+// ============================================================
+// SKELETON LOADERS
+// ============================================================
+function blogSkeletons(n=6){
+  return Array(n).fill(0).map(()=>`
+    <div class="skel-card">
+      <div class="skel-img skeleton"></div>
+      <div class="skel-body">
+        <div class="skel-line w50 skeleton"></div>
+        <div class="skel-line w100 skeleton"></div>
+        <div class="skel-line w75 skeleton"></div>
+        <div class="skel-line w50 skeleton"></div>
+      </div>
+    </div>`).join('');
+}
+function tipSkeletons(n=6){
+  return Array(n).fill(0).map(()=>`
+    <div class="skel-card" style="padding:2rem">
+      <div class="skel-line w25 skeleton" style="height:40px;margin-bottom:1rem"></div>
+      <div class="skel-line w100 skeleton"></div>
+      <div class="skel-line w75 skeleton"></div>
+    </div>`).join('');
+}
+
+// ── okToast replaces old ok() utility in admin ───────────────
+function okToast(msg){ toast(msg,'success'); }
+window.addEventListener('scroll',()=>{
+  const img=document.getElementById('hero-img');
+  if(img&&window.scrollY<window.innerHeight){
+    img.style.transform=`translateY(${window.scrollY*0.2}px)`;
+  }
+  document.getElementById('rp').style.width=
+    (window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
+  document.getElementById('hdr').classList.toggle('sc',window.scrollY>60);
+  document.getElementById('btt').classList.toggle('show',window.scrollY>500);
+});
+
+// ============================================================
+// SEARCH
+// ============================================================
+let searchOpen=false;
+function toggleSearch(){
+  searchOpen=!searchOpen;
+  const inp=document.getElementById('search-inp');
+  inp.classList.toggle('open',searchOpen);
+  if(searchOpen)setTimeout(()=>inp.focus(),300);
+  else{inp.value='';document.getElementById('search-results').style.display='none';}
+}
+function liveSearch(q){
+  const res=document.getElementById('search-results');
+  if(!q.trim()){res.style.display='none';return;}
+  const matches=posts.filter(p=>p.status!=='draft'&&
+    (p.title.toLowerCase().includes(q.toLowerCase())||
+     p.excerpt.toLowerCase().includes(q.toLowerCase())||
+     p.tag.toLowerCase().includes(q.toLowerCase())));
+  if(!matches.length){res.innerHTML='<div class="sr-empty">No results found</div>';res.style.display='block';return;}
+  res.innerHTML=matches.slice(0,5).map(p=>`
+    <div class="sr-item" onclick="openPost(${p.id});closeSearch()">
+      <div class="sr-title">${esc(p.title)}</div>
+      <div class="sr-tag">${esc(p.tag)}</div>
+    </div>`).join('');
+  res.style.display='block';
+}
+function closeSearch(){
+  searchOpen=false;
+  document.getElementById('search-inp').classList.remove('open');
+  document.getElementById('search-inp').value='';
+  document.getElementById('search-results').style.display='none';
+}
+
+// ============================================================
+// TICKER
+// ============================================================
+function renderTicker(){
+  const quotes=tips.slice(0,6).map(t=>t.title);
+  const el=document.getElementById('ticker-inner');
+  if(!quotes.length){el.innerHTML='';return;}
+  const mk=q=>`<span class="tick-item">${esc(q)}</span><span class="tick-sep">✦</span>`;
+  el.innerHTML=quotes.map(mk).join('')+quotes.map(mk).join('');
+}
+
+// ============================================================
+// AFFIRMATION
+// ============================================================
+function setAffirmation(){
+  const el=document.getElementById('aff-text');
+  el.classList.add('changing');
+  setTimeout(()=>{el.textContent='"'+AFFIRMATIONS[affIdx]+'"';el.classList.remove('changing');},400);
+}
+function nextAffirmation(){
+  affIdx=(affIdx+1)%AFFIRMATIONS.length;
+  setAffirmation();
+}
+function autoAffirmation(){
+  affIdx=Math.floor(Math.random()*AFFIRMATIONS.length);
+  setAffirmation();
+}
+
+// ============================================================
+// MOOD CHECK-IN
+// ============================================================
+function selectMood(btn,mood){
+  document.querySelectorAll('.mood-btn').forEach(b=>b.classList.remove('sel'));
+  btn.classList.add('sel');
+  const r=document.getElementById('mood-resp');
+  r.textContent=MOOD_RESP[mood];r.classList.add('show');
+  // log mood
+  const today=new Date().toISOString().split('T')[0];
+  moodLog=moodLog.filter(m=>m.date!==today);
+  moodLog.push({date:today,mood,score:MOOD_SCORES[mood]||3});
+  if(moodLog.length>30)moodLog.shift();
+  savePrefs();renderMoodTracker();
+}
+
+// ============================================================
+// TIPS
+// ============================================================
+// ============================================================
+// TIPS
+// ============================================================
+async function loadTips(){
+  setLoading('tips-grid','tip');
+  try{tips=await api('/tips');}catch(e){tips=[];toast('Could not load tips','error');}
+  renderTips();renderTicker();
+}
+function renderTips(){
+  const g=document.getElementById('tips-grid');
+  if(!tips.length){g.innerHTML='<p style="color:var(--light)">No tips yet.</p>';return;}
+  g.innerHTML=tips.map((t,i)=>`
+    <div class="tip-card rv d${(i%4)+1}">
+      <button class="tip-save ${favorites.has('tip-'+t.id)?'saved':''}" onclick="toggleFav('tip-'+${t.id},this)" title="Save">♥</button>
+      <div class="tip-num">0${i+1}</div>
+      <h3>${esc(t.title)}</h3>
+      ${t.description?`<p>${esc(t.description)}</p>`:''}
+    </div>`).join('');
+  observeRv();
+  document.getElementById('stat-tips').textContent=tips.length;
+}
+function toggleFav(key,btn){
+  if(favorites.has(key)){favorites.delete(key);btn.classList.remove('saved');}
+  else{favorites.add(key);btn.classList.add('saved');}
+  savePrefs();
+}
+
+// ============================================================
+// BLOGS
+// ============================================================
+function readTime(t){const w=(t||'').split(/\s+/).length;return Math.max(1,Math.ceil(w/200));}
+function filtered(){return filter==='All'?posts:posts.filter(p=>p.tag===filter);}
+async function loadBlogs(){
+  setLoading('blog-grid','blog');
+  try{posts=await api('/posts');}catch(e){posts=[];toast('Could not load posts','error');}
+  renderFilters();renderBlogs();
+  document.getElementById('stat-posts').textContent=posts.length;
+}
+function renderFilters(){
+  const cats=['All',...new Set(posts.map(p=>p.tag).filter(Boolean))];
+  document.getElementById('filter-bar').innerHTML=cats.map(c=>`
+    <button onclick="setFilter('${c}',this)" class="f-btn${filter===c?' active':''}">${c}</button>`).join('');
+}
+function setFilter(c){filter=c;page=1;renderFilters();renderBlogs();}
+function renderBlogs(){
+  const fl=filtered(),shown=fl.slice(0,page*perPage);
+  const g=document.getElementById('blog-grid');
+  if(!shown.length){g.innerHTML='<p style="color:var(--light);grid-column:1/-1">No posts here yet.</p>';document.getElementById('load-more-wrap').style.display='none';return;}
+  g.innerHTML=shown.map((p,i)=>`
+    <div class="blog-card rv d${(i%3)+1}${favorites.has('post-'+p.id)?' saved-post':''}">
+      <div class="blog-img" onclick="openPost(${p.id})">
+        ${p.image_url?`<img src="${esc(p.image_url)}" alt="${esc(p.title)}" onerror="this.parentElement.outerHTML='<div class=\\'blog-ph\\'>${esc(p.emoji||'🌿')}</div>'"/>`:`<div class="blog-ph">${esc(p.emoji||'🌿')}</div>`}
+        <span class="blog-tag">${esc(p.tag)}</span>
+        <span class="blog-views">👁 ${p.views||0}</span>
+        <span class="reading-time">📖 ${readTime(p.body)} min</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta"><span>Aya Abdo</span><span class="dot"></span><span>${fd(p.created_at)}</span><span class="dot"></span><span style="color:var(--taupe)">${esc(p.tag)}</span></div>
+        <h3 onclick="openPost(${p.id})">${esc(p.title)}</h3>
+        <p class="blog-exc">${esc(p.excerpt)}</p>
+        <div class="blog-foot">
+          <span class="read-more" onclick="openPost(${p.id})">Read more <span>→</span></span>
+          <div class="bc-actions">
+            <button class="bc-save${favorites.has('post-'+p.id)?' saved':''}" onclick="toggleFav('post-'+${p.id},this)" title="Save">♥</button>
+            <button class="bc-share" onclick="sharePost(${p.id})" title="Share">↗</button>
+          </div>
+        </div>
+        <div class="reactions" id="rxbar-${p.id}"></div>
+      </div>
+    </div>`).join('');
+  // Load reactions for visible posts async
+  shown.forEach(p=>loadRxBar(p.id));
+  document.getElementById('load-more-wrap').style.display=fl.length>shown.length?'block':'none';
+  observeRv();
+}
+function loadMore(){page++;renderBlogs();}
+async function loadRxBar(pid){
+  const el=document.getElementById('rxbar-'+pid);if(!el)return;
+  let rx={};
+  try{rx=await api('/reactions?post_id='+pid);}catch(e){}
+  const reacted=JSON.parse(localStorage.getItem('q_reacted')||'{}');
+  el.innerHTML=[['🤍','Love'],['✨','Inspired'],['💪','Strong'],['🙏','Grateful']].map(([e])=>`
+    <button class="react-btn${reacted[pid+e]?' reacted':''}" onclick="react(${pid},'${e}',this)">
+      ${e} <span>${rx[e]||0}</span>
+    </button>`).join('');
+}
+async function react(pid,emoji,btn){
+  const reacted=JSON.parse(localStorage.getItem('q_reacted')||'{}');
+  const key=pid+emoji;
+  const action=reacted[key]?'remove':'add';
+  try{
+    const res=await api('/reactions','POST',{post_id:pid,emoji,action});
+    btn.querySelector('span').textContent=res.count;
+    if(action==='add'){btn.classList.add('reacted');reacted[key]=1;}
+    else{btn.classList.remove('reacted');delete reacted[key];}
+    localStorage.setItem('q_reacted',JSON.stringify(reacted));
+  }catch(e){}
+}
+function sharePost(pid){
+  const p=posts.find(x=>x.id==pid);if(!p)return;
+  const url=window.location.href.split('#')[0]+'#post-'+pid;
+  if(navigator.share){navigator.share({title:p.title,text:p.excerpt,url}).catch(()=>{});}
+  else{navigator.clipboard.writeText(url).then(()=>toast('Link copied! 🔗','success')).catch(()=>{});}
+}
+
+// ============================================================
+// POST MODAL
+// ============================================================
+async function openPost(id){
+  currentPostId=id;
+  document.getElementById('blog-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+  document.getElementById('m-title').textContent='Loading…';
+  document.getElementById('m-content').innerHTML='';
+  document.getElementById('m-prog').style.width='0%';
+  document.getElementById('m-img-wrap').style.display='none';
+  document.getElementById('m-related').style.display='none';
+  document.getElementById('cm-list').innerHTML='';
+  let p;
+  try{p=await api('/posts?id='+id);}
+  catch(e){document.getElementById('m-title').textContent='Could not load post.';return;}
+  // Update local cache
+  const idx=posts.findIndex(x=>x.id==id);
+  if(idx>-1){posts[idx].views=p.views;}
+  renderBlogs();
+  document.getElementById('m-title').textContent=p.title;
+  document.getElementById('m-meta').innerHTML=`
+    <span>Aya Abdo</span><span class="dot"></span><span>${fd(p.created_at)}</span>
+    <span class="dot"></span><span style="color:var(--taupe)">${esc(p.tag)}</span>
+    <span class="dot"></span><span>📖 ${readTime(p.body)} min read</span>`;
+  const iw=document.getElementById('m-img-wrap'),mi=document.getElementById('m-img');
+  if(p.image_url){iw.style.display='';mi.src=p.image_url;mi.onerror=()=>iw.style.display='none';}
+  else iw.style.display='none';
+  document.getElementById('m-content').innerHTML=renderBody(p.body);
+  document.getElementById('m-share').innerHTML=`
+    <span class="share-label">Share</span>
+    <button class="share-btn" onclick="sharePost(${id})">🔗 Copy Link</button>
+    <a class="share-btn" href="https://wa.me/?text=${encodeURIComponent(p.title+' '+window.location.href)}" target="_blank">📱 WhatsApp</a>`;
+  // reactions
+  const rxWrap=document.getElementById('m-reactions');
+  rxWrap.innerHTML=`<div style="font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--light);margin-bottom:.6rem">React</div><div id="modal-rx" style="display:flex;gap:.5rem;flex-wrap:wrap"></div>`;
+  let rx={};try{rx=await api('/reactions?post_id='+id);}catch(e){}
+  const reacted=JSON.parse(localStorage.getItem('q_reacted')||'{}');
+  document.getElementById('modal-rx').innerHTML=[['🤍','Love'],['✨','Inspired'],['💪','Strong'],['🙏','Grateful']].map(([e])=>`
+    <button class="react-btn${reacted[id+e]?' reacted':''}" onclick="react(${id},'${e}',this)">${e} <span>${rx[e]||0}</span></button>`).join('');
+  // related
+  const rel=posts.filter(x=>x.id!=id&&x.tag===p.tag).slice(0,4);
+  const rw=document.getElementById('m-related');
+  if(rel.length){rw.style.display='block';document.getElementById('m-related-grid').innerHTML=rel.map(r=>`
+    <div class="rel-card" onclick="openPost(${r.id})"><h5>${esc(r.title)}</h5><p>${esc(r.tag)} · ${fd(r.created_at)}</p></div>`).join('');}
+  // comments
+  renderComments(id);
+  const inner=document.getElementById('bm-inner');
+  inner.onscroll=()=>{document.getElementById('m-prog').style.width=(inner.scrollTop/(inner.scrollHeight-inner.clientHeight)*100)+'%';};
+  inner.scrollTop=0;
+}
+function handleModalBg(e){if(e.target===document.getElementById('blog-modal'))closeModal();}
+function closeModal(){document.getElementById('blog-modal').classList.remove('open');document.body.style.overflow='';}
+function renderBody(t){
+  if(!t)return'';
+  return'<p>'+t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
+    .replace(/\n\n/g,'</p><p>').replace(/\n/g,'<br>')+'</p>';
+}
+
+// ============================================================
+// COMMENTS
+// ============================================================
+async function renderComments(pid){
+  const el=document.getElementById('cm-list');
+  el.innerHTML='<p style="font-size:.82rem;color:var(--light);font-style:italic">Loading…</p>';
+  let list=[];
+  try{list=await api('/comments?post_id='+pid);}catch(e){}
+  el.innerHTML=list.length?list.map(c=>`
+    <div class="comment-item">
+      <div class="comment-av">${c.name.charAt(0).toUpperCase()}</div>
+      <div class="comment-body">
+        <div class="comment-name">${esc(c.name)}<span class="comment-date">${fd(c.created_at)}</span></div>
+        <div class="comment-text">${esc(c.message)}</div>
+      </div>
+    </div>`).join(''):'<p style="font-size:.82rem;color:var(--light);font-style:italic">Be the first to share your thoughts.</p>';
+}
+async function postComment(){
+  const n=document.getElementById('cm-name').value.trim();
+  const t=document.getElementById('cm-text').value.trim();
+  if(!n||!t){toast('Please enter your name and a message.','error');return;}
+  try{
+    const res=await api('/comments','POST',{post_id:currentPostId,name:n,email:document.getElementById('cm-email').value.trim(),message:t});
+    document.getElementById('cm-name').value='';document.getElementById('cm-email').value='';document.getElementById('cm-text').value='';
+    if(res.status==='pending'){
+      toast('Comment submitted! It will appear after review. 🌿','success',4000);
+    } else {
+      renderComments(currentPostId);
+      toast('Comment posted!','success');
+    }
+  }catch(e){toast('Could not post comment. Try again.','error');}
+}
+
+// ============================================================
+// BREATHING WIDGET
+// ============================================================
+const BREATH_PATTERNS={
+  '478':{inhale:4,hold:7,exhale:8,label:['Inhale','Hold','Exhale']},
+  'box':{inhale:4,hold:4,exhale:4,label:['Inhale','Hold','Exhale']},
+  'simple':{inhale:4,hold:0,exhale:4,label:['Inhale','Exhale']}
+};
+function getPattern(){return BREATH_PATTERNS[document.getElementById('breath-type').value]||BREATH_PATTERNS['478'];}
+function startBreath(){
+  if(breathRunning){resetBreath();return;}
+  breathRunning=true;
+  document.getElementById('breath-btn').textContent='Stop';
+  runBreathPhase(0);
+}
+function runBreathPhase(phase){
+  if(!breathRunning)return;
+  const pat=getPattern();
+  const phases=pat.label.map((l,i)=>({label:l,dur:[pat.inhale,pat.hold||0,pat.exhale][i]})).filter(p=>p.dur>0);
+  const p=phases[phase%phases.length];
+  const core=document.getElementById('breath-core');
+  const instr=document.getElementById('breath-instr');
+  const counter=document.getElementById('breath-counter');
+  instr.textContent=p.label;
+  core.className='breath-core';
+  void core.offsetWidth;
+  if(p.label==='Inhale')core.classList.add('inhale');
+  else if(p.label==='Hold')core.classList.add('hold');
+  else core.classList.add('exhale');
+  core.style.setProperty('--bd',pat.inhale+'s');
+  core.style.setProperty('--bh',pat.hold+'s');
+  core.style.setProperty('--be',pat.exhale+'s');
+  let t=p.dur;counter.textContent=t;
+  clearInterval(breathTimer);
+  breathTimer=setInterval(()=>{
+    t--;counter.textContent=Math.max(0,t);
+    if(t<=0){clearInterval(breathTimer);if(breathRunning)runBreathPhase(phase+1);}
+  },1000);
+}
+function resetBreath(){
+  breathRunning=false;clearInterval(breathTimer);
+  const core=document.getElementById('breath-core');
+  core.className='breath-core';
+  document.getElementById('breath-counter').textContent=getPattern().inhale;
+  document.getElementById('breath-instr').textContent='Tap to begin';
+  document.getElementById('breath-btn').textContent='Start';
+}
+
+// ============================================================
+// GRATITUDE JOURNAL
+// ============================================================
+function renderGratDate(){
+  document.getElementById('grat-date').textContent=new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+}
+function saveGratitude(){
+  const v=[1,2,3].map(i=>document.getElementById('g'+i).value.trim()).filter(Boolean);
+  if(!v.length){toast('Please write at least one gratitude entry.','error');return;}
+  const all=JSON.parse(localStorage.getItem('q_grat')||'[]');
+  const today=new Date().toISOString().split('T')[0];
+  const idx=all.findIndex(e=>e.date===today);
+  if(idx>-1)all[idx]={date:today,items:v};
+  else all.unshift({date:today,items:v});
+  if(all.length>30)all.splice(30);
+  localStorage.setItem('q_grat',JSON.stringify(all));
+  [1,2,3].forEach(i=>document.getElementById('g'+i).value='');
+  const okEl=document.getElementById('grat-ok');okEl.style.display='block';setTimeout(()=>okEl.style.display='none',3500);
+  toast('Gratitude saved! 🌿','success');
+  renderGratHistory();
+}
+function renderGratHistory(){
+  const all=JSON.parse(localStorage.getItem('q_grat')||'[]');
+  const el=document.getElementById('grat-history');
+  if(!all.length){el.innerHTML='<p class="grat-empty">Your entries will appear here.</p>';return;}
+  el.innerHTML=all.slice(0,5).map(e=>`
+    <div class="grat-entry">
+      <div class="grat-entry-date">${fd(e.date)}</div>
+      <div class="grat-entry-items">${e.items.map(i=>`<div class="grat-entry-item">${esc(i)}</div>`).join('')}</div>
+    </div>`).join('');
+}
+
+// ============================================================
+// MOOD TRACKER
+// ============================================================
+function renderMoodTracker(){
+  const chart=document.getElementById('mood-chart');
+  const summary=document.getElementById('mood-summary');
+  if(!moodLog.length){chart.innerHTML='<p style="color:var(--light);font-size:.85rem">Track your mood daily to see your chart.</p>';summary.innerHTML='';return;}
+  const last14=moodLog.slice(-14);
+  const max=5;
+  chart.innerHTML=last14.map(m=>`
+    <div class="mood-bar-wrap">
+      <div class="mood-bar" style="height:${(m.score/max)*100}px" title="${m.mood} — ${fd(m.date)}"></div>
+      <div class="mood-bar-emoji">${MOOD_EMOJIS[m.mood]||'·'}</div>
+      <div class="mood-bar-label">${m.date.slice(5)}</div>
+    </div>`).join('');
+  const avg=(moodLog.reduce((a,b)=>a+b.score,0)/moodLog.length).toFixed(1);
+  const moodCounts={};moodLog.forEach(m=>{moodCounts[m.mood]=(moodCounts[m.mood]||0)+1;});
+  const top=Object.entries(moodCounts).sort((a,b)=>b[1]-a[1])[0];
+  summary.innerHTML=`
+    <div class="mood-stat"><span class="mood-stat-val">${avg}</span><span class="mood-stat-lbl">Average Mood (1–5)</span></div>
+    <div class="mood-stat"><span class="mood-stat-val">${moodLog.length}</span><span class="mood-stat-lbl">Days Tracked</span></div>
+    ${top?`<div class="mood-stat"><span class="mood-stat-val">${MOOD_EMOJIS[top[0]]}</span><span class="mood-stat-lbl">Most Frequent: ${top[0]}</span></div>`:''}`;
+}
+
+// ============================================================
+// FAQ
+// ============================================================
+async function loadFAQs(){
+  try{faqs=await api('/faqs');}catch(e){faqs=[];}
+  renderFAQ();
+}
+function renderFAQ(){
+  const el=document.getElementById('faq-grid');
+  if(!faqs.length){el.innerHTML='<p style="text-align:center;color:var(--light)">No FAQs yet.</p>';return;}
+  el.innerHTML=faqs.map((f,i)=>`
+    <div class="faq-item" id="fq-${f.id}">
+      <button class="faq-btn" onclick="tFAQ(${f.id})">
+        <div class="faq-q-inner"><span class="faq-n">${String(i+1).padStart(2,'0')}</span><span class="faq-title">${esc(f.question)}</span></div>
+        <div class="faq-ico">+</div>
+      </button>
+      <div class="faq-answer" id="fa-${f.id}"><div class="faq-ans-inner">${esc(f.answer)}</div></div>
+    </div>`).join('');
+}
+function tFAQ(id){
+  const item=document.getElementById('fq-'+id);
+  const ans=document.getElementById('fa-'+id);
+  const open=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(el=>{el.classList.remove('open');const a=el.querySelector('.faq-answer');if(a)a.style.maxHeight='0';});
+  if(!open){item.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';}
+}
+
+// ============================================================
+// TESTIMONIALS
+// ============================================================
+async function loadTestis(){
+  try{testis=await api('/testimonials');}catch(e){testis=[];}
+  renderTestis();
+}
+function renderTestis(){
+  const g=document.getElementById('testi-grid');
+  if(!testis.length){g.innerHTML='<p>No testimonials yet.</p>';return;}
+  g.innerHTML=testis.map((t,i)=>`
+    <div class="testi-card rv d${(i%3)+1}">
+      <div class="testi-q">"</div>
+      <div class="testi-stars">${'<span class="star">★</span>'.repeat(t.stars||5)}</div>
+      <div class="testi-text">${esc(t.quote)}</div>
+      <div class="testi-author">
+        <div class="testi-av">${t.name.charAt(0)}</div>
+        <div><div class="testi-name">${esc(t.name)}</div><div class="testi-loc">${esc(t.location||'')}</div></div>
+      </div>
+    </div>`).join('');
+  observeRv();
+}
+
+// ============================================================
+// RESOURCES
+// ============================================================
+function renderResources(){
+  document.getElementById('res-grid').innerHTML=RESOURCES.map((r,i)=>`
+    <div class="res-card rv d${(i%4)+1}">
+      <div class="res-icon">${r.icon}</div>
+      <div><div class="res-type">${r.type}</div><div class="res-title">${r.title}</div></div>
+      <p class="res-desc">${r.desc}</p>
+      <a href="${r.link}" target="_blank" class="res-link">Explore <span>→</span></a>
+    </div>`).join('');
+  observeRv();
+}
+
+// ============================================================
+// NEWSLETTER
+// ============================================================
+async function subscribe(){
+  const em=document.getElementById('nl-email').value.trim();
+  if(!em||!em.includes('@')){toast('Please enter a valid email.','error');return;}
+  try{
+    await api('/newsletter','POST',{email:em});
+    document.getElementById('nl-email').value='';
+    const ok=document.getElementById('nl-ok');ok.style.display='block';setTimeout(()=>ok.style.display='none',4000);
+  }catch(e){toast('Could not subscribe. Please try again.','error');}
+}
+
+// ============================================================
+// CONTACT
+// ============================================================
+function sendContact(){
+  const n=document.getElementById('cf-name').value.trim();
+  const e=document.getElementById('cf-email').value.trim();
+  const m=document.getElementById('cf-msg').value.trim();
+  if(!n||!e||!m){toast('Please fill in all fields.','error');return;}
+  const el=document.getElementById('cf-ok');
+  el.textContent=`Thank you ${n}! Your message has been received. ✨`;
+  el.style.display='block';el.style.color='var(--goldl)';
+  ['cf-name','cf-email','cf-sub','cf-msg'].forEach(id=>{const x=document.getElementById(id);if(x)x.value='';});
+  setTimeout(()=>el.style.display='none',5000);
+  toast('Message sent! Thank you ✨','success');
+}
+
+// ============================================================
+// ADMIN
+// ============================================================
+function openAdmin(){
+  document.getElementById('adm-ov').classList.add('open');
+  setTimeout(()=>document.getElementById('adm-panel').classList.add('open'),10);
+  document.body.style.overflow='hidden';
+  if(authed)showAdm();
+}
+function closeAdmin(){
+  document.getElementById('adm-panel').classList.remove('open');
+  setTimeout(()=>{document.getElementById('adm-ov').classList.remove('open');document.body.style.overflow='';},400);
+}
+function doLogin(){
+  const pw=document.getElementById('adm-pw').value;
+  const storedPW=localStorage.getItem('q_pw')||'qouwati2025';
+  document.getElementById('adm-err').style.display=pw===storedPW?'none':'block';
+  if(pw===storedPW){authed=true;document.getElementById('adm-pw').value='';showAdm();}
+}
+function showAdm(){
+  document.getElementById('adm-login').style.display='none';
+  document.getElementById('adm-content').style.display='block';
+  renderAdmAll();
+}
+function doLogout(){authed=false;document.getElementById('adm-content').style.display='none';document.getElementById('adm-login').style.display='block';closeAdmin();}
+function aTab(n,btn){
+  document.querySelectorAll('.at').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.as').forEach(s=>s.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('as-'+n).classList.add('active');
+  if(n==='analytics') loadAnalytics();
+  if(n==='comments') loadAdmComments('pending');
+}
+function savePost(){
+  const ti=document.getElementById('b-title').value.trim();
+  const ex=document.getElementById('b-exc').value.trim();
+  const bo=document.getElementById('b-body').value.trim();
+  if(!ti||!ex||!bo){toast('Title, excerpt and content required.','error');return;}
+  api('/posts','POST',{title:ti,excerpt:ex,body:bo,tag:document.getElementById('b-tag').value,status:document.getElementById('b-status').value,image_url:document.getElementById('b-img').value.trim()||null,emoji:document.getElementById('b-emoji').value.trim()||'🌿'})
+    .then(()=>{clearPost();toast('Post saved! 🌿','success');loadBlogs().then(()=>renderAdmAll());})
+    .catch(e=>toast(e.message||'Something went wrong','error'));
+}
+function clearPost(){['b-title','b-exc','b-body','b-img'].forEach(id=>document.getElementById(id).value='');document.getElementById('b-emoji').value='🌿';}
+function delPost(id){
+  if(!confirm('Delete this post?'))return;
+  api('/posts?id='+id,'DELETE').then(()=>{loadBlogs().then(()=>renderAdmAll());}).catch(e=>toast(e.message||'Something went wrong','error'));
+}
+function togDraft(id){
+  const p=posts.find(x=>x.id==id);if(!p)return;
+  const newStatus=p.status==='draft'?'published':'draft';
+  api('/posts?id='+id,'PUT',{status:newStatus}).then(()=>{loadBlogs().then(()=>renderAdmAll());}).catch(e=>toast(e.message||'Something went wrong','error'));
+}
+function saveTip(){
+  const ti=document.getElementById('t-title').value.trim();
+  if(!ti){toast('Please enter a tip title.','error');return;}
+  api('/tips','POST',{title:ti,description:document.getElementById('t-desc').value.trim()})
+    .then(()=>{document.getElementById('t-title').value='';document.getElementById('t-desc').value='';toast('Tip added! ✦','success');loadTips().then(()=>renderAdmTips());})
+    .catch(e=>toast(e.message||'Something went wrong','error'));
+}
+function delTip(id){
+  if(!confirm('Delete?'))return;
+  api('/tips?id='+id,'DELETE').then(()=>{loadTips().then(()=>renderAdmTips());}).catch(e=>toast(e.message||'Something went wrong','error'));
+}
+function saveFAQ(){
+  const q=document.getElementById('f-q').value.trim(),a=document.getElementById('f-a').value.trim();
+  if(!q||!a){toast('Question and answer required.','error');return;}
+  api('/faqs','POST',{question:q,answer:a})
+    .then(()=>{document.getElementById('f-q').value='';document.getElementById('f-a').value='';toast('FAQ saved!','success');loadFAQs().then(()=>renderAdmFAQs());})
+    .catch(e=>toast(e.message||'Something went wrong','error'));
+}
+function delFAQ(id){
+  if(!confirm('Delete?'))return;
+  api('/faqs?id='+id,'DELETE').then(()=>{loadFAQs().then(()=>renderAdmFAQs());}).catch(e=>toast(e.message||'Something went wrong','error'));
+}
+function saveTesti(){
+  const q=document.getElementById('r-q').value.trim(),n=document.getElementById('r-name').value.trim();
+  if(!q||!n){toast('Quote and name required.','error');return;}
+  api('/testimonials','POST',{quote:q,name:n,location:document.getElementById('r-loc').value.trim(),stars:parseInt(document.getElementById('r-stars').value)||5})
+    .then(()=>{['r-q','r-name','r-loc'].forEach(id=>document.getElementById(id).value='');toast('Review saved! ⭐','success');loadTestis().then(()=>renderAdmTestis());})
+    .catch(e=>toast(e.message||'Something went wrong','error'));
+}
+function delTesti(id){
+  if(!confirm('Delete?'))return;
+  api('/testimonials?id='+id,'DELETE').then(()=>{loadTestis().then(()=>renderAdmTestis());}).catch(e=>toast(e.message||'Something went wrong','error'));
+}
+function renderAdmBlogs(){
+  const el=document.getElementById('adm-blogs');
+  el.innerHTML=posts.length?posts.map(p=>`
+    <div class="ali"><div class="ali-body"><h4>${esc(p.title)}<span class="${p.status==='draft'?'dbadge':'lbadge'}">${p.status==='draft'?'Draft':'Live'}</span></h4><p>${esc(p.tag)} · ${fd(p.created_at)} · 👁 ${p.views||0}</p></div>
+    <div class="ali-acts"><button class="abtn abtn-sm abtn-sec" onclick="togDraft(${p.id})" title="Toggle status">${p.status==='draft'?'↑':'↓'}</button><button class="abtn abtn-sm abtn-danger" onclick="delPost(${p.id})">✕</button></div></div>`).join(''):'<p class="aempty">No posts yet.</p>';
+}
+function renderAdmTips(){document.getElementById('adm-tips').innerHTML=tips.length?tips.map(t=>`<div class="ali"><div class="ali-body"><h4>${esc(t.title)}</h4>${t.description?`<p>${esc(t.description)}</p>`:''}</div><div class="ali-acts"><button class="abtn abtn-sm abtn-danger" onclick="delTip(${t.id})">✕</button></div></div>`).join(''):'<p class="aempty">No tips.</p>';}
+function renderAdmFAQs(){document.getElementById('adm-faqs').innerHTML=faqs.length?faqs.map(f=>`<div class="ali"><div class="ali-body"><h4>${esc(f.question)}</h4><p>${esc(f.answer)}</p></div><div class="ali-acts"><button class="abtn abtn-sm abtn-danger" onclick="delFAQ(${f.id})">✕</button></div></div>`).join(''):'<p class="aempty">No FAQs.</p>';}
+function renderAdmTestis(){
+  document.getElementById('adm-testis').innerHTML=testis.length?testis.map(t=>`
+    <div class="ali">
+      <div class="ali-body">
+        <h4>${esc(t.name)} ${'★'.repeat(t.stars||5)}</h4>
+        <p>${esc(t.quote)}</p>
+        ${t.location?`<p style="color:var(--taupe);font-size:.68rem">${esc(t.location)}</p>`:''}
+      </div>
+      <div class="ali-acts">
+        <button class="abtn abtn-sm abtn-sec" onclick="editTesti(${t.id})">✎</button>
+        <button class="abtn abtn-sm abtn-danger" onclick="delTesti(${t.id})">✕</button>
+      </div>
+    </div>`).join(''):'<p class="aempty">No reviews yet.</p>';
+}
+
+function editTesti(id){
+  const t=testis.find(x=>x.id==id);if(!t)return;
+  // Switch to reviews tab and pre-fill the form for editing
+  document.getElementById('r-q').value=t.quote||'';
+  document.getElementById('r-name').value=t.name||'';
+  document.getElementById('r-loc').value=t.location||'';
+  document.getElementById('r-stars').value=t.stars||5;
+  // Change button to "Update"
+  const btn=document.querySelector('#as-reviews .abtn.abtn-sm');
+  btn.textContent='Update Review';
+  btn.onclick=()=>updateTesti(id);
+  // Scroll form into view
+  document.getElementById('r-q').scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+function updateTesti(id){
+  const q=document.getElementById('r-q').value.trim();
+  const n=document.getElementById('r-name').value.trim();
+  if(!q||!n){toast('Quote and name required.','error');return;}
+  api('/testimonials?id='+id,'PUT',{
+    quote:q,name:n,
+    location:document.getElementById('r-loc').value.trim(),
+    stars:parseInt(document.getElementById('r-stars').value)||5
+  }).then(()=>{
+    ['r-q','r-name','r-loc'].forEach(id=>document.getElementById(id).value='');
+    // Reset button back to Add
+    const btn=document.querySelector('#as-reviews .abtn.abtn-sm');
+    btn.textContent='Add Review';btn.onclick=saveTesti;
+    toast('Review saved! ⭐','success');
+    loadTestis().then(()=>renderAdmTestis());
+  }).catch(e=>toast(e.message||'Something went wrong','error'));
+}
+async function renderAdmOverview(){
+  let subs=0;
+  try{const r=await api('/newsletter');subs=r.count||0;}catch(e){}
+  document.getElementById('adm-stats').innerHTML=`
+    <div class="sc"><div class="n">${posts.length}</div><div class="l">Posts</div></div>
+    <div class="sc"><div class="n">${posts.filter(p=>p.status!=='draft').length}</div><div class="l">Published</div></div>
+    <div class="sc"><div class="n">${tips.length}</div><div class="l">Tips</div></div>
+    <div class="sc"><div class="n">${faqs.length}</div><div class="l">FAQs</div></div>
+    <div class="sc"><div class="n">${posts.reduce((a,p)=>a+(p.views||0),0)}</div><div class="l">Total Views</div></div>
+    <div class="sc"><div class="n">${subs}</div><div class="l">Subscribers</div></div>
+    <div class="sc"><div class="n">${moodLog.length}</div><div class="l">Mood Entries</div></div>
+    <div class="sc"><div class="n">${testis.length}</div><div class="l">Reviews</div></div>`;
+  document.getElementById('ov-recent').innerHTML=posts.slice(0,5).map(p=>`
+    <div class="ali"><div class="ali-body"><h4>${esc(p.title)}<span class="${p.status==='draft'?'dbadge':'lbadge'}">${p.status==='draft'?'Draft':'Live'}</span></h4><p>${fd(p.created_at)} · ${esc(p.tag)}</p></div></div>`).join('')||'<p class="aempty">No posts.</p>';
+}
+// ── Comment Moderation ───────────────────────────────────────
+async function loadAdmComments(status='pending'){
+  const el=document.getElementById('adm-comments-list');
+  el.innerHTML='<p class="aempty" style="font-style:italic">Loading…</p>';
+  try{
+    // Fetch all posts then load comments for each
+    const allComments=[];
+    for(const p of posts.slice(0,20)){
+      const cms=await api('/comments?post_id='+p.id+'&admin=1');
+      cms.filter(c=>c.status===status).forEach(c=>allComments.push({...c,postTitle:p.title}));
+    }
+    if(!allComments.length){el.innerHTML=`<p class="aempty">No ${status} comments.</p>`;return;}
+    el.innerHTML=allComments.map(c=>`
+      <div class="ali" id="cm-adm-${c.id}">
+        <div class="ali-body">
+          <h4>${esc(c.name)} <span class="cm-status cm-${c.status}">${c.status}</span></h4>
+          <p style="font-style:italic;color:var(--mid);margin:.25rem 0">"${esc(c.message)}"</p>
+          <p>On: <em>${esc(c.postTitle)}</em> · ${fd(c.created_at)}</p>
+        </div>
+        <div class="ali-acts" style="flex-direction:column;gap:.4rem">
+          ${status!=='approved'?`<button class="abtn abtn-sm" style="background:var(--sage);color:#fff;font-size:.6rem" onclick="moderateComment(${c.post_id},${c.id},'approved')">✓ Approve</button>`:''}
+          ${status!=='spam'?`<button class="abtn abtn-sm abtn-sec" style="font-size:.6rem" onclick="moderateComment(${c.post_id},${c.id},'spam')">🚫 Spam</button>`:''}
+          <button class="abtn abtn-sm abtn-danger" style="font-size:.6rem" onclick="deleteComment(${c.post_id},${c.id})">✕</button>
+        </div>
+      </div>`).join('');
+  }catch(e){el.innerHTML='<p class="aempty">Could not load comments.</p>';toast('Error loading comments','error');}
+}
+async function moderateComment(postId,commentId,status){
+  try{
+    await api('/comments','PUT',{post_id:postId,comment_id:commentId,status});
+    document.getElementById('cm-adm-'+commentId)?.remove();
+    toast(status==='approved'?'Comment approved! ✓':'Marked as spam','success');
+  }catch(e){toast('Could not update comment','error');}
+}
+async function deleteComment(postId,commentId){
+  if(!confirm('Delete this comment permanently?'))return;
+  try{
+    await api('/comments?post_id='+postId+'&comment_id='+commentId,'DELETE');
+    document.getElementById('cm-adm-'+commentId)?.remove();
+    toast('Comment deleted','success');
+  }catch(e){toast('Could not delete comment','error');}
+}
+
+// ── Analytics Dashboard ──────────────────────────────────────
+async function loadAnalytics(){
+  const el=document.getElementById('analytics-body');
+  el.innerHTML='<p class="aempty" style="font-style:italic">Loading analytics…</p>';
+  try{
+    const d=await api('/analytics');
+    const maxViews=d.topPosts[0]?.views||1;
+    el.innerHTML=`
+      <div class="stats-g" style="grid-template-columns:repeat(4,1fr)">
+        <div class="sc"><div class="n">${d.totalViews.toLocaleString()}</div><div class="l">Total Views</div></div>
+        <div class="sc"><div class="n">${d.totalSubscribers}</div><div class="l">Subscribers</div></div>
+        <div class="sc"><div class="n">${d.totalComments}</div><div class="l">Comments</div></div>
+        <div class="sc"><div class="n" style="color:var(--gold)">${d.pendingComments}</div><div class="l">Pending Review</div></div>
+        <div class="sc"><div class="n">${d.totalReactions}</div><div class="l">Reactions</div></div>
+        <div class="sc"><div class="n">${d.publishedPosts}</div><div class="l">Published</div></div>
+        <div class="sc"><div class="n" style="color:var(--light)">${d.draftPosts}</div><div class="l">Drafts</div></div>
+        <div class="sc"><div class="n">${Object.keys(d.tagCounts).length}</div><div class="l">Categories</div></div>
+      </div>
+      <hr class="adiv"/>
+      <p style="font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--light);margin-bottom:.5rem">Top Posts by Views</p>
+      <div class="bar-chart">
+        ${d.topPosts.map(p=>`
+          <div class="bar-wrap">
+            <div class="bar-val">${p.views}</div>
+            <div class="bar-fill" style="height:${Math.round((p.views/maxViews)*80)+4}px"></div>
+            <div class="bar-label">${esc(p.title.slice(0,18))}…</div>
+          </div>`).join('')}
+      </div>
+      <hr class="adiv"/>
+      <p style="font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--light);margin-bottom:.75rem">Posts by Category</p>
+      <div style="display:flex;flex-wrap:wrap;gap:.5rem">
+        ${Object.entries(d.tagCounts).map(([tag,count])=>`
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:.3rem .85rem;font-size:.72rem;color:var(--mocha)">
+            ${esc(tag)} <strong>${count}</strong>
+          </div>`).join('')}
+      </div>
+      ${d.recentSubscribers.length?`
+      <hr class="adiv"/>
+      <p style="font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--light);margin-bottom:.75rem">Recent Subscribers</p>
+      <div class="alist">
+        ${d.recentSubscribers.map(s=>`<div class="ali"><div class="ali-body"><h4>${esc(s.email)}</h4><p>${fd(s.created_at)}</p></div></div>`).join('')}
+      </div>`:''}
+    `;
+  }catch(e){el.innerHTML='<p class="aempty">Could not load analytics.</p>';toast('Analytics error','error');}
+}
+function changePW(){
+  const a=document.getElementById('pw1').value,b=document.getElementById('pw2').value;
+  if(!a||a.length<6){toast('Password must be at least 6 characters.','error');return;}
+  if(a!==b){toast('Passwords do not match.','error');return;}
+  localStorage.setItem('q_pw',a);
+  document.getElementById('pw1').value='';
+  document.getElementById('pw2').value='';
+  toast('Password updated successfully! ✓','success');
+}
+function exportData(){
+  const blob=new Blob([JSON.stringify({posts,tips,faqs,testis,moodLog,date:new Date().toISOString()},null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='qouwati-data.json';a.click();URL.revokeObjectURL(a.href);
+}
+async function doReset(){
+  if(!confirm('This will delete ALL content. Are you absolutely sure?'))return;
+  toast('Reset not available in production. Use the Netlify Blobs dashboard to clear data.','error',5000);
+}
+
+// ============================================================
+// PWA
+// ============================================================
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();pwaPrompt=e;
+  const b=document.getElementById('pwa-banner');
+  if(!localStorage.getItem('pwa-dismissed'))b.style.display='flex';
+});
+document.getElementById('pwa-install-btn').addEventListener('click',()=>{
+  if(pwaPrompt){pwaPrompt.prompt();pwaPrompt.userChoice.then(()=>{pwaPrompt=null;document.getElementById('pwa-banner').style.display='none';});}
+});
+function dismissPWA(){localStorage.setItem('pwa-dismissed','1');document.getElementById('pwa-banner').style.display='none';}
+window.addEventListener('appinstalled',()=>{document.getElementById('pwa-banner').style.display='none';});
+
+// OFFLINE
+window.addEventListener('online',()=>document.getElementById('offline-banner').style.display='none');
+window.addEventListener('offline',()=>document.getElementById('offline-banner').style.display='block');
+
+// ============================================================
+// REVEAL
+// ============================================================
+function observeRv(){
+  const ob=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');}),{threshold:.07,rootMargin:'0px 0px -25px 0px'});
+  document.querySelectorAll('.rv:not(.vis),.rl:not(.vis),.rr:not(.vis)').forEach(el=>ob.observe(el));
+}
+
+// ============================================================
+// UTILS
+// ============================================================
+function esc(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function fd(d){if(!d)return'';try{return new Date(d).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});}catch(e){return d;}}
+function ok(id){const e=document.getElementById(id);e.style.display='block';setTimeout(()=>e.style.display='none',3000);}
+function counter(el,t){let c=0;const s=Math.ceil(t/30);const i=setInterval(()=>{c=Math.min(c+s,t);el.textContent=c;if(c>=t)clearInterval(i);},50);}
+function toggleMob(){document.getElementById('mob-nav').classList.toggle('open');}
+function closeMob(){document.getElementById('mob-nav').classList.remove('open');}
+
+// ============================================================
+// INIT
+// ============================================================
+document.addEventListener('DOMContentLoaded', async ()=>{
+  loadPrefs();
+  applyI18(lang);
+  autoAffirmation();
+  renderGratDate();
+  renderGratHistory();
+  renderMoodTracker();
+  renderResources();
+  observeRv();
+  // Hero stagger
+  setTimeout(()=>{document.querySelectorAll('#hero .rv').forEach((el,i)=>setTimeout(()=>el.classList.add('vis'),i*160));},350);
+  // Load all data from MySQL via API
+  await Promise.all([
+    loadBlogs(),
+    loadTips(),
+    loadFAQs(),
+    loadTestis(),
+  ]);
+  // Animate counters after data loads
+  const ps=document.getElementById('stat-posts');
+  const ts=document.getElementById('stat-tips');
+  if(ps)counter(ps,posts.length);
+  if(ts)counter(ts,tips.length);
+  // Register SW
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('./sw.js').catch(()=>{});
+  }
+  // Secret admin shortcut: Ctrl + Shift + A
+  document.addEventListener('keydown', e => {
+    if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+      e.preventDefault();
+      openAdmin();
+    }
+  });
+});
+</script>
+</body>
+</html>
