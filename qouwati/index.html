@@ -1294,7 +1294,11 @@ footer{background:#130f0b;padding:4rem 0 2rem}
         </div>
         <div class="afg"><label class="al">Image URL (optional)</label><input class="ai" id="b-img" type="url" placeholder="https://…"/></div>
         <div class="afg"><label class="al">Cover Emoji</label><input class="ai" id="b-emoji" type="text" placeholder="🌿" maxlength="4" value="🌿"/></div>
-        <div class="abtn-row"><button class="abtn abtn-sm" onclick="savePost()">Publish</button><button class="abtn abtn-sm abtn-sec" onclick="clearPost()">Clear</button></div>
+        <div class="abtn-row">
+          <button id="b-save-btn" class="abtn abtn-sm" onclick="savePost()">Publish</button>
+          <button class="abtn abtn-sm abtn-sec" onclick="clearPost()">Clear</button>
+          <button id="b-cancel-btn" class="abtn abtn-sm abtn-sec" onclick="clearPost()" style="display:none">✕ Cancel Edit</button>
+        </div>
         <hr class="adiv"/>
         <p style="font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--light);margin-bottom:.7rem">All Posts</p>
         <div class="alist" id="adm-blogs"></div>
@@ -1305,7 +1309,10 @@ footer{background:#130f0b;padding:4rem 0 2rem}
         <div class="a-ok" id="t-ok">✓ Tip saved!</div>
         <div class="afg"><label class="al">Tip Headline *</label><input class="ai" id="t-title" type="text" placeholder="e.g. You deserve rest…"/></div>
         <div class="afg"><label class="al">Description (optional)</label><textarea class="ata" id="t-desc" placeholder="Expand on this thought…" style="min-height:75px"></textarea></div>
-        <button class="abtn abtn-sm" onclick="saveTip()">Add Tip</button>
+        <div class="abtn-row">
+          <button id="t-save-btn" class="abtn abtn-sm" onclick="saveTip()">Add Tip</button>
+          <button id="t-cancel-btn" class="abtn abtn-sm abtn-sec" onclick="clearTip()" style="display:none">✕ Cancel Edit</button>
+        </div>
         <hr class="adiv"/><div class="alist" id="adm-tips"></div>
       </div>
       <!-- FAQs -->
@@ -1314,7 +1321,10 @@ footer{background:#130f0b;padding:4rem 0 2rem}
         <div class="a-ok" id="f-ok">✓ FAQ saved!</div>
         <div class="afg"><label class="al">Question *</label><input class="ai" id="f-q" type="text" placeholder="e.g. How can I manage anxiety?"/></div>
         <div class="afg"><label class="al">Answer *</label><textarea class="ata" id="f-a" placeholder="Your answer…" style="min-height:100px"></textarea></div>
-        <button class="abtn abtn-sm" onclick="saveFAQ()">Add FAQ</button>
+        <div class="abtn-row">
+          <button id="f-save-btn" class="abtn abtn-sm" onclick="saveFAQ()">Add FAQ</button>
+          <button id="f-cancel-btn" class="abtn abtn-sm abtn-sec" onclick="clearFAQ()" style="display:none">✕ Cancel Edit</button>
+        </div>
         <hr class="adiv"/><div class="alist" id="adm-faqs"></div>
       </div>
       <!-- Reviews -->
@@ -2072,46 +2082,138 @@ function aTab(n,btn){
   if(n==='analytics') loadAnalytics();
   if(n==='comments') loadAdmComments('pending');
 }
+// ── track which post/tip/faq is being edited ─────────────────
+let editingPostId=null, editingTipId=null, editingFAQId=null;
+
+// ── POSTS ─────────────────────────────────────────────────────
 function savePost(){
   const ti=document.getElementById('b-title').value.trim();
   const ex=document.getElementById('b-exc').value.trim();
   const bo=document.getElementById('b-body').value.trim();
   if(!ti||!ex||!bo){toast('Title, excerpt and content required.','error');return;}
-  api('/posts','POST',{title:ti,excerpt:ex,body:bo,tag:document.getElementById('b-tag').value,status:document.getElementById('b-status').value,image_url:document.getElementById('b-img').value.trim()||null,emoji:document.getElementById('b-emoji').value.trim()||'🌿'})
-    .then(()=>{clearPost();toast('Post saved! 🌿','success');loadBlogs().then(()=>renderAdmAll());})
-    .catch(e=>toast(e.message||'Something went wrong','error'));
+  const payload={title:ti,excerpt:ex,body:bo,tag:document.getElementById('b-tag').value,status:document.getElementById('b-status').value,image_url:document.getElementById('b-img').value.trim()||null,emoji:document.getElementById('b-emoji').value.trim()||'🌿'};
+  if(editingPostId){
+    // UPDATE existing post
+    api('/posts?id='+editingPostId,'PUT',payload)
+      .then(()=>{clearPost();toast('Post updated! ✓','success');loadBlogs().then(()=>renderAdmAll());})
+      .catch(e=>toast(e.message||'Something went wrong','error'));
+  } else {
+    // CREATE new post
+    api('/posts','POST',payload)
+      .then(()=>{clearPost();toast('Post published! 🌿','success');loadBlogs().then(()=>renderAdmAll());})
+      .catch(e=>toast(e.message||'Something went wrong','error'));
+  }
 }
-function clearPost(){['b-title','b-exc','b-body','b-img'].forEach(id=>document.getElementById(id).value='');document.getElementById('b-emoji').value='🌿';}
+function editPost(id){
+  const p=posts.find(x=>x.id==id);if(!p)return;
+  editingPostId=id;
+  // Fill the form
+  document.getElementById('b-title').value=p.title||'';
+  document.getElementById('b-exc').value=p.excerpt||'';
+  document.getElementById('b-body').value=p.body||'';
+  document.getElementById('b-tag').value=p.tag||'Reflection';
+  document.getElementById('b-status').value=p.status||'published';
+  document.getElementById('b-img').value=p.image_url||'';
+  document.getElementById('b-emoji').value=p.emoji||'🌿';
+  // Update button label
+  const btn=document.getElementById('b-save-btn');
+  btn.textContent='Update Post ✓';
+  btn.style.background='var(--mocha)';
+  // Show cancel button
+  document.getElementById('b-cancel-btn').style.display='inline-flex';
+  // Scroll to form
+  document.getElementById('b-title').scrollIntoView({behavior:'smooth',block:'center'});
+  toast('Editing: '+p.title.slice(0,30)+'…','info');
+}
+function clearPost(){
+  editingPostId=null;
+  ['b-title','b-exc','b-body','b-img'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('b-emoji').value='🌿';
+  document.getElementById('b-status').value='published';
+  const btn=document.getElementById('b-save-btn');
+  btn.textContent='Publish';
+  btn.style.background='';
+  document.getElementById('b-cancel-btn').style.display='none';
+}
 function delPost(id){
-  if(!confirm('Delete this post?'))return;
-  api('/posts?id='+id,'DELETE').then(()=>{loadBlogs().then(()=>renderAdmAll());}).catch(e=>toast(e.message||'Something went wrong','error'));
+  if(!confirm('Delete this post permanently?'))return;
+  api('/posts?id='+id,'DELETE').then(()=>{loadBlogs().then(()=>renderAdmAll());toast('Post deleted','success');}).catch(e=>toast(e.message||'Something went wrong','error'));
 }
 function togDraft(id){
   const p=posts.find(x=>x.id==id);if(!p)return;
   const newStatus=p.status==='draft'?'published':'draft';
-  api('/posts?id='+id,'PUT',{status:newStatus}).then(()=>{loadBlogs().then(()=>renderAdmAll());}).catch(e=>toast(e.message||'Something went wrong','error'));
+  api('/posts?id='+id,'PUT',{status:newStatus})
+    .then(()=>{loadBlogs().then(()=>renderAdmAll());toast(newStatus==='published'?'Post published! ✓':'Moved to draft','success');})
+    .catch(e=>toast(e.message||'Something went wrong','error'));
 }
+
+// ── TIPS ─────────────────────────────────────────────────────
 function saveTip(){
   const ti=document.getElementById('t-title').value.trim();
   if(!ti){toast('Please enter a tip title.','error');return;}
-  api('/tips','POST',{title:ti,description:document.getElementById('t-desc').value.trim()})
-    .then(()=>{document.getElementById('t-title').value='';document.getElementById('t-desc').value='';toast('Tip added! ✦','success');loadTips().then(()=>renderAdmTips());})
-    .catch(e=>toast(e.message||'Something went wrong','error'));
+  const payload={title:ti,description:document.getElementById('t-desc').value.trim()};
+  if(editingTipId){
+    api('/tips?id='+editingTipId,'PUT',payload)
+      .then(()=>{clearTip();toast('Tip updated! ✓','success');loadTips().then(()=>renderAdmTips());})
+      .catch(e=>toast(e.message||'Something went wrong','error'));
+  } else {
+    api('/tips','POST',payload)
+      .then(()=>{clearTip();toast('Tip added! ✦','success');loadTips().then(()=>renderAdmTips());})
+      .catch(e=>toast(e.message||'Something went wrong','error'));
+  }
+}
+function editTip(id){
+  const t=tips.find(x=>x.id==id);if(!t)return;
+  editingTipId=id;
+  document.getElementById('t-title').value=t.title||'';
+  document.getElementById('t-desc').value=t.description||'';
+  const btn=document.getElementById('t-save-btn');
+  btn.textContent='Update Tip ✓';btn.style.background='var(--mocha)';
+  document.getElementById('t-cancel-btn').style.display='inline-flex';
+  document.getElementById('t-title').scrollIntoView({behavior:'smooth',block:'center'});
+  toast('Editing tip…','info');
+}
+function clearTip(){
+  editingTipId=null;
+  document.getElementById('t-title').value='';document.getElementById('t-desc').value='';
+  const btn=document.getElementById('t-save-btn');btn.textContent='Add Tip';btn.style.background='';
+  document.getElementById('t-cancel-btn').style.display='none';
 }
 function delTip(id){
-  if(!confirm('Delete?'))return;
-  api('/tips?id='+id,'DELETE').then(()=>{loadTips().then(()=>renderAdmTips());}).catch(e=>toast(e.message||'Something went wrong','error'));
+  if(!confirm('Delete this tip?'))return;
+  api('/tips?id='+id,'DELETE').then(()=>{loadTips().then(()=>renderAdmTips());toast('Tip deleted','success');}).catch(e=>toast(e.message||'Something went wrong','error'));
 }
+
+// ── FAQs ─────────────────────────────────────────────────────
 function saveFAQ(){
   const q=document.getElementById('f-q').value.trim(),a=document.getElementById('f-a').value.trim();
   if(!q||!a){toast('Question and answer required.','error');return;}
-  api('/faqs','POST',{question:q,answer:a})
-    .then(()=>{document.getElementById('f-q').value='';document.getElementById('f-a').value='';toast('FAQ saved!','success');loadFAQs().then(()=>renderAdmFAQs());})
-    .catch(e=>toast(e.message||'Something went wrong','error'));
+  if(editingFAQId){
+    api('/faqs?id='+editingFAQId,'PUT',{question:q,answer:a})
+      .then(()=>{clearFAQ();toast('FAQ updated! ✓','success');loadFAQs().then(()=>renderAdmFAQs());})
+      .catch(e=>toast(e.message||'Something went wrong','error'));
+  } else {
+    api('/faqs','POST',{question:q,answer:a})
+      .then(()=>{clearFAQ();toast('FAQ saved!','success');loadFAQs().then(()=>renderAdmFAQs());})
+      .catch(e=>toast(e.message||'Something went wrong','error'));
+  }
 }
-function delFAQ(id){
-  if(!confirm('Delete?'))return;
-  api('/faqs?id='+id,'DELETE').then(()=>{loadFAQs().then(()=>renderAdmFAQs());}).catch(e=>toast(e.message||'Something went wrong','error'));
+function editFAQ(id){
+  const f=faqs.find(x=>x.id==id);if(!f)return;
+  editingFAQId=id;
+  document.getElementById('f-q').value=f.question||'';
+  document.getElementById('f-a').value=f.answer||'';
+  const btn=document.getElementById('f-save-btn');
+  btn.textContent='Update FAQ ✓';btn.style.background='var(--mocha)';
+  document.getElementById('f-cancel-btn').style.display='inline-flex';
+  document.getElementById('f-q').scrollIntoView({behavior:'smooth',block:'center'});
+  toast('Editing FAQ…','info');
+}
+function clearFAQ(){
+  editingFAQId=null;
+  document.getElementById('f-q').value='';document.getElementById('f-a').value='';
+  const btn=document.getElementById('f-save-btn');btn.textContent='Add FAQ';btn.style.background='';
+  document.getElementById('f-cancel-btn').style.display='none';
 }
 function saveTesti(){
   const q=document.getElementById('r-q').value.trim(),n=document.getElementById('r-name').value.trim();
@@ -2127,11 +2229,46 @@ function delTesti(id){
 function renderAdmBlogs(){
   const el=document.getElementById('adm-blogs');
   el.innerHTML=posts.length?posts.map(p=>`
-    <div class="ali"><div class="ali-body"><h4>${esc(p.title)}<span class="${p.status==='draft'?'dbadge':'lbadge'}">${p.status==='draft'?'Draft':'Live'}</span></h4><p>${esc(p.tag)} · ${fd(p.created_at)} · 👁 ${p.views||0}</p></div>
-    <div class="ali-acts"><button class="abtn abtn-sm abtn-sec" onclick="togDraft(${p.id})" title="Toggle status">${p.status==='draft'?'↑':'↓'}</button><button class="abtn abtn-sm abtn-danger" onclick="delPost(${p.id})">✕</button></div></div>`).join(''):'<p class="aempty">No posts yet.</p>';
+    <div class="ali">
+      <div class="ali-body">
+        <h4>${esc(p.title)}<span class="${p.status==='draft'?'dbadge':'lbadge'}">${p.status==='draft'?'Draft':'Live'}</span></h4>
+        <p>${esc(p.tag||'')} · ${fd(p.created_at)} · 👁 ${p.views||0}</p>
+      </div>
+      <div class="ali-acts">
+        <button class="abtn abtn-sm abtn-sec" onclick="editPost(${p.id})" title="Edit">✎</button>
+        <button class="abtn abtn-sm abtn-sec" onclick="togDraft(${p.id})" title="${p.status==='draft'?'Publish':'Unpublish'}">${p.status==='draft'?'↑':'↓'}</button>
+        <button class="abtn abtn-sm abtn-danger" onclick="delPost(${p.id})" title="Delete">✕</button>
+      </div>
+    </div>`).join(''):'<p class="aempty">No posts yet.</p>';
 }
-function renderAdmTips(){document.getElementById('adm-tips').innerHTML=tips.length?tips.map(t=>`<div class="ali"><div class="ali-body"><h4>${esc(t.title)}</h4>${t.description?`<p>${esc(t.description)}</p>`:''}</div><div class="ali-acts"><button class="abtn abtn-sm abtn-danger" onclick="delTip(${t.id})">✕</button></div></div>`).join(''):'<p class="aempty">No tips.</p>';}
-function renderAdmFAQs(){document.getElementById('adm-faqs').innerHTML=faqs.length?faqs.map(f=>`<div class="ali"><div class="ali-body"><h4>${esc(f.question)}</h4><p>${esc(f.answer)}</p></div><div class="ali-acts"><button class="abtn abtn-sm abtn-danger" onclick="delFAQ(${f.id})">✕</button></div></div>`).join(''):'<p class="aempty">No FAQs.</p>';}
+function renderAdmTips(){
+  const el=document.getElementById('adm-tips');
+  el.innerHTML=tips.length?tips.map(t=>`
+    <div class="ali">
+      <div class="ali-body">
+        <h4>${esc(t.title)}</h4>
+        ${t.description?`<p>${esc(t.description)}</p>`:''}
+      </div>
+      <div class="ali-acts">
+        <button class="abtn abtn-sm abtn-sec" onclick="editTip(${t.id})" title="Edit">✎</button>
+        <button class="abtn abtn-sm abtn-danger" onclick="delTip(${t.id})" title="Delete">✕</button>
+      </div>
+    </div>`).join(''):'<p class="aempty">No tips.</p>';
+}
+function renderAdmFAQs(){
+  const el=document.getElementById('adm-faqs');
+  el.innerHTML=faqs.length?faqs.map(f=>`
+    <div class="ali">
+      <div class="ali-body">
+        <h4>${esc(f.question)}</h4>
+        <p>${esc(f.answer)}</p>
+      </div>
+      <div class="ali-acts">
+        <button class="abtn abtn-sm abtn-sec" onclick="editFAQ(${f.id})" title="Edit">✎</button>
+        <button class="abtn abtn-sm abtn-danger" onclick="delFAQ(${f.id})" title="Delete">✕</button>
+      </div>
+    </div>`).join(''):'<p class="aempty">No FAQs.</p>';
+}
 function renderAdmTestis(){
   document.getElementById('adm-testis').innerHTML=testis.length?testis.map(t=>`
     <div class="ali">
