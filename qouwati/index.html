@@ -2087,21 +2087,41 @@ let editingPostId=null, editingTipId=null, editingFAQId=null;
 
 // ── POSTS ─────────────────────────────────────────────────────
 function savePost(){
-  const ti=document.getElementById('b-title').value.trim();
-  const ex=document.getElementById('b-exc').value.trim();
-  const bo=document.getElementById('b-body').value.trim();
-  if(!ti||!ex||!bo){toast('Title, excerpt and content required.','error');return;}
-  const payload={title:ti,excerpt:ex,body:bo,tag:document.getElementById('b-tag').value,status:document.getElementById('b-status').value,image_url:document.getElementById('b-img').value.trim()||null,emoji:document.getElementById('b-emoji').value.trim()||'🌿'};
+  const titleEl = document.getElementById('b-title');
+  const excEl   = document.getElementById('b-exc');
+  const bodyEl  = document.getElementById('b-body');
+
+  if(!titleEl || !excEl || !bodyEl){
+    toast('Form not found — please close and reopen the admin panel.','error');
+    return;
+  }
+
+  const ti = titleEl.value.trim();
+  const ex = excEl.value.trim();
+  const bo = bodyEl.value.trim();
+
+  if(!ti){ toast('Please enter a title.','error'); titleEl.focus(); return; }
+  if(!ex){ toast('Please enter an excerpt.','error'); excEl.focus(); return; }
+  if(!bo){ toast('Please enter the full content.','error'); bodyEl.focus(); return; }
+
+  const payload = {
+    title:     ti,
+    excerpt:   ex,
+    body:      bo,
+    tag:       document.getElementById('b-tag')?.value    || 'Reflection',
+    status:    document.getElementById('b-status')?.value || 'published',
+    image_url: document.getElementById('b-img')?.value.trim() || null,
+    emoji:     document.getElementById('b-emoji')?.value.trim() || '🌿'
+  };
+
   if(editingPostId){
-    // UPDATE existing post
     api('/posts?id='+editingPostId,'PUT',payload)
-      .then(()=>{clearPost();toast('Post updated! ✓','success');loadBlogs().then(()=>renderAdmAll());})
-      .catch(e=>toast(e.message||'Something went wrong','error'));
+      .then(()=>{ clearPost(); toast('Post updated! ✓','success'); loadBlogs().then(()=>renderAdmAll()); })
+      .catch(e=>toast(e.message||'Server error — check Netlify function logs','error'));
   } else {
-    // CREATE new post
     api('/posts','POST',payload)
-      .then(()=>{clearPost();toast('Post published! 🌿','success');loadBlogs().then(()=>renderAdmAll());})
-      .catch(e=>toast(e.message||'Something went wrong','error'));
+      .then(()=>{ clearPost(); toast('Post published! 🌿','success'); loadBlogs().then(()=>renderAdmAll()); })
+      .catch(e=>toast(e.message||'Server error — check Netlify function logs','error'));
   }
 }
 function editPost(id){
@@ -2149,17 +2169,20 @@ function togDraft(id){
 
 // ── TIPS ─────────────────────────────────────────────────────
 function saveTip(){
-  const ti=document.getElementById('t-title').value.trim();
-  if(!ti){toast('Please enter a tip title.','error');return;}
-  const payload={title:ti,description:document.getElementById('t-desc').value.trim()};
+  const titleEl = document.getElementById('t-title');
+  const descEl  = document.getElementById('t-desc');
+  if(!titleEl){ toast('Form not found — reopen admin panel.','error'); return; }
+  const ti = titleEl.value.trim();
+  if(!ti){ toast('Please enter a tip title.','error'); titleEl.focus(); return; }
+  const payload = { title: ti, description: descEl?.value.trim() || '' };
   if(editingTipId){
     api('/tips?id='+editingTipId,'PUT',payload)
-      .then(()=>{clearTip();toast('Tip updated! ✓','success');loadTips().then(()=>renderAdmTips());})
-      .catch(e=>toast(e.message||'Something went wrong','error'));
+      .then(()=>{ clearTip(); toast('Tip updated! ✓','success'); loadTips().then(()=>renderAdmTips()); })
+      .catch(e=>toast(e.message||'Server error','error'));
   } else {
     api('/tips','POST',payload)
-      .then(()=>{clearTip();toast('Tip added! ✦','success');loadTips().then(()=>renderAdmTips());})
-      .catch(e=>toast(e.message||'Something went wrong','error'));
+      .then(()=>{ clearTip(); toast('Tip added! ✦','success'); loadTips().then(()=>renderAdmTips()); })
+      .catch(e=>toast(e.message||'Server error','error'));
   }
 }
 function editTip(id){
@@ -2186,16 +2209,21 @@ function delTip(id){
 
 // ── FAQs ─────────────────────────────────────────────────────
 function saveFAQ(){
-  const q=document.getElementById('f-q').value.trim(),a=document.getElementById('f-a').value.trim();
-  if(!q||!a){toast('Question and answer required.','error');return;}
+  const qEl = document.getElementById('f-q');
+  const aEl = document.getElementById('f-a');
+  if(!qEl || !aEl){ toast('Form not found — reopen admin panel.','error'); return; }
+  const q = qEl.value.trim();
+  const a = aEl.value.trim();
+  if(!q){ toast('Please enter a question.','error'); qEl.focus(); return; }
+  if(!a){ toast('Please enter an answer.','error'); aEl.focus(); return; }
   if(editingFAQId){
     api('/faqs?id='+editingFAQId,'PUT',{question:q,answer:a})
-      .then(()=>{clearFAQ();toast('FAQ updated! ✓','success');loadFAQs().then(()=>renderAdmFAQs());})
-      .catch(e=>toast(e.message||'Something went wrong','error'));
+      .then(()=>{ clearFAQ(); toast('FAQ updated! ✓','success'); loadFAQs().then(()=>renderAdmFAQs()); })
+      .catch(e=>toast(e.message||'Server error','error'));
   } else {
     api('/faqs','POST',{question:q,answer:a})
-      .then(()=>{clearFAQ();toast('FAQ saved!','success');loadFAQs().then(()=>renderAdmFAQs());})
-      .catch(e=>toast(e.message||'Something went wrong','error'));
+      .then(()=>{ clearFAQ(); toast('FAQ saved!','success'); loadFAQs().then(()=>renderAdmFAQs()); })
+      .catch(e=>toast(e.message||'Server error','error'));
   }
 }
 function editFAQ(id){
