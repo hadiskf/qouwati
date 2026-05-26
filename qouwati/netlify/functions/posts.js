@@ -21,9 +21,11 @@ exports.handler = async (event) => {
       if (qs?.id) {
         const post = posts.find(p => p.id == qs.id);
         if (!post) return err('Not found', 404);
-        // Increment view count
-        post.views = (post.views || 0) + 1;
-        await setCollection('posts', posts);
+        // Only increment view count for public views, not admin previews
+        if (qs?.preview !== '1') {
+          post.views = (post.views || 0) + 1;
+          await setCollection('posts', posts);
+        }
         return ok(post);
       }
       // Filter by status (default: published only)
