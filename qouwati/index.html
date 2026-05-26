@@ -2324,21 +2324,28 @@ function delTesti(id){
 }
 function renderAdmBlogs(){
   const el=document.getElementById('adm-blogs');
-  el.innerHTML=adminPosts.length?adminPosts.map(p=>`
+  if(!el)return;
+  const src = adminPosts.length ? adminPosts : posts;
+  el.innerHTML=src.length?src.map(p=>`
     <div class="ali">
       <div class="ali-body">
         <h4>${esc(p.title)}<span class="${p.status==='draft'?'dbadge':'lbadge'}">${p.status==='draft'?'Draft':'Live'}</span></h4>
         <p>${esc(p.tag||'')} · ${fd(p.created_at)} · 👁 ${p.views||0}</p>
       </div>
       <div class="ali-acts">
-        <button class="abtn abtn-sm abtn-sec" onclick="editPost(${p.id})" title="Edit">✎</button>
-        <button class="abtn abtn-sm abtn-sec" onclick="togDraft(${p.id})" title="${p.status==='draft'?'Publish':'Unpublish'}">${p.status==='draft'?'↑':'↓'}</button>
-        <button class="abtn abtn-sm abtn-danger" onclick="delPost(${p.id})" title="Delete">✕</button>
+        <button class="abtn abtn-sm abtn-sec adm-edit-post" data-id="${p.id}">✎ Edit</button>
+        <button class="abtn abtn-sm abtn-sec adm-tog-post" data-id="${p.id}" data-status="${p.status}">${p.status==='draft'?'↑ Publish':'↓ Draft'}</button>
+        <button class="abtn abtn-sm abtn-danger adm-del-post" data-id="${p.id}">✕</button>
       </div>
-    </div>`).join(''):'<p class="aempty">No posts yet.</p>';
+    </div>`).join(''):'<p class="aempty">No posts yet. Add one from the form above.</p>';
+  // Attach events
+  el.querySelectorAll('.adm-edit-post').forEach(btn=>btn.addEventListener('click',()=>editPost(btn.dataset.id)));
+  el.querySelectorAll('.adm-tog-post').forEach(btn=>btn.addEventListener('click',()=>togDraft(btn.dataset.id)));
+  el.querySelectorAll('.adm-del-post').forEach(btn=>btn.addEventListener('click',()=>delPost(btn.dataset.id)));
 }
 function renderAdmTips(){
   const el=document.getElementById('adm-tips');
+  if(!el)return;
   el.innerHTML=tips.length?tips.map(t=>`
     <div class="ali">
       <div class="ali-body">
@@ -2346,13 +2353,16 @@ function renderAdmTips(){
         ${t.description?`<p>${esc(t.description)}</p>`:''}
       </div>
       <div class="ali-acts">
-        <button class="abtn abtn-sm abtn-sec" onclick="editTip(${t.id})" title="Edit">✎</button>
-        <button class="abtn abtn-sm abtn-danger" onclick="delTip(${t.id})" title="Delete">✕</button>
+        <button class="abtn abtn-sm abtn-sec adm-edit-tip" data-id="${t.id}">✎ Edit</button>
+        <button class="abtn abtn-sm abtn-danger adm-del-tip" data-id="${t.id}">✕</button>
       </div>
-    </div>`).join(''):'<p class="aempty">No tips.</p>';
+    </div>`).join(''):'<p class="aempty">No tips yet.</p>';
+  el.querySelectorAll('.adm-edit-tip').forEach(btn=>btn.addEventListener('click',()=>editTip(btn.dataset.id)));
+  el.querySelectorAll('.adm-del-tip').forEach(btn=>btn.addEventListener('click',()=>delTip(btn.dataset.id)));
 }
 function renderAdmFAQs(){
   const el=document.getElementById('adm-faqs');
+  if(!el)return;
   el.innerHTML=faqs.length?faqs.map(f=>`
     <div class="ali">
       <div class="ali-body">
@@ -2360,13 +2370,17 @@ function renderAdmFAQs(){
         <p>${esc(f.answer)}</p>
       </div>
       <div class="ali-acts">
-        <button class="abtn abtn-sm abtn-sec" onclick="editFAQ(${f.id})" title="Edit">✎</button>
-        <button class="abtn abtn-sm abtn-danger" onclick="delFAQ(${f.id})" title="Delete">✕</button>
+        <button class="abtn abtn-sm abtn-sec adm-edit-faq" data-id="${f.id}">✎ Edit</button>
+        <button class="abtn abtn-sm abtn-danger adm-del-faq" data-id="${f.id}">✕</button>
       </div>
-    </div>`).join(''):'<p class="aempty">No FAQs.</p>';
+    </div>`).join(''):'<p class="aempty">No FAQs yet.</p>';
+  el.querySelectorAll('.adm-edit-faq').forEach(btn=>btn.addEventListener('click',()=>editFAQ(btn.dataset.id)));
+  el.querySelectorAll('.adm-del-faq').forEach(btn=>btn.addEventListener('click',()=>delFAQ(btn.dataset.id)));
 }
 function renderAdmTestis(){
-  document.getElementById('adm-testis').innerHTML=testis.length?testis.map(t=>`
+  const el=document.getElementById('adm-testis');
+  if(!el)return;
+  el.innerHTML=testis.length?testis.map(t=>`
     <div class="ali">
       <div class="ali-body">
         <h4>${esc(t.name)} ${'★'.repeat(t.stars||5)}</h4>
@@ -2374,10 +2388,12 @@ function renderAdmTestis(){
         ${t.location?`<p style="color:var(--taupe);font-size:.68rem">${esc(t.location)}</p>`:''}
       </div>
       <div class="ali-acts">
-        <button class="abtn abtn-sm abtn-sec" onclick="editTesti(${t.id})">✎</button>
-        <button class="abtn abtn-sm abtn-danger" onclick="delTesti(${t.id})">✕</button>
+        <button class="abtn abtn-sm abtn-sec adm-edit-testi" data-id="${t.id}">✎ Edit</button>
+        <button class="abtn abtn-sm abtn-danger adm-del-testi" data-id="${t.id}">✕</button>
       </div>
     </div>`).join(''):'<p class="aempty">No reviews yet.</p>';
+  el.querySelectorAll('.adm-edit-testi').forEach(btn=>btn.addEventListener('click',()=>editTesti(btn.dataset.id)));
+  el.querySelectorAll('.adm-del-testi').forEach(btn=>btn.addEventListener('click',()=>delTesti(btn.dataset.id)));
 }
 
 function editTesti(id){
