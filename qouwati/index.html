@@ -1696,17 +1696,21 @@ async function loadTips(){
   renderTips();renderTicker();
 }
 function renderTips(){
-  const g=document.getElementById('tips-grid');
-  if(!tips.length){g.innerHTML='<p style="color:var(--light)">No tips yet.</p>';return;}
-  g.innerHTML=tips.map((t,i)=>`
-    <div class="tip-card rv d${(i%4)+1}">
-      <button class="tip-save ${favorites.has('tip-'+t.id)?'saved':''}" onclick="toggleFav('tip-'+${t.id},this)" title="Save">♥</button>
-      <div class="tip-num">0${i+1}</div>
-      <h3>${esc(t.title)}</h3>
-      ${t.description?`<p>${esc(t.description)}</p>`:''}
-    </div>`).join('');
-  observeRv();
-  document.getElementById('stat-tips').textContent=tips.length;
+  try{
+    const g=document.getElementById('tips-grid');
+    if(!g)return;
+    if(!tips.length){g.innerHTML='<p style="color:var(--light)">No tips yet.</p>';return;}
+    g.innerHTML=tips.map((t,i)=>`
+      <div class="tip-card rv d${(i%4)+1}">
+        <button class="tip-save ${favorites.has('tip-'+t.id)?'saved':''}" onclick="toggleFav('tip-'+${t.id},this)" title="Save">♥</button>
+        <div class="tip-num">0${i+1}</div>
+        <h3>${esc(t.title||'')}</h3>
+        ${t.description?`<p>${esc(t.description)}</p>`:''}
+      </div>`).join('');
+    observeRv();
+    const st=document.getElementById('stat-tips');
+    if(st)st.textContent=tips.length;
+  }catch(e){console.error('renderTips error:',e);}
 }
 function toggleFav(key,btn){
   if(favorites.has(key)){favorites.delete(key);btn.classList.remove('saved');}
@@ -1717,7 +1721,7 @@ function toggleFav(key,btn){
 // ============================================================
 // BLOGS
 // ============================================================
-function readTime(t){const w=(t||'').split(/\s+/).length;return Math.max(1,Math.ceil(w/200));}
+function readTime(t){const w=(t||'').trim().split(/\s+/).filter(Boolean).length;return Math.max(1,Math.ceil(w/200));}
 function filtered(){return filter==='All'?posts:posts.filter(p=>p.tag===filter);}
 async function loadBlogs(){
   setLoading('blog-grid','blog');
@@ -1732,21 +1736,27 @@ function renderFilters(){
 }
 function setFilter(c){filter=c;page=1;renderFilters();renderBlogs();}
 function renderBlogs(){
+  try{
   const fl=filtered(),shown=fl.slice(0,page*perPage);
   const g=document.getElementById('blog-grid');
-  if(!shown.length){g.innerHTML='<p style="color:var(--light);grid-column:1/-1">No posts here yet.</p>';document.getElementById('load-more-wrap').style.display='none';return;}
+  if(!g)return;
+  if(!shown.length){
+    g.innerHTML='<p style="color:var(--light);grid-column:1/-1;padding:2rem 0">No posts here yet.</p>';
+    document.getElementById('load-more-wrap').style.display='none';
+    return;
+  }
   g.innerHTML=shown.map((p,i)=>`
     <div class="blog-card rv d${(i%3)+1}${favorites.has('post-'+p.id)?' saved-post':''}">
       <div class="blog-img" onclick="openPost(${p.id})">
         ${p.image_url?`<img src="${esc(p.image_url)}" alt="${esc(p.title)}" onerror="this.parentElement.outerHTML='<div class=\\'blog-ph\\'>${esc(p.emoji||'🌿')}</div>'"/>`:`<div class="blog-ph">${esc(p.emoji||'🌿')}</div>`}
-        <span class="blog-tag">${esc(p.tag)}</span>
+        <span class="blog-tag">${esc(p.tag||'')}</span>
         <span class="blog-views">👁 ${p.views||0}</span>
-        <span class="reading-time">📖 ${readTime(p.body)} min</span>
+        <span class="reading-time">📖 ${readTime(p.body||p.excerpt||'')} min</span>
       </div>
       <div class="blog-body">
-        <div class="blog-meta"><span>Aya Abdo</span><span class="dot"></span><span>${fd(p.created_at)}</span><span class="dot"></span><span style="color:var(--taupe)">${esc(p.tag)}</span></div>
-        <h3 onclick="openPost(${p.id})">${esc(p.title)}</h3>
-        <p class="blog-exc">${esc(p.excerpt)}</p>
+        <div class="blog-meta"><span>Aya Abdo</span><span class="dot"></span><span>${fd(p.created_at||p.date||'')}</span><span class="dot"></span><span style="color:var(--taupe)">${esc(p.tag||'')}</span></div>
+        <h3 onclick="openPost(${p.id})">${esc(p.title||'')}</h3>
+        <p class="blog-exc">${esc(p.excerpt||p.exc||'')}</p>
         <div class="blog-foot">
           <span class="read-more" onclick="openPost(${p.id})">Read more <span>→</span></span>
           <div class="bc-actions">
@@ -1757,10 +1767,11 @@ function renderBlogs(){
         <div class="reactions" id="rxbar-${p.id}"></div>
       </div>
     </div>`).join('');
-  // Load reactions for visible posts async
   shown.forEach(p=>loadRxBar(p.id));
-  document.getElementById('load-more-wrap').style.display=fl.length>shown.length?'block':'none';
+  const lm=document.getElementById('load-more-wrap');
+  if(lm)lm.style.display=fl.length>shown.length?'block':'none';
   observeRv();
+  }catch(e){console.error('renderBlogs error:',e);}
 }
 function loadMore(){page++;renderBlogs();}
 async function loadRxBar(pid){
@@ -1997,20 +2008,24 @@ async function loadFAQs(){
   renderFAQ();
 }
 function renderFAQ(){
-  const el=document.getElementById('faq-grid');
-  if(!faqs.length){el.innerHTML='<p style="text-align:center;color:var(--light)">No FAQs yet.</p>';return;}
-  el.innerHTML=faqs.map((f,i)=>`
-    <div class="faq-item" id="fq-${f.id}">
-      <button class="faq-btn" onclick="tFAQ(${f.id})">
-        <div class="faq-q-inner"><span class="faq-n">${String(i+1).padStart(2,'0')}</span><span class="faq-title">${esc(f.question)}</span></div>
-        <div class="faq-ico">+</div>
-      </button>
-      <div class="faq-answer" id="fa-${f.id}"><div class="faq-ans-inner">${esc(f.answer)}</div></div>
-    </div>`).join('');
+  try{
+    const el=document.getElementById('faq-grid');
+    if(!el)return;
+    if(!faqs.length){el.innerHTML='<p style="text-align:center;color:var(--light)">No FAQs yet.</p>';return;}
+    el.innerHTML=faqs.map((f,i)=>`
+      <div class="faq-item" id="fq-${f.id}">
+        <button class="faq-btn" onclick="tFAQ(${f.id})">
+          <div class="faq-q-inner"><span class="faq-n">${String(i+1).padStart(2,'0')}</span><span class="faq-title">${esc(f.question||'')}</span></div>
+          <div class="faq-ico">+</div>
+        </button>
+        <div class="faq-answer" id="fa-${f.id}"><div class="faq-ans-inner">${esc(f.answer||'')}</div></div>
+      </div>`).join('');
+  }catch(e){console.error('renderFAQ error:',e);}
 }
 function tFAQ(id){
   const item=document.getElementById('fq-'+id);
   const ans=document.getElementById('fa-'+id);
+  if(!item||!ans)return;
   const open=item.classList.contains('open');
   document.querySelectorAll('.faq-item').forEach(el=>{el.classList.remove('open');const a=el.querySelector('.faq-answer');if(a)a.style.maxHeight='0';});
   if(!open){item.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';}
@@ -2024,19 +2039,22 @@ async function loadTestis(){
   renderTestis();
 }
 function renderTestis(){
-  const g=document.getElementById('testi-grid');
-  if(!testis.length){g.innerHTML='<p>No testimonials yet.</p>';return;}
-  g.innerHTML=testis.map((t,i)=>`
-    <div class="testi-card rv d${(i%3)+1}">
-      <div class="testi-q">"</div>
-      <div class="testi-stars">${'<span class="star">★</span>'.repeat(t.stars||5)}</div>
-      <div class="testi-text">${esc(t.quote)}</div>
-      <div class="testi-author">
-        <div class="testi-av">${t.name.charAt(0)}</div>
-        <div><div class="testi-name">${esc(t.name)}</div><div class="testi-loc">${esc(t.location||'')}</div></div>
-      </div>
-    </div>`).join('');
-  observeRv();
+  try{
+    const g=document.getElementById('testi-grid');
+    if(!g)return;
+    if(!testis.length){g.innerHTML='<p>No testimonials yet.</p>';return;}
+    g.innerHTML=testis.map((t,i)=>`
+      <div class="testi-card rv d${(i%3)+1}">
+        <div class="testi-q">"</div>
+        <div class="testi-stars">${'<span class="star">★</span>'.repeat(t.stars||5)}</div>
+        <div class="testi-text">${esc(t.quote||'')}</div>
+        <div class="testi-author">
+          <div class="testi-av">${(t.name||'?').charAt(0)}</div>
+          <div><div class="testi-name">${esc(t.name||'')}</div><div class="testi-loc">${esc(t.location||'')}</div></div>
+        </div>
+      </div>`).join('');
+    observeRv();
+  }catch(e){console.error('renderTestis error:',e);}
 }
 
 // ============================================================
