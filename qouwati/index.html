@@ -1496,6 +1496,7 @@ let lang='en',theme='light',filter='All',page=1,perPage=6;
 let favorites=new Set(),moodLog=[];
 let affIdx=0,breathRunning=false,breathTimer=null;
 let currentPostId=null,pwaPrompt=null;
+let adminPosts=[];
 
 // ── Preferences stored locally (not in DB) ──────────────────
 function loadPrefs(){
