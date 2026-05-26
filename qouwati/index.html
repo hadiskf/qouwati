@@ -2082,23 +2082,17 @@ async function loadAllPostsForAdmin(){
 function showAdm(){
   document.getElementById('adm-login').style.display='none';
   document.getElementById('adm-content').style.display='block';
-  // Show loading state immediately
-  const statsEl = document.getElementById('adm-stats');
-  const recentEl = document.getElementById('ov-recent');
-  if(statsEl) statsEl.innerHTML='<p class="aempty" style="font-style:italic;grid-column:1/-1">Loading…</p>';
-  if(recentEl) recentEl.innerHTML='<p class="aempty" style="font-style:italic">Loading…</p>';
-  // Load everything
-  Promise.all([
-    loadAllPostsForAdmin(),
-    loadTips(),
-    loadFAQs(),
-    loadTestis()
-  ]).then(()=>{
-    renderAdmAll();
-  }).catch(e=>{
-    console.error('Admin load error:', e);
-    renderAdmAll(); // render with whatever we have
-  });
+  // Render immediately with whatever data we already have from the page load
+  renderAdmBlogs();
+  renderAdmTips();
+  renderAdmFAQs();
+  renderAdmTestis();
+  renderAdmOverview();
+  // Then silently refresh admin posts in background
+  loadAllPostsForAdmin().then(()=>{
+    renderAdmBlogs();
+    renderAdmOverview();
+  }).catch(()=>{});
 }
 function doLogout(){authed=false;document.getElementById('adm-content').style.display='none';document.getElementById('adm-login').style.display='block';closeAdmin();}
 function aTab(n,btn){
@@ -2311,6 +2305,12 @@ function clearFAQ(){
   const btn=document.getElementById('f-save-btn');btn.textContent='Add FAQ';btn.style.background='';
   document.getElementById('f-cancel-btn').style.display='none';
 }
+function delFAQ(id){
+  if(!confirm('Delete this FAQ?'))return;
+  api('/faqs?id='+id,'DELETE')
+    .then(()=>{ loadFAQs().then(()=>renderAdmFAQs()); toast('FAQ deleted','success'); })
+    .catch(e=>toast(e.message||'Server error','error'));
+}
 function saveTesti(){
   const q=document.getElementById('r-q').value.trim(),n=document.getElementById('r-name').value.trim();
   if(!q||!n){toast('Quote and name required.','error');return;}
@@ -2417,7 +2417,7 @@ function renderAdmAll(){
   renderAdmTips();
   renderAdmFAQs();
   renderAdmTestis();
-  renderAdmOverview();
+  renderAdmOverview().catch(()=>{});
 }
 async function renderAdmOverview(){
   let subs=0;
