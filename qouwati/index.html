@@ -2068,10 +2068,22 @@ function doLogin(){
   document.getElementById('adm-err').style.display=pw===storedPW?'none':'block';
   if(pw===storedPW){authed=true;document.getElementById('adm-pw').value='';showAdm();}
 }
+// Separate admin posts array that includes ALL statuses
+let adminPosts = [];
+
+async function loadAllPostsForAdmin(){
+  try{
+    adminPosts = await api('/posts?status=all');
+  } catch(e){
+    // fallback to public posts
+    adminPosts = [...posts];
+  }
+}
+
 function showAdm(){
   document.getElementById('adm-login').style.display='none';
   document.getElementById('adm-content').style.display='block';
-  renderAdmAll();
+  loadAllPostsForAdmin().then(()=>renderAdmAll());
 }
 function doLogout(){authed=false;document.getElementById('adm-content').style.display='none';document.getElementById('adm-login').style.display='block';closeAdmin();}
 function aTab(n,btn){
@@ -2116,18 +2128,26 @@ function savePost(){
 
   if(editingPostId){
     api('/posts?id='+editingPostId,'PUT',payload)
-      .then(()=>{ clearPost(); toast('Post updated! ✓','success'); loadBlogs().then(()=>renderAdmAll()); })
+      .then(()=>{
+        clearPost();
+        toast('Post updated! ✓','success');
+        loadAllPostsForAdmin().then(()=>{ renderAdmBlogs(); loadBlogs(); });
+      })
       .catch(e=>toast(e.message||'Server error — check Netlify function logs','error'));
   } else {
     api('/posts','POST',payload)
-      .then(()=>{ clearPost(); toast('Post published! 🌿','success'); loadBlogs().then(()=>renderAdmAll()); })
+      .then(()=>{
+        clearPost();
+        toast('Post published! 🌿','success');
+        loadAllPostsForAdmin().then(()=>{ renderAdmBlogs(); loadBlogs(); });
+      })
       .catch(e=>toast(e.message||'Server error — check Netlify function logs','error'));
   }
 }
 function editPost(id){
-  const p=posts.find(x=>x.id==id);if(!p)return;
+  const p=adminPosts.find(x=>x.id==id);
+  if(!p){ toast('Post not found — try refreshing the admin panel.','error'); return; }
   editingPostId=id;
-  // Fill the form
   document.getElementById('b-title').value=p.title||'';
   document.getElementById('b-exc').value=p.excerpt||'';
   document.getElementById('b-body').value=p.body||'';
@@ -2135,15 +2155,40 @@ function editPost(id){
   document.getElementById('b-status').value=p.status||'published';
   document.getElementById('b-img').value=p.image_url||'';
   document.getElementById('b-emoji').value=p.emoji||'🌿';
-  // Update button label
   const btn=document.getElementById('b-save-btn');
   btn.textContent='Update Post ✓';
   btn.style.background='var(--mocha)';
-  // Show cancel button
   document.getElementById('b-cancel-btn').style.display='inline-flex';
-  // Scroll to form
+  // Switch to blogs tab
+  document.querySelectorAll('.at').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.as').forEach(s=>s.classList.remove('active'));
+  document.querySelector('.at').classList.add('active');
+  document.getElementById('as-blogs').classList.add('active');
   document.getElementById('b-title').scrollIntoView({behavior:'smooth',block:'center'});
-  toast('Editing: '+p.title.slice(0,30)+'…','info');
+  toast('Editing: '+p.title.slice(0,40)+'…','info');
+}
+function delPost(id){
+  if(!confirm('Delete this post permanently?'))return;
+  api('/posts?id='+id,'DELETE')
+    .then(()=>{
+      adminPosts=adminPosts.filter(p=>p.id!=id);
+      renderAdmBlogs();
+      loadBlogs().then(()=>renderAdmOverview());
+      toast('Post deleted','success');
+    })
+    .catch(e=>toast(e.message||'Server error','error'));
+}
+function togDraft(id){
+  const p=adminPosts.find(x=>x.id==id);if(!p)return;
+  const newStatus=p.status==='draft'?'published':'draft';
+  api('/posts?id='+id,'PUT',{status:newStatus})
+    .then(()=>{
+      p.status=newStatus;
+      renderAdmBlogs();
+      loadBlogs();
+      toast(newStatus==='published'?'Post is now live! ✓':'Moved to drafts','success');
+    })
+    .catch(e=>toast(e.message||'Server error','error'));
 }
 function clearPost(){
   editingPostId=null;
@@ -2256,7 +2301,7 @@ function delTesti(id){
 }
 function renderAdmBlogs(){
   const el=document.getElementById('adm-blogs');
-  el.innerHTML=posts.length?posts.map(p=>`
+  el.innerHTML=adminPosts.length?adminPosts.map(p=>`
     <div class="ali">
       <div class="ali-body">
         <h4>${esc(p.title)}<span class="${p.status==='draft'?'dbadge':'lbadge'}">${p.status==='draft'?'Draft':'Live'}</span></h4>
@@ -2347,16 +2392,17 @@ function updateTesti(id){
 async function renderAdmOverview(){
   let subs=0;
   try{const r=await api('/newsletter');subs=r.count||0;}catch(e){}
+  const ap=adminPosts.length?adminPosts:posts;
   document.getElementById('adm-stats').innerHTML=`
-    <div class="sc"><div class="n">${posts.length}</div><div class="l">Posts</div></div>
-    <div class="sc"><div class="n">${posts.filter(p=>p.status!=='draft').length}</div><div class="l">Published</div></div>
+    <div class="sc"><div class="n">${ap.length}</div><div class="l">Posts</div></div>
+    <div class="sc"><div class="n">${ap.filter(p=>p.status!=='draft').length}</div><div class="l">Published</div></div>
     <div class="sc"><div class="n">${tips.length}</div><div class="l">Tips</div></div>
     <div class="sc"><div class="n">${faqs.length}</div><div class="l">FAQs</div></div>
-    <div class="sc"><div class="n">${posts.reduce((a,p)=>a+(p.views||0),0)}</div><div class="l">Total Views</div></div>
+    <div class="sc"><div class="n">${ap.reduce((a,p)=>a+(p.views||0),0)}</div><div class="l">Total Views</div></div>
     <div class="sc"><div class="n">${subs}</div><div class="l">Subscribers</div></div>
     <div class="sc"><div class="n">${moodLog.length}</div><div class="l">Mood Entries</div></div>
     <div class="sc"><div class="n">${testis.length}</div><div class="l">Reviews</div></div>`;
-  document.getElementById('ov-recent').innerHTML=posts.slice(0,5).map(p=>`
+  document.getElementById('ov-recent').innerHTML=ap.slice(0,5).map(p=>`
     <div class="ali"><div class="ali-body"><h4>${esc(p.title)}<span class="${p.status==='draft'?'dbadge':'lbadge'}">${p.status==='draft'?'Draft':'Live'}</span></h4><p>${fd(p.created_at)} · ${esc(p.tag)}</p></div></div>`).join('')||'<p class="aempty">No posts.</p>';
 }
 // ── Comment Moderation ───────────────────────────────────────
@@ -2366,7 +2412,8 @@ async function loadAdmComments(status='pending'){
   try{
     // Fetch all posts then load comments for each
     const allComments=[];
-    for(const p of posts.slice(0,20)){
+    const allPosts = adminPosts.length ? adminPosts : posts;
+    for(const p of allPosts.slice(0,20)){
       const cms=await api('/comments?post_id='+p.id+'&admin=1');
       cms.filter(c=>c.status===status).forEach(c=>allComments.push({...c,postTitle:p.title}));
     }
