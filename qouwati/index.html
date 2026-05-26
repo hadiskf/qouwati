@@ -2068,14 +2068,13 @@ function doLogin(){
   document.getElementById('adm-err').style.display=pw===storedPW?'none':'block';
   if(pw===storedPW){authed=true;document.getElementById('adm-pw').value='';showAdm();}
 }
-// Separate admin posts array that includes ALL statuses
-let adminPosts = [];
-
 async function loadAllPostsForAdmin(){
   try{
-    adminPosts = await api('/posts?status=all');
+    const result = await api('/posts?status=all');
+    adminPosts = Array.isArray(result) ? result : [];
   } catch(e){
-    // fallback to public posts
+    console.error('loadAllPostsForAdmin failed:', e);
+    // Fall back to public posts array
     adminPosts = [...posts];
   }
 }
@@ -2083,7 +2082,23 @@ async function loadAllPostsForAdmin(){
 function showAdm(){
   document.getElementById('adm-login').style.display='none';
   document.getElementById('adm-content').style.display='block';
-  loadAllPostsForAdmin().then(()=>renderAdmAll());
+  // Show loading state immediately
+  const statsEl = document.getElementById('adm-stats');
+  const recentEl = document.getElementById('ov-recent');
+  if(statsEl) statsEl.innerHTML='<p class="aempty" style="font-style:italic;grid-column:1/-1">Loading…</p>';
+  if(recentEl) recentEl.innerHTML='<p class="aempty" style="font-style:italic">Loading…</p>';
+  // Load everything
+  Promise.all([
+    loadAllPostsForAdmin(),
+    loadTips(),
+    loadFAQs(),
+    loadTestis()
+  ]).then(()=>{
+    renderAdmAll();
+  }).catch(e=>{
+    console.error('Admin load error:', e);
+    renderAdmAll(); // render with whatever we have
+  });
 }
 function doLogout(){authed=false;document.getElementById('adm-content').style.display='none';document.getElementById('adm-login').style.display='block';closeAdmin();}
 function aTab(n,btn){
@@ -2400,9 +2415,12 @@ function updateTesti(id){
 async function renderAdmOverview(){
   let subs=0;
   try{const r=await api('/newsletter');subs=r.count||0;}catch(e){}
-  const ap=adminPosts.length?adminPosts:posts;
-  document.getElementById('adm-stats').innerHTML=`
-    <div class="sc"><div class="n">${ap.length}</div><div class="l">Posts</div></div>
+  // Use adminPosts if loaded, fall back to public posts array
+  const ap = (adminPosts && adminPosts.length) ? adminPosts : posts;
+  const statsEl = document.getElementById('adm-stats');
+  const recentEl = document.getElementById('ov-recent');
+  if(statsEl) statsEl.innerHTML=`
+    <div class="sc"><div class="n">${ap.length}</div><div class="l">Total Posts</div></div>
     <div class="sc"><div class="n">${ap.filter(p=>p.status!=='draft').length}</div><div class="l">Published</div></div>
     <div class="sc"><div class="n">${tips.length}</div><div class="l">Tips</div></div>
     <div class="sc"><div class="n">${faqs.length}</div><div class="l">FAQs</div></div>
@@ -2410,8 +2428,13 @@ async function renderAdmOverview(){
     <div class="sc"><div class="n">${subs}</div><div class="l">Subscribers</div></div>
     <div class="sc"><div class="n">${moodLog.length}</div><div class="l">Mood Entries</div></div>
     <div class="sc"><div class="n">${testis.length}</div><div class="l">Reviews</div></div>`;
-  document.getElementById('ov-recent').innerHTML=ap.slice(0,5).map(p=>`
-    <div class="ali"><div class="ali-body"><h4>${esc(p.title)}<span class="${p.status==='draft'?'dbadge':'lbadge'}">${p.status==='draft'?'Draft':'Live'}</span></h4><p>${fd(p.created_at)} · ${esc(p.tag)}</p></div></div>`).join('')||'<p class="aempty">No posts.</p>';
+  if(recentEl) recentEl.innerHTML = ap.length
+    ? ap.slice(0,5).map(p=>`
+        <div class="ali"><div class="ali-body">
+          <h4>${esc(p.title)}<span class="${p.status==='draft'?'dbadge':'lbadge'}">${p.status==='draft'?'Draft':'Live'}</span></h4>
+          <p>${fd(p.created_at)} · ${esc(p.tag||'')}</p>
+        </div></div>`).join('')
+    : '<p class="aempty">No posts yet. Add one from the Blogs tab.</p>';
 }
 // ── Comment Moderation ───────────────────────────────────────
 async function loadAdmComments(status='pending'){
