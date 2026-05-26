@@ -2412,6 +2412,13 @@ function updateTesti(id){
     loadTestis().then(()=>renderAdmTestis());
   }).catch(e=>toast(e.message||'Something went wrong','error'));
 }
+function renderAdmAll(){
+  renderAdmBlogs();
+  renderAdmTips();
+  renderAdmFAQs();
+  renderAdmTestis();
+  renderAdmOverview();
+}
 async function renderAdmOverview(){
   let subs=0;
   try{const r=await api('/newsletter');subs=r.count||0;}catch(e){}
