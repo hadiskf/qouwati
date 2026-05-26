@@ -1675,18 +1675,35 @@ function selectMood(btn,mood){
   document.querySelectorAll('.mood-btn').forEach(b=>b.classList.remove('sel'));
   btn.classList.add('sel');
   const r=document.getElementById('mood-resp');
-  r.textContent=MOOD_RESP[mood];r.classList.add('show');
-  // log mood
+  r.textContent=MOOD_RESP[mood]||'';
+  r.classList.add('show');
+  // Log mood
   const today=new Date().toISOString().split('T')[0];
   moodLog=moodLog.filter(m=>m.date!==today);
   moodLog.push({date:today,mood,score:MOOD_SCORES[mood]||3});
   if(moodLog.length>30)moodLog.shift();
-  savePrefs();renderMoodTracker();
+  savePrefs();
+  renderMoodTracker();
 }
 
-// ============================================================
-// TIPS
-// ============================================================
+function restoreTodayMood(){
+  const today=new Date().toISOString().split('T')[0];
+  const entry=moodLog.find(m=>m.date===today);
+  if(!entry)return;
+  // Highlight the button that matches today's mood
+  document.querySelectorAll('.mood-btn').forEach(btn=>{
+    if(btn.getAttribute('title')&&btn.getAttribute('title').toLowerCase()===entry.mood){
+      btn.classList.add('sel');
+    }
+  });
+  // Show the response
+  const r=document.getElementById('mood-resp');
+  if(r&&MOOD_RESP[entry.mood]){
+    r.textContent=MOOD_RESP[entry.mood];
+    r.classList.add('show');
+  }
+}
+
 // ============================================================
 // TIPS
 // ============================================================
@@ -1982,22 +1999,50 @@ function renderGratHistory(){
 function renderMoodTracker(){
   const chart=document.getElementById('mood-chart');
   const summary=document.getElementById('mood-summary');
-  if(!moodLog.length){chart.innerHTML='<p style="color:var(--light);font-size:.85rem">Track your mood daily to see your chart.</p>';summary.innerHTML='';return;}
+  if(!chart||!summary)return;
+  if(!moodLog.length){
+    chart.innerHTML='<p style="color:var(--light);font-size:.85rem;padding:1rem 0">Check in daily to build your mood chart.</p>';
+    summary.innerHTML='';
+    return;
+  }
   const last14=moodLog.slice(-14);
-  const max=5;
-  chart.innerHTML=last14.map(m=>`
-    <div class="mood-bar-wrap">
-      <div class="mood-bar" style="height:${(m.score/max)*100}px" title="${m.mood} — ${fd(m.date)}"></div>
+  const today=new Date().toISOString().split('T')[0];
+  const maxScore=5;
+  const maxHeight=90; // px
+  chart.innerHTML=last14.map(m=>{
+    const h=Math.max(6,Math.round((m.score/maxScore)*maxHeight));
+    const isToday=m.date===today;
+    return`<div class="mood-bar-wrap">
+      <div class="mood-bar" style="height:${h}px;${isToday?'background:linear-gradient(to top,var(--mocha),var(--gold));box-shadow:0 0 8px rgba(196,168,130,.4)':''}" title="${m.mood} — ${fd(m.date)}"></div>
       <div class="mood-bar-emoji">${MOOD_EMOJIS[m.mood]||'·'}</div>
-      <div class="mood-bar-label">${m.date.slice(5)}</div>
-    </div>`).join('');
+      <div class="mood-bar-label" style="${isToday?'color:var(--mocha);font-weight:600':''}">${isToday?'Today':m.date.slice(5)}</div>
+    </div>`;
+  }).join('');
+  // Summary stats
   const avg=(moodLog.reduce((a,b)=>a+b.score,0)/moodLog.length).toFixed(1);
-  const moodCounts={};moodLog.forEach(m=>{moodCounts[m.mood]=(moodCounts[m.mood]||0)+1;});
+  const moodCounts={};
+  moodLog.forEach(m=>{moodCounts[m.mood]=(moodCounts[m.mood]||0)+1;});
   const top=Object.entries(moodCounts).sort((a,b)=>b[1]-a[1])[0];
+  const streak=calcStreak();
   summary.innerHTML=`
-    <div class="mood-stat"><span class="mood-stat-val">${avg}</span><span class="mood-stat-lbl">Average Mood (1–5)</span></div>
+    <div class="mood-stat"><span class="mood-stat-val">${avg}</span><span class="mood-stat-lbl">Avg Mood (1–5)</span></div>
     <div class="mood-stat"><span class="mood-stat-val">${moodLog.length}</span><span class="mood-stat-lbl">Days Tracked</span></div>
-    ${top?`<div class="mood-stat"><span class="mood-stat-val">${MOOD_EMOJIS[top[0]]}</span><span class="mood-stat-lbl">Most Frequent: ${top[0]}</span></div>`:''}`;
+    ${streak>1?`<div class="mood-stat"><span class="mood-stat-val">${streak}🔥</span><span class="mood-stat-lbl">Day Streak</span></div>`:''}
+    ${top?`<div class="mood-stat"><span class="mood-stat-val">${MOOD_EMOJIS[top[0]]}</span><span class="mood-stat-lbl">Most Frequent</span></div>`:''}`;
+}
+
+function calcStreak(){
+  if(!moodLog.length)return 0;
+  const sorted=[...moodLog].sort((a,b)=>new Date(b.date)-new Date(a.date));
+  let streak=0;
+  let expected=new Date();
+  for(const entry of sorted){
+    const d=new Date(entry.date);
+    const diff=Math.round((expected-d)/(1000*60*60*24));
+    if(diff<=1){streak++;expected=d;}
+    else break;
+  }
+  return streak;
 }
 
 // ============================================================
@@ -2663,6 +2708,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   renderGratDate();
   renderGratHistory();
   renderMoodTracker();
+  restoreTodayMood();
   renderResources();
 
   // ── Render immediately with seed data so page is never blank ──
