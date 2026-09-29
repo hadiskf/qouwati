@@ -1,0 +1,65 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+  command = "echo 'No build needed'"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/posts"
+  to   = "/.netlify/functions/posts"
+  status = 200
+
+[[redirects]]
+  from = "/api/tips"
+  to   = "/.netlify/functions/tips"
+  status = 200
+
+[[redirects]]
+  from = "/api/faqs"
+  to   = "/.netlify/functions/faqs"
+  status = 200
+
+[[redirects]]
+  from = "/api/testimonials"
+  to   = "/.netlify/functions/testimonials"
+  status = 200
+
+[[redirects]]
+  from = "/api/comments"
+  to   = "/.netlify/functions/comments"
+  status = 200
+
+[[redirects]]
+  from = "/api/reactions"
+  to   = "/.netlify/functions/reactions"
+  status = 200
+
+[[redirects]]
+  from = "/api/newsletter"
+  to   = "/.netlify/functions/newsletter"
+  status = 200
+
+[[redirects]]
+  from = "/api/analytics"
+  to   = "/.netlify/functions/analytics"
+  status = 200
+
+[[redirects]]
+  from = "/sitemap.xml"
+  to   = "/.netlify/functions/sitemap"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to   = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

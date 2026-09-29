@@ -1,0 +1,12 @@
+{
+  "name": "qouwati",
+  "version": "1.0.0",
+  "description": "Qouwati – Mental Wellness Platform",
+  "private": true,
+  "dependencies": {
+    "@netlify/blobs": "^7.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
