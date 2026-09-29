@@ -10,7 +10,7 @@ exports.handler = async (event) => {
     const published = posts.filter(p => p.status === 'published');
     const base = process.env.SITE_URL || 'https://qouwati.com';
 
-    const staticPages = ['', '#about', '#tips', '#diary', '#faq', '#resources', '#contact'];
+    const staticPages = ['', 'links', '#start', '#feelings', '#about', '#tips', '#diary', '#faq', '#resources', '#contact'];
 
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

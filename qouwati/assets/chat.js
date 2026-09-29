@@ -233,5 +233,6 @@
   });
 
   // Public hook, e.g. <a href="#" onclick="QouwatiChat.open()">
-  window.QouwatiChat = { open: open, close: close };
+  function help() { open(); addCrisis(HELP_TEXT, HELPLINES, false); }
+  window.QouwatiChat = { open: open, close: close, help: help };
 })();

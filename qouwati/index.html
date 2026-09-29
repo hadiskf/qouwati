@@ -45,6 +45,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="assets/chat.css"/>
+<link rel="stylesheet" href="assets/features.css"/>
 <style>
 /* =========================================================
    RESET & ROOT
@@ -857,6 +858,7 @@ footer{background:#130f0b;padding:4rem 0 2rem}
     </a>
     <div class="nav-links">
       <a href="#hero" data-i18n="nav.home">Home</a>
+      <a href="#start">Start Here</a>
       <a href="#about" data-i18n="nav.about">My DNA</a>
       <a href="#tips" data-i18n="nav.tips">Tips</a>
       <a href="#diary" data-i18n="nav.diary">My Diary</a>
@@ -880,6 +882,8 @@ footer{background:#130f0b;padding:4rem 0 2rem}
 
 <div class="mob-nav" id="mob-nav">
   <a href="#hero" onclick="closeMob()" data-i18n="nav.home">Home</a>
+  <a href="#start" onclick="closeMob()">Start Here</a>
+  <a href="#feelings" onclick="closeMob()">Name Your Feelings</a>
   <a href="#about" onclick="closeMob()" data-i18n="nav.about">My DNA</a>
   <a href="#tips" onclick="closeMob()" data-i18n="nav.tips">Tips</a>
   <a href="#diary" onclick="closeMob()" data-i18n="nav.diary">My Diary</a>
@@ -957,6 +961,19 @@ footer{background:#130f0b;padding:4rem 0 2rem}
     </div>
   </div>
 </div>
+
+<!-- START HERE: reading paths (rendered by assets/features.js) -->
+<section id="start">
+  <div class="container">
+    <div class="centered">
+      <div class="eyebrow rv">New here? Start here</div>
+      <h2 class="sec-title rv d1">What are you <em>carrying</em> today?</h2>
+      <p class="st-sub rv d2">Pick what feels closest. You'll get a short reading path from Aya's diary, one exercise, and one small step for today.</p>
+    </div>
+    <div class="st-grid rv d2" id="start-grid"></div>
+    <div class="sp-panel" id="start-path" hidden aria-live="polite"></div>
+  </div>
+</section>
 
 <div class="divider"></div>
 
@@ -1048,6 +1065,21 @@ footer{background:#130f0b;padding:4rem 0 2rem}
           <div class="breath-instruction" id="breath-instr">Tap to begin</div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMOTION WHEEL (rendered by assets/features.js) -->
+<section id="feelings">
+  <div class="container">
+    <div class="centered">
+      <div class="eyebrow rv">Name what you feel · <span style="font-family:'Noto Naskh Arabic',serif;letter-spacing:0">سمّي شعورك</span></div>
+      <h2 class="sec-title rv d1">The <em>Emotion</em> Wheel</h2>
+      <p class="rv d2" style="max-width:520px;margin:0 auto">Sometimes the hardest part is finding the word. Tap the feeling that's closest, then narrow it down.</p>
+    </div>
+    <div class="fw-grid">
+      <div class="rv" id="fw-wheel"></div>
+      <div class="rv d2" id="fw-detail"><p class="fw-hint">Start by tapping a colour on the wheel.</p></div>
     </div>
   </div>
 </section>
@@ -1201,7 +1233,7 @@ footer{background:#130f0b;padding:4rem 0 2rem}
         <p class="foot-desc">A safe space for mental wellness, self-love, and inner growth. Created with care by Aya Abdo, Beirut.</p>
       </div>
       <div class="foot-col"><h4>Navigate</h4><a href="#hero">Home</a><a href="#about">My DNA</a><a href="#tips">Tips</a><a href="#diary">My Diary</a></div>
-      <div class="foot-col"><h4>Explore</h4><a href="#breathing">Breathing</a><a href="#gratitude">Journal</a><a href="#faq">FAQ</a><a href="#resources">Resources</a></div>
+      <div class="foot-col"><h4>Explore</h4><a href="#start">Start Here</a><a href="#feelings">Emotion Wheel</a><a href="#breathing">Breathing</a><a href="#gratitude">Journal</a><a href="#faq">FAQ</a><a href="#resources">Resources</a></div>
       <div class="foot-col"><h4>Connect</h4><a href="https://www.instagram.com/qouwati" target="_blank">Instagram</a><a href="mailto:qouwati@outlook.com">Email</a><p>+961 70 861 490</p><p>Beirut, Lebanon</p></div>
     </div>
     <div class="foot-bottom">
@@ -2762,5 +2794,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 </script>
 <!-- Ask Qouwati: AI guide to Aya's writing -->
 <script src="assets/chat.js" defer></script>
+<!-- Start here paths, emotion wheel, listen-to-post, deep links -->
+<script src="assets/features.js" defer></script>
 </body>
 </html>

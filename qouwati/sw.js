@@ -1,4 +1,4 @@
-const CACHE_NAME = 'qouwati-v4';
+const CACHE_NAME = 'qouwati-v5';
 const ASSETS = ['./', './index.html', './manifest.json'];
 
 self.addEventListener('install', e => {
